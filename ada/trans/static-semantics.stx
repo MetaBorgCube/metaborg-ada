@@ -1,0 +1,28 @@
+module static-semantics
+
+// Program
+signature
+  sorts Program
+  constructors
+    Program	: Word * Word -> Program
+
+rules
+  programOK : Program
+
+  programOK(Program(w1, w2)) :-
+  	checkOK(w1),
+  	checkOK(w2).
+
+
+// Word
+signature
+  sorts Word
+  constructors
+  	Hello	: Word
+  	Ada		: Word
+
+rules
+  checkOK : Word
+
+  checkOK(Hello()).
+  checkOK(Ada()).

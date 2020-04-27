@@ -1,0 +1,10 @@
+---
+id: org.metaborg:ada.example:0.1.0-SNAPSHOT
+name: ada
+dependencies:
+  compile:
+  - org.metaborg:ada:0.1.0-SNAPSHOT
+debug:
+  typesmart: false
+build:
+  useBuildSystemSpec: true
