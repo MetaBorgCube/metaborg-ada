@@ -1,10 +1,10 @@
 pragma ::= pragma identifier [(pragma_argument_association {, pragma_argument_association})];
 
 pragma_argument_association ::=
-                            [pragma_argument_ identifier =>] name
-                            | [pragma_argument_ identifier =>] expression
-                            | pragma_argument_ aspect_mark => name
-                            | pragma_argument_ aspect_mark => expression
+                            [pragma_argument__identifier =>] name
+                            | [pragma_argument__identifier =>] expression
+                            | pragma_argument__aspect_mark => name
+                            | pragma_argument__aspect_mark => expression
 
 basic_declaration ::=
                   type_declaration
@@ -70,9 +70,9 @@ object_declaration ::=
 
 defining_identifier_list ::= defining_identifier {, defining_identifier}
 
-number_declaration ::= defining_identifier_list : constant := static_ expression ;
+number_declaration ::= defining_identifier_list : constant := static__expression ;
 
-derived_type_definition ::= [abstract] [limited] new parent_ subtype_indication [[and interface_list] record_extension_part]
+derived_type_definition ::= [abstract] [limited] new parent__subtype_indication [[and interface_list] record_extension_part]
 
 range_constraint ::= range range
 
@@ -87,23 +87,23 @@ defining_character_literal ::= character_literal
 
 integer_type_definition ::= signed_integer_type_definition | modular_type_definition
 
-signed_integer_type_definition ::= range static_ simple_expression .. static_ simple_expression
+signed_integer_type_definition ::= range static__simple_expression .. static__simple_expression
 
-modular_type_definition ::= mod static_ expression
+modular_type_definition ::= mod static__expression
 
 real_type_definition ::= floating_point_definition | fixed_point_definition
 
-floating_point_definition ::= digits static_ expression [real_range_specification]
+floating_point_definition ::= digits static__expression [real_range_specification]
 
-real_range_specification ::= range static_ simple_expression .. static_ simple_expression
+real_range_specification ::= range static__simple_expression .. static__simple_expression
 
 fixed_point_definition ::= ordinary_fixed_point_definition | decimal_fixed_point_definition
 
-ordinary_fixed_point_definition ::= delta static_ expression real_range_specification
+ordinary_fixed_point_definition ::= delta static__expression real_range_specification
 
-decimal_fixed_point_definition ::= delta static_ expression digits static_ expression [real_range_specification]
+decimal_fixed_point_definition ::= delta static__expression digits static__expression [real_range_specification]
 
-digits_constraint ::= digits static_ expression [range_constraint]
+digits_constraint ::= digits static__expression [range_constraint]
 
 array_type_definition ::= unconstrained_array_definition | constrained_array_definition
 
@@ -113,14 +113,14 @@ index_subtype_definition ::= subtype_mark range <>
 
 constrained_array_definition ::= array (discrete_subtype_definition {, discrete_subtype_definition}) of component_definition
 
-discrete_subtype_definition ::= discrete_ subtype_indication | range
+discrete_subtype_definition ::= discrete__subtype_indication | range
 
 component_definition ::= [aliased] subtype_indication
                      | [aliased] access_definition
 
 index_constraint ::= (discrete_range {, discrete_range})
 
-discrete_range ::= discrete_ subtype_indication | range
+discrete_range ::= discrete__subtype_indication | range
 
 discriminant_part ::= unknown_discriminant_part | known_discriminant_part
 
@@ -135,7 +135,7 @@ default_expression ::= expression
 
 discriminant_constraint ::= (discriminant_association {, discriminant_association})
 
-discriminant_association ::= [discriminant_ selector_name {| discriminant_ selector_name} =>] expression
+discriminant_association ::= [discriminant__selector_name {| discriminant__selector_name} =>] expression
 
 record_type_definition ::= [[abstract] tagged] [limited] record_definition
 
@@ -153,7 +153,7 @@ component_item ::= component_declaration | aspect_clause
 component_declaration ::= defining_identifier_list : component_definition [:= default_expression]
                       [aspect_specification];
 
-variant_part ::= case discriminant_ direct_name is
+variant_part ::= case discriminant__direct_name is
              variant
              {variant}
              end case;
@@ -163,7 +163,7 @@ variant ::= when discrete_choice_list =>
 
 discrete_choice_list ::= discrete_choice {| discrete_choice}
 
-discrete_choice ::= choice_expression | discrete_ subtype_indication | range | others
+discrete_choice ::= choice_expression | discrete__subtype_indication | range | others
 
 record_extension_part ::= with record_definition
 
@@ -173,7 +173,7 @@ abstract_subprogram_declaration ::= [overriding_indicator]
 
 interface_type_definition ::= [limited | task | protected | synchronized] interface [and interface_list]
 
-interface_list ::= interface_ subtype_mark {and interface_ subtype_mark}
+interface_list ::= interface__subtype_mark {and interface__subtype_mark}
 
 access_type_definition ::= [null_exclusion] access_to_object_definition
                        | [null_exclusion] access_to_subprogram_definition
@@ -234,16 +234,16 @@ selector_name ::= identifier | character_literal | operator_symbol
 
 attribute_reference ::= prefix ' attribute_designator
 
-attribute_designator ::= identifier [(static_ expression)]
+attribute_designator ::= identifier [(static__expression)]
                      | Access | Delta | Digits | Mod
 
 range_attribute_reference ::= prefix ' range_attribute_designator
 
-range_attribute_designator ::= Range[(static_ expression)]
+range_attribute_designator ::= Range[(static__expression)]
 
-generalized_reference ::= reference_object_ name
+generalized_reference ::= reference_object__name
 
-generalized_indexing ::= indexable_container_object_ prefix actual_parameter_part
+generalized_indexing ::= indexable_container_object__prefix actual_parameter_part
 
 aggregate ::= record_aggregate | extension_aggregate | array_aggregate
 
@@ -258,7 +258,7 @@ record_component_association ::=
                              | component_choice_list => <>
 
 component_choice_list ::=
-                      component_ selector_name {| component_ selector_name}
+                      component__selector_name {| component__selector_name}
                       | others
 
 extension_aggregate ::=
@@ -331,27 +331,27 @@ highest_precedence_operator ::= ** | abs | not
 conditional_expression ::= if_expression | case_expression
 
 if_expression ::=
-              if condition then dependent_ expression
-              {elsif condition then dependent_ expression}
-              [else dependent_ expression]
+              if condition then dependent__expression
+              {elsif condition then dependent__expression}
+              [else dependent__expression]
 
-condition ::= boolean_ expression
+condition ::= boolean__expression
 
 case_expression ::=
-                case selecting_ expression is
+                case selecting__expression is
                 case_expression_alternative {,
                 case_expression_alternative}
 
 case_expression_alternative ::=
                             when discrete_choice_list =>
-                            dependent_ expression
+                            dependent__expression
 
 quantified_expression ::= for quantifier loop_parameter_specification => predicate
                       | for quantifier iterator_specification => predicate
 
 quantifier ::= all | some
 
-predicate ::= boolean_ expression
+predicate ::= boolean__expression
 
 type_conversion ::=
                 subtype_mark (expression)
@@ -364,7 +364,7 @@ allocator ::=
           new [subpool_specification] subtype_indication
           | new [subpool_specification] qualified_expression
 
-subpool_specification ::= (subpool_handle_ name)
+subpool_specification ::= (subpool_handle__name)
 
 sequence_of_statements ::= statement {statement} {label}
 
@@ -395,12 +395,12 @@ compound_statement ::=
 
 null_statement ::= null;
 
-label ::= <<label_ statement_identifier >>
+label ::= <<label__statement_identifier >>
 
 statement_identifier ::= direct_name
 
 assignment_statement ::=
-                     variable_ name := expression ;
+                     variable__name := expression ;
 
 if_statement ::=
              if condition then
@@ -412,7 +412,7 @@ if_statement ::=
              end if;
 
 case_statement ::=
-               case selecting_ expression is
+               case selecting__expression is
                case_statement_alternative
                {case_statement_alternative}
                end case;
@@ -422,10 +422,10 @@ case_statement_alternative ::=
                            sequence_of_statements
 
 loop_statement ::=
-               [loop_ statement_identifier :]
+               [loop__statement_identifier :]
                [iteration_scheme] loop
                sequence_of_statements
-               end loop [loop_ identifier];
+               end loop [loop__identifier];
 
 iteration_scheme ::= while condition
                  | for loop_parameter_specification
@@ -434,20 +434,20 @@ iteration_scheme ::= while condition
 loop_parameter_specification ::=
                              defining_identifier in [reverse] discrete_subtype_definition
 iterator_specification ::=
-                       defining_identifier in [reverse] iterator_ name
-                       | defining_identifier [: subtype_indication] of [reverse] iterable_ name
+                       defining_identifier in [reverse] iterator__name
+                       | defining_identifier [: subtype_indication] of [reverse] iterable__name
 block_statement ::=
-                [block_ statement_identifier :]
+                [block__statement_identifier :]
                 [declare
                 declarative_part]
                 begin
                 handled_sequence_of_statements
-                end [block_ identifier];
+                end [block__identifier];
 
 exit_statement ::=
-               exit [loop_ name] [when condition];
+               exit [loop__name] [when condition];
 
-goto_statement ::= goto label_ name ;
+goto_statement ::= goto label__name ;
 
 subprogram_declaration ::=
                        [overriding_indicator]
@@ -496,20 +496,20 @@ subprogram_body ::=
                 end [designator];
 
 procedure_call_statement ::=
-                         procedure_ name ;
-                         | procedure_ prefix actual_parameter_part ;
+                         procedure__name ;
+                         | procedure__prefix actual_parameter_part ;
 
 function_call ::=
-              function_ name
-              | function_ prefix actual_parameter_part
+              function__name
+              | function__prefix actual_parameter_part
 
 actual_parameter_part ::=
                       (parameter_association {, parameter_association})
 
 parameter_association ::=
-                      [formal_parameter_ selector_name =>] explicit_actual_parameter
+                      [formal_parameter__selector_name =>] explicit_actual_parameter
 
-explicit_actual_parameter ::= expression | variable_ name
+explicit_actual_parameter ::= expression | variable__name
 
 simple_return_statement ::= return [expression];
 
@@ -558,7 +558,7 @@ private_type_declaration ::=
 
 private_extension_declaration ::=
                               type defining_identifier [discriminant_part] is
-                              [abstract] [limited | synchronized] new ancestor_ subtype_indication
+                              [abstract] [limited | synchronized] new ancestor__subtype_indication
                               [and interface_list] with private
                               [aspect_specification];
 
@@ -566,7 +566,7 @@ overriding_indicator ::= [not] overriding
 
 use_clause ::= use_package_clause | use_type_clause
 
-use_package_clause ::= use package_ name {, package_ name};
+use_package_clause ::= use package__name {, package__name};
 
 use_type_clause ::= use [all] type subtype_mark {, subtype_mark};
 
@@ -578,31 +578,31 @@ renaming_declaration ::=
                      | generic_renaming_declaration
 
 object_renaming_declaration ::=
-                            defining_identifier : [null_exclusion] subtype_mark renames object_ name
+                            defining_identifier : [null_exclusion] subtype_mark renames object__name
                             [aspect_specification];
-                            | defining_identifier : access_definition renames object_ name
+                            | defining_identifier : access_definition renames object__name
                             [aspect_specification];
 
-exception_renaming_declaration ::= defining_identifier : exception renames exception_ name
+exception_renaming_declaration ::= defining_identifier : exception renames exception__name
                                [aspect_specification];
 
-package_renaming_declaration ::= package defining_program_unit_name renames package_ name
+package_renaming_declaration ::= package defining_program_unit_name renames package__name
                              [aspect_specification];
 
 subprogram_renaming_declaration ::=
                                 [overriding_indicator]
-                                subprogram_specification renames callable_entity_ name
+                                subprogram_specification renames callable_entity__name
                                 [aspect_specification];
 
 generic_renaming_declaration ::=
                              generic package
-                             defining_program_unit_name renames generic_package_ name
+                             defining_program_unit_name renames generic_package__name
                              [aspect_specification];
                              | generic procedure
-                             defining_program_unit_name renames generic_procedure_ name
+                             defining_program_unit_name renames generic_procedure__name
                              [aspect_specification];
                              | generic function
-                             defining_program_unit_name renames generic_function_ name
+                             defining_program_unit_name renames generic_function__name
                              [aspect_specification];
 
 task_type_declaration ::=
@@ -621,7 +621,7 @@ task_definition ::=
                 {task_item}
                 [private
                 {task_item}]
-                end [task_ identifier]
+                end [task__identifier]
 
 task_item ::= entry_declaration | aspect_clause
 
@@ -631,7 +631,7 @@ task_body ::=
           declarative_part
           begin
           handled_sequence_of_statements
-          end [task_ identifier];
+          end [task__identifier];
 
 protected_type_declaration ::=
                            protected type defining_identifier [known_discriminant_part]
@@ -649,7 +649,7 @@ protected_definition ::=
                      {protected_operation_declaration}
                      [private
                      {protected_element_declaration}]
-                     end [protected_ identifier]
+                     end [protected__identifier]
 
 protected_operation_declaration ::= subprogram_declaration
                                 | entry_declaration
@@ -662,7 +662,7 @@ protected_body ::=
                protected body defining_identifier
                [aspect_specification] is
                {protected_operation_item}
-               end [protected_ identifier];
+               end [protected__identifier];
 
 protected_operation_item ::= subprogram_declaration
                          | subprogram_body
@@ -677,9 +677,9 @@ entry_declaration ::=
                   [aspect_specification];
 
 accept_statement ::=
-                 accept entry_ direct_name [(entry_index)] parameter_profile [do
+                 accept entry__direct_name [(entry_index)] parameter_profile [do
                  handled_sequence_of_statements
-                 end [entry_ identifier]];
+                 end [entry__identifier]];
 
 entry_index ::= expression
 
@@ -688,7 +688,7 @@ entry_body ::=
            declarative_part
            begin
            handled_sequence_of_statements
-           end [entry_ identifier];
+           end [entry__identifier];
 
 entry_body_formal_part ::= [(entry_index_specification)] parameter_profile
 
@@ -696,15 +696,15 @@ entry_barrier ::= when condition
 
 entry_index_specification ::= for defining_identifier in discrete_subtype_definition
 
-entry_call_statement ::= entry_ name [actual_parameter_part];
+entry_call_statement ::= entry__name [actual_parameter_part];
 
-requeue_statement ::= requeue procedure_or_entry_ name [with abort];
+requeue_statement ::= requeue procedure_or_entry__name [with abort];
 
 delay_statement ::= delay_until_statement | delay_relative_statement
 
-delay_until_statement ::= delay until delay_ expression ;
+delay_until_statement ::= delay until delay__expression ;
 
-delay_relative_statement ::= delay delay_ expression ;
+delay_relative_statement ::= delay delay__expression ;
 
 select_statement ::=
                  selective_accept
@@ -771,7 +771,7 @@ triggering_statement ::= procedure_or_entry_call | delay_statement
 
 abortable_part ::= sequence_of_statements
 
-abort_statement ::= abort task_ name {, task_ name};
+abort_statement ::= abort task__name {, task__name};
 
 compilation ::= {compilation_unit}
 
@@ -803,9 +803,9 @@ context_item ::= with_clause | use_clause
 
 with_clause ::= limited_with_clause | nonlimited_with_clause
 
-limited_with_clause ::= limited [private] with library_unit_ name {, library_unit_ name};
+limited_with_clause ::= limited [private] with library_unit__name {, library_unit__name};
 
-nonlimited_with_clause ::= [private] with library_unit_ name {, library_unit_ name};
+nonlimited_with_clause ::= [private] with library_unit__name {, library_unit__name};
 
 body_stub ::= subprogram_body_stub | package_body_stub | task_body_stub | protected_body_stub
 
@@ -843,10 +843,10 @@ exception_handler ::=
 
 choice_parameter_specification ::= defining_identifier
 
-exception_choice ::= exception_ name | others
+exception_choice ::= exception__name | others
 
 raise_statement ::= raise;
-                | raise exception_ name [with string_ expression];
+                | raise exception__name [with string__expression];
 
 generic_declaration ::= generic_subprogram_declaration | generic_package_declaration
 
@@ -867,26 +867,26 @@ generic_formal_parameter_declaration ::=
 
 generic_instantiation ::=
                       package defining_program_unit_name is
-                      new generic_package_ name [generic_actual_part]
+                      new generic_package__name [generic_actual_part]
                       [aspect_specification];
                       | [overriding_indicator]
                       procedure defining_program_unit_name is
-                      new generic_procedure_ name [generic_actual_part]
+                      new generic_procedure__name [generic_actual_part]
                       [aspect_specification];
                       | [overriding_indicator]
                       function defining_designator is
-                      new generic_function_ name [generic_actual_part]
+                      new generic_function__name [generic_actual_part]
                       [aspect_specification];
 
 generic_actual_part ::=
                     (generic_association {, generic_association})
 
 generic_association ::=
-                    [generic_formal_parameter_ selector_name =>] explicit_generic_actual_parameter
+                    [generic_formal_parameter__selector_name =>] explicit_generic_actual_parameter
 
-explicit_generic_actual_parameter ::= expression | variable_ name
-                                  | subprogram_ name | entry_ name | subtype_mark
-                                  | package_instance_ name
+explicit_generic_actual_parameter ::= expression | variable__name
+                                  | subprogram__name | entry__name | subtype_mark
+                                  | package_instance__name
 
 formal_object_declaration ::=
                           defining_identifier_list : mode [null_exclusion] subtype_mark [:= default_expression]
@@ -957,7 +957,7 @@ subprogram_default ::= default_name | <> | null
 default_name ::= name
 
 formal_package_declaration ::=
-                           with package defining_identifier is new generic_package_ name formal_package_actual_part
+                           with package defining_identifier is new generic_package__name formal_package_actual_part
                            [aspect_specification];
 
 formal_package_actual_part ::=
@@ -967,7 +967,7 @@ formal_package_actual_part ::=
 
 formal_package_association ::=
                            generic_association
-                           | generic_formal_parameter_ selector_name => <>
+                           | generic_formal_parameter__selector_name => <>
 
 aspect_clause ::= attribute_definition_clause
               | enumeration_representation_clause
@@ -976,13 +976,13 @@ aspect_clause ::= attribute_definition_clause
 
 local_name ::= direct_name
            | direct_name ' attribute_designator
-           | library_unit_ name
+           | library_unit__name
 
 aspect_specification ::=
                      with aspect_mark [=> aspect_definition] {,
                      aspect_mark [=> aspect_definition]}
 
-aspect_mark ::= aspect_ identifier ['Class]
+aspect_mark ::= aspect__identifier ['Class]
 
 aspect_definition ::= name | expression | identifier
 
@@ -991,36 +991,36 @@ attribute_definition_clause ::=
                             | for local_name ' attribute_designator use name ;
 
 enumeration_representation_clause ::=
-                                  for first_subtype_ local_name use enumeration_aggregate ;
+                                  for first_subtype__local_name use enumeration_aggregate ;
 
 enumeration_aggregate ::= array_aggregate
 
 record_representation_clause ::=
-                             for first_subtype_ local_name use
+                             for first_subtype__local_name use
                              record [mod_clause]
                              {component_clause}
                              end record;
 
 component_clause ::=
-                 component_ local_name at position range first_bit .. last_bit ;
+                 component__local_name at position range first_bit .. last_bit ;
 
-position ::= static_ expression
+position ::= static__expression
 
-first_bit ::= static_ simple_expression
+first_bit ::= static__simple_expression
 
-last_bit ::= static_ simple_expression
+last_bit ::= static__simple_expression
 
 code_statement ::= qualified_expression ;
 
-storage_pool_indicator ::= storage_pool_ name | null
+storage_pool_indicator ::= storage_pool__name | null
 
-restriction ::= restriction_ identifier
-            | restriction_parameter_ identifier => restriction_parameter_argument
+restriction ::= restriction__identifier
+            | restriction_parameter__identifier => restriction_parameter_argument
 
 restriction_parameter_argument ::= name | expression
 
-delta_constraint ::= delta static_ expression [range_constraint]
+delta_constraint ::= delta static__expression [range_constraint]
 
 at_clause ::= for direct_name use at expression ;
 
-mod_clause ::= at mod static_ expression ;
+mod_clause ::= at mod static__expression ;
