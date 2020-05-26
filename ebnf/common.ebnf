@@ -1,4 +1,4 @@
-identifier ::= identifier_start {identifier_start | identifier_extend}
+identifier_ ::= identifier_start {identifier_start | identifier_extend}
 
 identifier_start ::=
                  letter_uppercase
@@ -16,21 +16,21 @@ identifier_extend ::=
 
 numeric_literal ::= decimal_literal | based_literal
 
-decimal_literal ::= numeral [.numeral] [exponent]
+decimal_literal ::= numeral_ [.numeral_] [exponent_]
 
-numeral ::= digit {[underline] digit}
+numeral_ ::= digit_ {[underline] digit_}
 
-exponent ::= E [+] numeral | E – numeral
+exponent_ ::= E [+] numeral_ | E - numeral_
 
-digit ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+digit_ ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
-based_literal ::= base # based_numeral [.based_numeral] # [exponent]
+based_literal ::= base # based_numeral [.based_numeral] # [exponent_]
 
-base ::= numeral
+base_ ::= numeral_
 
 based_numeral ::= extended_digit {[underline] extended_digit}
 
-extended_digit ::= digit | A | B | C | D | E | F
+extended_digit ::= digit_ | A | B | C | D | E | F
 
 character_literal ::= 'graphic_character'
 
@@ -38,4 +38,4 @@ string_literal ::= "{string_element}"
 
 string_element ::= "" | non_quotation_mark_ graphic_character
 
-comment ::= --{non_end_of_line_character}
+comment_ ::= --{non_end_of_line_character}
