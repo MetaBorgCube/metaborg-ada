@@ -10,7 +10,11 @@ context-free start-symbols
 
 context-free syntax
   
-  Start.Program = <<Word> <Word>>
+  Start.Program = <<Procedure> <EOF>>
 
-  Word.Hello = <hello>
-  Word.Ada = <ada>
+  Procedure.Procedure = 
+  <procedure <ID> is
+	begin
+   		Ada.Text_IO.Put_Line (<STRING>);
+	end <ID>;
+  >
