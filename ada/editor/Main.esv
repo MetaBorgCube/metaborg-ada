@@ -9,4 +9,4 @@ language
   extensions : ada
 
   table : target/metaborg/sdf.tbl
-  provider : target/metaborg/stratego.jar
+  provider : target/metaborg/stratego.ctree

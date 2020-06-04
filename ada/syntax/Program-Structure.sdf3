@@ -1,0 +1,77 @@
+module Program-Structure
+
+imports
+
+	Common
+	Declarations
+	Exceptions
+	Generic-Declarations
+	Lexical-Elements
+	Names-Expressions
+	Packages
+	Representation
+	Statements
+	Subprograms
+	Tasks-Synchronization
+	
+
+context-free start-symbols
+
+  Compilation 
+
+context-free syntax
+
+	Compilation.Compilation0 = Compilationunit*
+	
+	Compilationunit.Compilationunit0 = Contextclause Libraryitem
+	Compilationunit.Compilationunit1 = Contextclause Subunit
+	
+	Libraryitem.Libraryitem0 =  Libraryunitdeclaration
+	Libraryitem.Libraryitem1 = "private" Libraryunitdeclaration
+	Libraryitem.Libraryitem2 = Libraryunitbody
+	Libraryitem.Libraryitem3 =  Libraryunitrenamingdeclaration
+	Libraryitem.Libraryitem4 = "private" Libraryunitrenamingdeclaration
+	
+	Libraryunitdeclaration.Libraryunitdeclaration0 = Subprogramdeclaration
+	Libraryunitdeclaration.Libraryunitdeclaration1 = Genericdeclaration
+	Libraryunitdeclaration.Libraryunitdeclaration2 = Packagedeclaration
+	Libraryunitdeclaration.Libraryunitdeclaration3 = Genericinstantiation
+	
+	Libraryunitrenamingdeclaration.Libraryunitrenamingdeclaration0 = Packagerenamingdeclaration
+	Libraryunitrenamingdeclaration.Libraryunitrenamingdeclaration1 = Genericrenamingdeclaration
+	Libraryunitrenamingdeclaration.Libraryunitrenamingdeclaration2 = Subprogramrenamingdeclaration
+	
+	Libraryunitbody.Libraryunitbody0 = Subprogrambody
+	Libraryunitbody.Libraryunitbody1 = Packagebody
+	
+	Parentunitname.Parentunitname0 = Name
+	
+	Contextclause.Contextclause0 = Contextitem*
+	
+	Contextitem.Contextitem0 = Withclause
+	Contextitem.Contextitem1 = Useclause
+	
+	Withclause.Withclause0 = Limitedwithclause
+	Withclause.Withclause1 = Nonlimitedwithclause
+	
+	Limitedwithclause.Limitedwithclause0 = "limited"  "with" {Name ","}+ ";"
+	Limitedwithclause.Limitedwithclause1 = "limited" "private" "with" {Name ","}+ ";"
+	
+	Nonlimitedwithclause.Nonlimitedwithclause0 =  "with" {Name ","}+ ";"
+	Nonlimitedwithclause.Nonlimitedwithclause1 = "private" "with" {Name ","}+ ";"
+	
+	Bodystub.Bodystub0 = Subprogrambodystub
+	Bodystub.Bodystub1 = Packagebodystub
+	Bodystub.Bodystub2 = Taskbodystub
+	Bodystub.Bodystub3 = Protectedbodystub
+	
+	Subprogrambodystub.Subprogrambodystub0 = Overridingindicator? Subprogramspecification "is separate" Aspectspecification? ";"
+	
+	Packagebodystub.Packagebodystub0 = "package body" Definingidentifier "is separate" Aspectspecification? ";"
+	
+	Taskbodystub.Taskbodystub0 = "task body" Definingidentifier "is separate" Aspectspecification? ";"
+	
+	Protectedbodystub.Protectedbodystub0 = "protected body" Definingidentifier "is separate" Aspectspecification? ";"
+	
+	Subunit.Subunit0 = "separate (" Parentunitname ")" Properbody
+	

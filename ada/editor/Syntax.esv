@@ -8,11 +8,10 @@ imports
 language
 
   table         : target/metaborg/sdf.tbl
-  start symbols : Start
+  start symbols : Compilation
 
-  line comment  : "//"
-  block comment : "/*" * "*/"
-  fences        : [ ] ( ) { }
+  line comment  : "--"
+  fences        : ( ) { }
 
 menus
   

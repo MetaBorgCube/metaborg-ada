@@ -13,8 +13,8 @@ lexical syntax
 lexical syntax
 
 	Identifier      = [a-zA-Z] [a-zA-Z0-9\_]*
-	CharLiteral			= ~[\"\n\t\r]
-	STRING        	= "\"" StringChar* "\"" 
+	Characterliteral			= ~[\"\n\t\r]
+	Stringliteral        	= "\"" StringChar* "\"" 
   StringChar     	= ~[\"\n] 
   StringChar     	= "\\\"" 
   StringChar     	= BackSlashChar 
@@ -22,21 +22,19 @@ lexical syntax
 	
 lexical syntax
 
-	NumericLiteral 	= DecimalLiteral | BasedLiteral
+	Numericliteral 	= Decimalliteral | Basedliteral
 	
-	DecimalLiteral 	= Numeral "." Numeral? Exponent?
-	Numeral				 	= Digit (UnderlineChar? Digit)*
+	Decimalliteral 	= Numeral "." Numeral? Exponent?
+	Numeral				 	= Digit (Underlinechar? Digit)*
 	Digit					 	= [0-9]
-	UnderlineChar		= "_"
+	Underlinechar		= "_"
 	Exponent				= "E" "+"? Numeral
 	Exponent				= "E" "-" Numeral
 	
-	BasedLiteral		= Numeral "#" BasedNumeral ("." BasedNumeral)? "#" Exponent?
-	BasedNumeral		= ExtendedDigit (UnderlineChar? ExtendedDigit)*
-	ExtendedDigit		= Digit | [A-F]
+	Basedliteral		= Numeral "#" Basednumeral ("." Basednumeral)? "#" Exponent?
+	Basednumeral		= Extendeddigit (Underlinechar? Extendeddigit)*
+	Extendeddigit		= Digit | [A-F]
 	
-
-
 lexical restrictions
 
   // Ensure greedy matching for lexicals

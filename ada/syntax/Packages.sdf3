@@ -1,0 +1,84 @@
+module Packages
+
+imports
+
+	Common
+	Declarations
+	Exceptions
+	Generic-Declarations
+	Lexical-Elements
+	Names-Expressions
+	Program-Structure
+	Representation
+	Statements
+	Subprograms
+	Tasks-Synchronization
+	
+
+context-free syntax
+
+	Packagedeclaration.Packagedeclaration0 = Packagespecification ";"
+	
+	Packagespecification.Packagespecification0 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem*  "end" 
+	Packagespecification.Packagespecification1 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem* "private" Basicdeclarativeitem* "end" 
+	Packagespecification.Packagespecification2 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem*  "end"  Identifier
+	Packagespecification.Packagespecification3 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem* "private" Basicdeclarativeitem* "end"  Identifier
+	Packagespecification.Packagespecification4 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem*  "end" Parentunitname "." Identifier
+	Packagespecification.Packagespecification5 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem* "private" Basicdeclarativeitem* "end" Parentunitname "." Identifier
+	
+	Packagebody.Packagebody0 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart  "end"  ";"
+	Packagebody.Packagebody1 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end"  ";"
+	Packagebody.Packagebody2 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart  "end"  Identifier ";"
+	Packagebody.Packagebody3 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end"  Identifier ";"
+	Packagebody.Packagebody4 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart  "end" Parentunitname "." Identifier ";"
+	Packagebody.Packagebody5 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end" Parentunitname "." Identifier ";"
+	
+	Privatetypedeclaration.Privatetypedeclaration0 = "type" Definingidentifier Discriminantpart? "is"   "private" Aspectspecification? ";"
+	Privatetypedeclaration.Privatetypedeclaration1 = "type" Definingidentifier Discriminantpart? "is"  "tagged"  "private" Aspectspecification? ";"
+	Privatetypedeclaration.Privatetypedeclaration2 = "type" Definingidentifier Discriminantpart? "is" "abstract" "tagged"  "private" Aspectspecification? ";"
+	Privatetypedeclaration.Privatetypedeclaration3 = "type" Definingidentifier Discriminantpart? "is"  "limited" "private" Aspectspecification? ";"
+	Privatetypedeclaration.Privatetypedeclaration4 = "type" Definingidentifier Discriminantpart? "is"  "tagged" "limited" "private" Aspectspecification? ";"
+	Privatetypedeclaration.Privatetypedeclaration5 = "type" Definingidentifier Discriminantpart? "is" "abstract" "tagged" "limited" "private" Aspectspecification? ";"
+	
+	Privateextensiondeclaration.Privateextensiondeclaration0 = "type" Definingidentifier Discriminantpart? "is"   "new" Subtypeindication  "with private" Aspectspecification? ";"
+	Privateextensiondeclaration.Privateextensiondeclaration1 = "type" Definingidentifier Discriminantpart? "is" "abstract"  "new" Subtypeindication  "with private" Aspectspecification? ";"
+	Privateextensiondeclaration.Privateextensiondeclaration2 = "type" Definingidentifier Discriminantpart? "is"  "limited" "new" Subtypeindication  "with private" Aspectspecification? ";"
+	Privateextensiondeclaration.Privateextensiondeclaration3 = "type" Definingidentifier Discriminantpart? "is" "abstract" "limited" "new" Subtypeindication  "with private" Aspectspecification? ";"
+	Privateextensiondeclaration.Privateextensiondeclaration4 = "type" Definingidentifier Discriminantpart? "is"  "synchronized" "new" Subtypeindication  "with private" Aspectspecification? ";"
+	Privateextensiondeclaration.Privateextensiondeclaration5 = "type" Definingidentifier Discriminantpart? "is" "abstract" "synchronized" "new" Subtypeindication  "with private" Aspectspecification? ";"
+	Privateextensiondeclaration.Privateextensiondeclaration6 = "type" Definingidentifier Discriminantpart? "is"   "new" Subtypeindication "and" Interfacelist "with private" Aspectspecification? ";"
+	Privateextensiondeclaration.Privateextensiondeclaration7 = "type" Definingidentifier Discriminantpart? "is" "abstract"  "new" Subtypeindication "and" Interfacelist "with private" Aspectspecification? ";"
+	Privateextensiondeclaration.Privateextensiondeclaration8 = "type" Definingidentifier Discriminantpart? "is"  "limited" "new" Subtypeindication "and" Interfacelist "with private" Aspectspecification? ";"
+	Privateextensiondeclaration.Privateextensiondeclaration9 = "type" Definingidentifier Discriminantpart? "is" "abstract" "limited" "new" Subtypeindication "and" Interfacelist "with private" Aspectspecification? ";"
+	Privateextensiondeclaration.Privateextensiondeclaration10 = "type" Definingidentifier Discriminantpart? "is"  "synchronized" "new" Subtypeindication "and" Interfacelist "with private" Aspectspecification? ";"
+	Privateextensiondeclaration.Privateextensiondeclaration11 = "type" Definingidentifier Discriminantpart? "is" "abstract" "synchronized" "new" Subtypeindication "and" Interfacelist "with private" Aspectspecification? ";"
+	
+	Overridingindicator.Overridingindicator0 =  "overriding"
+	Overridingindicator.Overridingindicator1 = "not" "overriding"
+	
+	Useclause.Useclause0 = Usepackageclause
+	Useclause.Useclause1 = Usetypeclause
+	
+	Usepackageclause.Usepackageclause0 = "use" {Name ","}+ ";"
+	
+	Usetypeclause.Usetypeclause0 = "use"  "type" {Subtypemark ","}+ ";"
+	Usetypeclause.Usetypeclause1 = "use" "all" "type" {Subtypemark ","}+ ";"
+	
+	Renamingdeclaration.Renamingdeclaration0 = Objectrenamingdeclaration
+	Renamingdeclaration.Renamingdeclaration1 = Exceptionrenamingdeclaration
+	Renamingdeclaration.Renamingdeclaration2 = Packagerenamingdeclaration
+	Renamingdeclaration.Renamingdeclaration3 = Subprogramrenamingdeclaration
+	Renamingdeclaration.Renamingdeclaration4 = Genericrenamingdeclaration
+	
+	Objectrenamingdeclaration.Objectrenamingdeclaration0 = Definingidentifier ":" Nullexclusion? Subtypemark "renames" Name Aspectspecification? ";"
+	Objectrenamingdeclaration.Objectrenamingdeclaration1 = Definingidentifier ":" Accessdefinition "renames" Name Aspectspecification? ";"
+	
+	Exceptionrenamingdeclaration.Exceptionrenamingdeclaration0 = Definingidentifier ": exception renames" Name Aspectspecification? ";"
+	
+	Packagerenamingdeclaration.Packagerenamingdeclaration0 = "package" Definingprogramunitname "renames" Name Aspectspecification? ";"
+	
+	Subprogramrenamingdeclaration.Subprogramrenamingdeclaration0 = Overridingindicator? Subprogramspecification "renames" Name Aspectspecification? ";"
+	
+	Genericrenamingdeclaration.Genericrenamingdeclaration0 = "generic package" Definingprogramunitname "renames" Name Aspectspecification? ";"
+	Genericrenamingdeclaration.Genericrenamingdeclaration1 = "generic procedure" Definingprogramunitname "renames" Name Aspectspecification? ";"
+	Genericrenamingdeclaration.Genericrenamingdeclaration2 = "generic function" Definingprogramunitname "renames" Name Aspectspecification? ";"
