@@ -17,82 +17,82 @@ imports
 
 context-free syntax
 
-	Subprogramdeclaration.Subprogramdeclaration0 = Overridingindicator? Subprogramspecification Aspectspecification? ";"
-	
+//	Subprogramdeclaration.Subprogramdeclaration0 = Overridingindicator? Subprogramspecification Aspectspecification? ";"
+//	
 	Subprogramspecification.Subprogramspecification0 = Procedurespecification
-	Subprogramspecification.Subprogramspecification1 = Functionspecification
-	
+//	Subprogramspecification.Subprogramspecification1 = Functionspecification
+//	
 	Procedurespecification.Procedurespecification0 = "procedure" Definingprogramunitname Parameterprofile
-	
-	Functionspecification.Functionspecification0 = "function" Definingdesignator Parameterandresultprofile
-	
+//	
+//	Functionspecification.Functionspecification0 = "function" Definingdesignator Parameterandresultprofile
+//	
 	Designator.Designator0 =  Identifier
-	Designator.Designator1 = Parentunitname "." Identifier
-	Designator.Designator2 = Operatorsymbol
-	
-	Definingdesignator.Definingdesignator0 = Definingprogramunitname
-	Definingdesignator.Definingdesignator1 = Definingoperatorsymbol
-	
+//	Designator.Designator1 = Parentunitname "." Identifier
+//	Designator.Designator2 = Operatorsymbol
+//	
+//	Definingdesignator.Definingdesignator0 = Definingprogramunitname
+//	Definingdesignator.Definingdesignator1 = Definingoperatorsymbol
+//	
 	Definingprogramunitname.Definingprogramunitname0 =  Definingidentifier
-	Definingprogramunitname.Definingprogramunitname1 = Parentunitname "." Definingidentifier
-	
+//	Definingprogramunitname.Definingprogramunitname1 = Parentunitname "." Definingidentifier
+//	
 	Operatorsymbol.Operatorsymbol0 = Stringliteral
-	
-	Definingoperatorsymbol.Definingoperatorsymbol0 = Operatorsymbol
-	
+//	
+//	Definingoperatorsymbol.Definingoperatorsymbol0 = Operatorsymbol
+//	
 	Parameterprofile.Parameterprofile0 = Formalpart?
-	
-	Parameterandresultprofile.Parameterandresultprofile0 = Formalpart? "return" Nullexclusion? Subtypemark
-	Parameterandresultprofile.Parameterandresultprofile1 = Formalpart? "return" Accessdefinition
-	
+//	
+//	Parameterandresultprofile.Parameterandresultprofile0 = Formalpart? "return" Nullexclusion? Subtypemark
+//	Parameterandresultprofile.Parameterandresultprofile1 = Formalpart? "return" Accessdefinition
+//	
 	Formalpart.Formalpart0 = "(" {Parameterspecification ";"}+ ")"
-	
-	Parameterspecification.Parameterspecification0 = Definingidentifierlist ":"  Mode Nullexclusion? Subtypemark 
-	Parameterspecification.Parameterspecification1 = Definingidentifierlist ":" "aliased" Mode Nullexclusion? Subtypemark 
-	Parameterspecification.Parameterspecification2 = Definingidentifierlist ":"  Mode Nullexclusion? Subtypemark ":=" Defaultexpression
-	Parameterspecification.Parameterspecification3 = Definingidentifierlist ":" "aliased" Mode Nullexclusion? Subtypemark ":=" Defaultexpression
+//	
+//	Parameterspecification.Parameterspecification0 = Definingidentifierlist ":"  Mode Nullexclusion? Subtypemark 
+//	Parameterspecification.Parameterspecification1 = Definingidentifierlist ":" "aliased" Mode Nullexclusion? Subtypemark 
+//	Parameterspecification.Parameterspecification2 = Definingidentifierlist ":"  Mode Nullexclusion? Subtypemark ":=" Defaultexpression
+//	Parameterspecification.Parameterspecification3 = Definingidentifierlist ":" "aliased" Mode Nullexclusion? Subtypemark ":=" Defaultexpression
 	Parameterspecification.Parameterspecification4 = Definingidentifierlist ":" Accessdefinition 
-	Parameterspecification.Parameterspecification5 = Definingidentifierlist ":" Accessdefinition ":=" Defaultexpression
-	
-	Mode.Mode0 = 
-	Mode.Mode1 = "in"
-	Mode.Mode2 = "in out"
-	Mode.Mode3 = "out"
-	
+//	Parameterspecification.Parameterspecification5 = Definingidentifierlist ":" Accessdefinition ":=" Defaultexpression
+//	
+//	Mode.Mode0 = 
+//	Mode.Mode1 = "in"
+//	Mode.Mode2 = "in out"
+//	Mode.Mode3 = "out"
+//
 	Subprogrambody.Subprogrambody0 = Overridingindicator? Subprogramspecification Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end" Designator? ";"
-	
-	Procedurecallstatement.Procedurecallstatement0 = Name ";"
-	Procedurecallstatement.Procedurecallstatement1 = Prefix Actualparameterpart ";"
-	
-	Functioncall.Functioncall0 = Name
-	Functioncall.Functioncall1 = Prefix Actualparameterpart
-	
+//	
+//	Procedurecallstatement.Procedurecallstatement0 = Name ";"
+//	Procedurecallstatement.Procedurecallstatement1 = Prefix Actualparameterpart ";"
+//	
+//	Functioncall.Functioncall0 = Name
+//	Functioncall.Functioncall1 = Prefix Actualparameterpart
+//	
 	Actualparameterpart.Actualparameterpart0 = "(" {Parameterassociation ","}+ ")"
-	
+//	
 	Parameterassociation.Parameterassociation0 =  Explicitactualparameter
-	Parameterassociation.Parameterassociation1 = Selectorname "=>" Explicitactualparameter
-	
-	Explicitactualparameter.Explicitactualparameter0 = Expression
+//	Parameterassociation.Parameterassociation1 = Selectorname "=>" Explicitactualparameter
+//	
+//	Explicitactualparameter.Explicitactualparameter0 = Expression
 	Explicitactualparameter.Explicitactualparameter1 = Name
-	
+//	
 	Simplereturnstatement.Simplereturnstatement12 = "return" Expression? ";"
-	
-	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration0 = Definingidentifier ":"   Returnsubtypeindication 
-	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration1 = Definingidentifier ":" "aliased"  Returnsubtypeindication 
-	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration2 = Definingidentifier ":"  "constant" Returnsubtypeindication 
-	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration3 = Definingidentifier ":" "aliased" "constant" Returnsubtypeindication 
-	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration4 = Definingidentifier ":"   Returnsubtypeindication ":=" Expression
-	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration5 = Definingidentifier ":" "aliased"  Returnsubtypeindication ":=" Expression
-	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration6 = Definingidentifier ":"  "constant" Returnsubtypeindication ":=" Expression
-	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration7 = Definingidentifier ":" "aliased" "constant" Returnsubtypeindication ":=" Expression
-	
-	Extendedreturnstatement.Extendedreturnstatement0 = "return" Extendedreturnobjectdeclaration  ";"
-	Extendedreturnstatement.Extendedreturnstatement1 = "return" Extendedreturnobjectdeclaration "do" Handledsequenceofstatements "end return" ";"
-	
-	Returnsubtypeindication.Returnsubtypeindication0 = Subtypeindication
-	Returnsubtypeindication.Returnsubtypeindication1 = Accessdefinition
-	
-	Nullproceduredeclaration.Nullproceduredeclaration0 = Overridingindicator? Procedurespecification "is null" Aspectspecification? ";"
-	
-	Expressionfunctiondeclaration.Expressionfunctiondeclaration0 = Overridingindicator? Functionspecification "is (" Expression ")" Aspectspecification? ";"
+//	
+//	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration0 = Definingidentifier ":"   Returnsubtypeindication 
+//	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration1 = Definingidentifier ":" "aliased"  Returnsubtypeindication 
+//	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration2 = Definingidentifier ":"  "constant" Returnsubtypeindication 
+//	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration3 = Definingidentifier ":" "aliased" "constant" Returnsubtypeindication 
+//	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration4 = Definingidentifier ":"   Returnsubtypeindication ":=" Expression
+//	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration5 = Definingidentifier ":" "aliased"  Returnsubtypeindication ":=" Expression
+//	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration6 = Definingidentifier ":"  "constant" Returnsubtypeindication ":=" Expression
+//	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration7 = Definingidentifier ":" "aliased" "constant" Returnsubtypeindication ":=" Expression
+//	
+//	Extendedreturnstatement.Extendedreturnstatement0 = "return" Extendedreturnobjectdeclaration  ";"
+//	Extendedreturnstatement.Extendedreturnstatement1 = "return" Extendedreturnobjectdeclaration "do" Handledsequenceofstatements "end return" ";"
+//	
+//	Returnsubtypeindication.Returnsubtypeindication0 = Subtypeindication
+//	Returnsubtypeindication.Returnsubtypeindication1 = Accessdefinition
+//	
+//	Nullproceduredeclaration.Nullproceduredeclaration0 = Overridingindicator? Procedurespecification "is null" Aspectspecification? ";"
+//	
+//	Expressionfunctiondeclaration.Expressionfunctiondeclaration0 = Overridingindicator? Functionspecification "is (" Expression ")" Aspectspecification? ";"
 	

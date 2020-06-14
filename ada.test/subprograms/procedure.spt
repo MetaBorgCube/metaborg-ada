@@ -1,0 +1,10 @@
+module subprograms
+
+language ada
+
+test parse subprogram with minimal simple return statement[[
+procedure Greet is
+begin
+   return;
+end Greet;
+]] parse succeeds

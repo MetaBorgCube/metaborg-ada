@@ -24,24 +24,22 @@ lexical syntax
 
 	Numericliteral 	= Decimalliteral | Basedliteral
 	
-	Decimalliteral 	= Numeral "." Numeral? Exponent?
-	Numeral				 	= Digit (Underlinechar? Digit)*
-	Digit					 	= [0-9]
+	Decimalliteral 	= Numeral ("." Numeral)? Exponent?
+	Numeral				 	= [0-9] [\_0-9]*
 	Underlinechar		= "_"
 	Exponent				= "E" "+"? Numeral
 	Exponent				= "E" "-" Numeral
 	
 	Basedliteral		= Numeral "#" Basednumeral ("." Basednumeral)? "#" Exponent?
 	Basednumeral		= Extendeddigit (Underlinechar? Extendeddigit)*
-	Extendeddigit		= Digit | [A-F]
+	Extendeddigit		= [0-9] | [A-F]
 	
 lexical restrictions
 
   // Ensure greedy matching for lexicals
   
   CommentChar   -/- [\-\-]
-  Digit         -/- [0-9]
-  Identifier            -/- [a-zA-Z0-9\_]
+  Identifier    -/- [a-zA-Z0-9\_]
   
   // EOF may not be followed by any char
   

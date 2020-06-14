@@ -17,20 +17,20 @@ imports
 
 context-free syntax
 
-	Exceptiondeclaration.Exceptiondeclaration2 = Definingidentifierlist ": exception" Aspectspecification? ";"
-	
+//	Exceptiondeclaration.Exceptiondeclaration2 = Definingidentifierlist ": exception" Aspectspecification? ";"
+//	
 	Handledsequenceofstatements.Handledsequenceofstatements4 = Sequenceofstatements 
-	Handledsequenceofstatements.Handledsequenceofstatements5 = Sequenceofstatements "exception" Exceptionhandler+
-	
-	Exceptionhandler.Exceptionhandler4 = "when"  {Exceptionchoice "|"}+ "=>" Sequenceofstatements
-	Exceptionhandler.Exceptionhandler5 = "when" Choiceparameterspecification ":" {Exceptionchoice "|"}+ "=>" Sequenceofstatements
-	
-	Choiceparameterspecification.Choiceparameterspecification2 = Definingidentifier
-	
-	Exceptionchoice.Exceptionchoice4 = Name
-	Exceptionchoice.Exceptionchoice5 = "others"
-	
-	Raisestatement.Raisestatement6 = "raise ;"
-	Raisestatement.Raisestatement7 = "raise" Name  ";"
-	Raisestatement.Raisestatement8 = "raise" Name "with" Expression ";"
-	
+//	Handledsequenceofstatements.Handledsequenceofstatements5 = Sequenceofstatements "exception" Exceptionhandler+
+//	
+//	Exceptionhandler.Exceptionhandler4 = "when"  {Exceptionchoice "|"}+ "=>" Sequenceofstatements
+//	Exceptionhandler.Exceptionhandler5 = "when" Choiceparameterspecification ":" {Exceptionchoice "|"}+ "=>" Sequenceofstatements
+//	
+//	Choiceparameterspecification.Choiceparameterspecification2 = Definingidentifier
+//	
+//	Exceptionchoice.Exceptionchoice4 = Name
+//	Exceptionchoice.Exceptionchoice5 = "others"
+//	
+//	Raisestatement.Raisestatement6 = "raise ;"
+//	Raisestatement.Raisestatement7 = "raise" Name  ";"
+//	Raisestatement.Raisestatement8 = "raise" Name "with" Expression ";"
+//	

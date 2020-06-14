@@ -1,0 +1,31 @@
+module expressions
+
+language ada
+
+test parse subprogram with simple return statement and simple expression[[
+procedure Greet is
+begin
+   return 42;
+end Greet;
+]] parse succeeds
+
+test parse subprogram with simple return statement and simple expression[[
+procedure Greet is
+begin
+   return 42 * 12;
+end Greet;
+]] parse succeeds
+
+test parse subprogram with simple return statement and simple expression[[
+procedure Greet is
+begin
+   return 42 ** 2;
+end Greet;
+]] parse succeeds
+
+test parse subprogram with simple return statement and simple expression[[
+procedure Greet is
+begin
+   return 42 / 2;
+end Greet;
+]] parse succeeds

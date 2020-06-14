@@ -18,71 +18,71 @@ imports
 context-free syntax
 
 	Sequenceofstatements.Sequenceofstatements0 = Statement+ Label*
-	
+//	
 	Statement.Statement0 = Label* Simplestatement
-	Statement.Statement1 = Label* Compoundstatement
-	
-	Simplestatement.Simplestatement0 = Nullstatement
-	Simplestatement.Simplestatement1 = Assignmentstatement
-	Simplestatement.Simplestatement2 = Gotostatement
+//	Statement.Statement1 = Label* Compoundstatement
+//	
+//	Simplestatement.Simplestatement0 = Nullstatement
+//	Simplestatement.Simplestatement1 = Assignmentstatement
+//	Simplestatement.Simplestatement2 = Gotostatement
 	Simplestatement.Simplestatement3 = Simplereturnstatement
-	Simplestatement.Simplestatement4 = Requeuestatement
-	Simplestatement.Simplestatement5 = Abortstatement
-	Simplestatement.Simplestatement6 = Codestatement
-	Simplestatement.Simplestatement7 = Exitstatement
-	Simplestatement.Simplestatement8 = Procedurecallstatement
-	Simplestatement.Simplestatement9 = Entrycallstatement
-	Simplestatement.Simplestatement10 = Delaystatement
-	Simplestatement.Simplestatement11 = Raisestatement
-	
-	Compoundstatement.Compoundstatement0 = Ifstatement
-	Compoundstatement.Compoundstatement1 = Loopstatement
-	Compoundstatement.Compoundstatement2 = Extendedreturnstatement
-	Compoundstatement.Compoundstatement3 = Acceptstatement
-	Compoundstatement.Compoundstatement4 = Casestatement
-	Compoundstatement.Compoundstatement5 = Blockstatement
-	Compoundstatement.Compoundstatement6 = Selectstatement
-	
-	Nullstatement.Nullstatement0 = "null ;"
-	
+//	Simplestatement.Simplestatement4 = Requeuestatement
+//	Simplestatement.Simplestatement5 = Abortstatement
+//	Simplestatement.Simplestatement6 = Codestatement
+//	Simplestatement.Simplestatement7 = Exitstatement
+//	Simplestatement.Simplestatement8 = Procedurecallstatement
+//	Simplestatement.Simplestatement9 = Entrycallstatement
+//	Simplestatement.Simplestatement10 = Delaystatement
+//	Simplestatement.Simplestatement11 = Raisestatement
+//	
+//	Compoundstatement.Compoundstatement0 = Ifstatement
+//	Compoundstatement.Compoundstatement1 = Loopstatement
+//	Compoundstatement.Compoundstatement2 = Extendedreturnstatement
+//	Compoundstatement.Compoundstatement3 = Acceptstatement
+//	Compoundstatement.Compoundstatement4 = Casestatement
+//	Compoundstatement.Compoundstatement5 = Blockstatement
+//	Compoundstatement.Compoundstatement6 = Selectstatement
+//	
+//	Nullstatement.Nullstatement0 = "null ;"
+//	
 	Label.Label0 = "<<" Statementidentifier ">>"
-	
+//	
 	Statementidentifier.Statementidentifier0 = Directname
-	
-	Assignmentstatement.Assignmentstatement0 = Name ":=" Expression ";"
-	
-	Ifstatement.Ifstatement0 = "if" {Repitition80 "elsif"}+  "end if ;"
-	Ifstatement.Ifstatement1 = "if" {Repitition80 "elsif"}+ "else" Sequenceofstatements "end if ;"
-	Repitition80.IfstatementRepitition800 = Condition "then" Sequenceofstatements
-	
-	Casestatement.Casestatement0 = "case" Expression "is" Casestatementalternative+ "end case ;"
-	
-	Casestatementalternative.Casestatementalternative0 = "when" Discretechoicelist "=>" Sequenceofstatements
-	
-	Loopstatement.Loopstatement0 =  Iterationscheme? "loop" Sequenceofstatements "end loop" Identifier? ";"
-	Loopstatement.Loopstatement1 = Statementidentifier ":" Iterationscheme? "loop" Sequenceofstatements "end loop" Identifier? ";"
-	
-	Iterationscheme.Iterationscheme0 = "while" Condition
-	Iterationscheme.Iterationscheme1 = "for" Loopparameterspecification
-	Iterationscheme.Iterationscheme2 = "for" Iteratorspecification
-	
-	Loopparameterspecification.Loopparameterspecification0 = Definingidentifier "in"  Discretesubtypedefinition
-	Loopparameterspecification.Loopparameterspecification1 = Definingidentifier "in" "reverse" Discretesubtypedefinition
-	
-	Iteratorspecification.Iteratorspecification0 = Definingidentifier "in"  Name
-	Iteratorspecification.Iteratorspecification1 = Definingidentifier "in" "reverse" Name
-	Iteratorspecification.Iteratorspecification2 = Definingidentifier  "of"  Name
-	Iteratorspecification.Iteratorspecification3 = Definingidentifier ":" Subtypeindication "of"  Name
-	Iteratorspecification.Iteratorspecification4 = Definingidentifier  "of" "reverse" Name
-	Iteratorspecification.Iteratorspecification5 = Definingidentifier ":" Subtypeindication "of" "reverse" Name
-	
-	Blockstatement.Blockstatement0 =   "begin" Handledsequenceofstatements "end" Identifier? ";"
-	Blockstatement.Blockstatement1 = Statementidentifier ":"  "begin" Handledsequenceofstatements "end" Identifier? ";"
-	Blockstatement.Blockstatement2 =  "declare" Declarativepart "begin" Handledsequenceofstatements "end" Identifier? ";"
-	Blockstatement.Blockstatement3 = Statementidentifier ":" "declare" Declarativepart "begin" Handledsequenceofstatements "end" Identifier? ";"
-	
-	Exitstatement.Exitstatement0 = "exit" Name?  ";"
-	Exitstatement.Exitstatement1 = "exit" Name? "when" Condition ";"
-	
-	Gotostatement.Gotostatement0 = "goto" Name ";"
+//	
+//	Assignmentstatement.Assignmentstatement0 = Name ":=" Expression ";"
+//	
+//	Ifstatement.Ifstatement0 = "if" {Repitition80 "elsif"}+  "end if ;"
+//	Ifstatement.Ifstatement1 = "if" {Repitition80 "elsif"}+ "else" Sequenceofstatements "end if ;"
+//	Repitition80.IfstatementRepitition800 = Condition "then" Sequenceofstatements
+//	
+//	Casestatement.Casestatement0 = "case" Expression "is" Casestatementalternative+ "end case ;"
+//	
+//	Casestatementalternative.Casestatementalternative0 = "when" Discretechoicelist "=>" Sequenceofstatements
+//	
+//	Loopstatement.Loopstatement0 =  Iterationscheme? "loop" Sequenceofstatements "end loop" Identifier? ";"
+//	Loopstatement.Loopstatement1 = Statementidentifier ":" Iterationscheme? "loop" Sequenceofstatements "end loop" Identifier? ";"
+//	
+//	Iterationscheme.Iterationscheme0 = "while" Condition
+//	Iterationscheme.Iterationscheme1 = "for" Loopparameterspecification
+//	Iterationscheme.Iterationscheme2 = "for" Iteratorspecification
+//	
+//	Loopparameterspecification.Loopparameterspecification0 = Definingidentifier "in"  Discretesubtypedefinition
+//	Loopparameterspecification.Loopparameterspecification1 = Definingidentifier "in" "reverse" Discretesubtypedefinition
+//	
+//	Iteratorspecification.Iteratorspecification0 = Definingidentifier "in"  Name
+//	Iteratorspecification.Iteratorspecification1 = Definingidentifier "in" "reverse" Name
+//	Iteratorspecification.Iteratorspecification2 = Definingidentifier  "of"  Name
+//	Iteratorspecification.Iteratorspecification3 = Definingidentifier ":" Subtypeindication "of"  Name
+//	Iteratorspecification.Iteratorspecification4 = Definingidentifier  "of" "reverse" Name
+//	Iteratorspecification.Iteratorspecification5 = Definingidentifier ":" Subtypeindication "of" "reverse" Name
+//	
+//	Blockstatement.Blockstatement0 =   "begin" Handledsequenceofstatements "end" Identifier? ";"
+//	Blockstatement.Blockstatement1 = Statementidentifier ":"  "begin" Handledsequenceofstatements "end" Identifier? ";"
+//	Blockstatement.Blockstatement2 =  "declare" Declarativepart "begin" Handledsequenceofstatements "end" Identifier? ";"
+//	Blockstatement.Blockstatement3 = Statementidentifier ":" "declare" Declarativepart "begin" Handledsequenceofstatements "end" Identifier? ";"
+//	
+//	Exitstatement.Exitstatement0 = "exit" Name?  ";"
+//	Exitstatement.Exitstatement1 = "exit" Name? "when" Condition ";"
+//	
+//	Gotostatement.Gotostatement0 = "goto" Name ";"
 	

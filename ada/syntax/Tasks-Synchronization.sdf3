@@ -16,119 +16,119 @@ imports
 	
 context-free syntax
 
-	Tasktypedeclaration.Tasktypedeclaration0 = "task type" Definingidentifier Knowndiscriminantpart? Aspectspecification?  ";"
-	Tasktypedeclaration.Tasktypedeclaration1 = "task type" Definingidentifier Knowndiscriminantpart? Aspectspecification? "is"  Taskdefinition ";"
-	Tasktypedeclaration.Tasktypedeclaration2 = "task type" Definingidentifier Knowndiscriminantpart? Aspectspecification? "is" "new" Interfacelist "with" Taskdefinition ";"
-	
-	Singletaskdeclaration.Singletaskdeclaration0 = "task" Definingidentifier Aspectspecification?  ";"
-	Singletaskdeclaration.Singletaskdeclaration1 = "task" Definingidentifier Aspectspecification? "is"  Taskdefinition ";"
-	Singletaskdeclaration.Singletaskdeclaration2 = "task" Definingidentifier Aspectspecification? "is" "new" Interfacelist "with" Taskdefinition ";"
-	
-	Taskdefinition.Taskdefinition0 = Taskitem*  "end" Identifier?
-	Taskdefinition.Taskdefinition1 = Taskitem* "private" Taskitem* "end" Identifier?
-	
-	Taskitem.Taskitem0 = Entrydeclaration
-	Taskitem.Taskitem1 = Aspectclause
-	
-	Taskbody.Taskbody0 = "task body" Definingidentifier Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end" Identifier? ";"
-	
-	Protectedtypedeclaration.Protectedtypedeclaration0 = "protected type" Definingidentifier Knowndiscriminantpart? Aspectspecification? "is"  Protecteddefinition ";"
-	Protectedtypedeclaration.Protectedtypedeclaration1 = "protected type" Definingidentifier Knowndiscriminantpart? Aspectspecification? "is" "new" Interfacelist "with" Protecteddefinition ";"
-	
-	Singleprotecteddeclaration.Singleprotecteddeclaration0 = "protected" Definingidentifier Aspectspecification? "is"  Protecteddefinition ";"
-	Singleprotecteddeclaration.Singleprotecteddeclaration1 = "protected" Definingidentifier Aspectspecification? "is" "new" Interfacelist "with" Protecteddefinition ";"
-	
-	Protecteddefinition.Protecteddefinition0 = Protectedoperationdeclaration*  "end" Identifier?
-	Protecteddefinition.Protecteddefinition1 = Protectedoperationdeclaration* "private" Protectedelementdeclaration* "end" Identifier?
-	
-	Protectedoperationdeclaration.Protectedoperationdeclaration0 = Subprogramdeclaration
-	Protectedoperationdeclaration.Protectedoperationdeclaration1 = Entrydeclaration
-	Protectedoperationdeclaration.Protectedoperationdeclaration2 = Aspectclause
-	
-	Protectedelementdeclaration.Protectedelementdeclaration0 = Protectedoperationdeclaration
-	Protectedelementdeclaration.Protectedelementdeclaration1 = Componentdeclaration
-	
-	Protectedbody.Protectedbody0 = "protected body" Definingidentifier Aspectspecification? "is" Protectedoperationitem* "end" Identifier? ";"
-	
-	Protectedoperationitem.Protectedoperationitem0 = Subprogramdeclaration
-	Protectedoperationitem.Protectedoperationitem1 = Subprogrambody
-	Protectedoperationitem.Protectedoperationitem2 = Entrybody
-	Protectedoperationitem.Protectedoperationitem3 = Aspectclause
-	
-	Synchronizationkind.Synchronizationkind0 = "By_Entry"
-	Synchronizationkind.Synchronizationkind1 = "By_Protected_Procedure"
-	Synchronizationkind.Synchronizationkind2 = "Optional"
-	
-	Entrydeclaration.Entrydeclaration0 = Overridingindicator? "entry" Definingidentifier  Parameterprofile Aspectspecification? ";"
-	Entrydeclaration.Entrydeclaration1 = Overridingindicator? "entry" Definingidentifier "(" Discretesubtypedefinition ")" Parameterprofile Aspectspecification? ";"
-	
-	Acceptstatement.Acceptstatement0 = "accept" Directname  Parameterprofile  ";"
-	Acceptstatement.Acceptstatement1 = "accept" Directname "(" Entryindex ")" Parameterprofile  ";"
-	Acceptstatement.Acceptstatement2 = "accept" Directname  Parameterprofile "do" Handledsequenceofstatements "end" Identifier? ";"
-	Acceptstatement.Acceptstatement3 = "accept" Directname "(" Entryindex ")" Parameterprofile "do" Handledsequenceofstatements "end" Identifier? ";"
-	
-	Entryindex.Entryindex0 = Expression
-	
-	Entrybody.Entrybody0 = "entry" Definingidentifier Entrybodyformalpart Entrybarrier "is" Declarativepart "begin" Handledsequenceofstatements "end" Identifier? ";"
-	
-	Entrybodyformalpart.Entrybodyformalpart0 =  Parameterprofile
-	Entrybodyformalpart.Entrybodyformalpart1 = "(" Entryindexspecification ")" Parameterprofile
-	
-	Entrybarrier.Entrybarrier0 = "when" Condition
-	
-	Entryindexspecification.Entryindexspecification0 = "for" Definingidentifier "in" Discretesubtypedefinition
-	
+//	Tasktypedeclaration.Tasktypedeclaration0 = "task type" Definingidentifier Knowndiscriminantpart? Aspectspecification?  ";"
+//	Tasktypedeclaration.Tasktypedeclaration1 = "task type" Definingidentifier Knowndiscriminantpart? Aspectspecification? "is"  Taskdefinition ";"
+//	Tasktypedeclaration.Tasktypedeclaration2 = "task type" Definingidentifier Knowndiscriminantpart? Aspectspecification? "is" "new" Interfacelist "with" Taskdefinition ";"
+//	
+//	Singletaskdeclaration.Singletaskdeclaration0 = "task" Definingidentifier Aspectspecification?  ";"
+//	Singletaskdeclaration.Singletaskdeclaration1 = "task" Definingidentifier Aspectspecification? "is"  Taskdefinition ";"
+//	Singletaskdeclaration.Singletaskdeclaration2 = "task" Definingidentifier Aspectspecification? "is" "new" Interfacelist "with" Taskdefinition ";"
+//	
+//	Taskdefinition.Taskdefinition0 = Taskitem*  "end" Identifier?
+//	Taskdefinition.Taskdefinition1 = Taskitem* "private" Taskitem* "end" Identifier?
+//	
+//	Taskitem.Taskitem0 = Entrydeclaration
+//	Taskitem.Taskitem1 = Aspectclause
+//	
+//	Taskbody.Taskbody0 = "task body" Definingidentifier Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end" Identifier? ";"
+//	
+//	Protectedtypedeclaration.Protectedtypedeclaration0 = "protected type" Definingidentifier Knowndiscriminantpart? Aspectspecification? "is"  Protecteddefinition ";"
+//	Protectedtypedeclaration.Protectedtypedeclaration1 = "protected type" Definingidentifier Knowndiscriminantpart? Aspectspecification? "is" "new" Interfacelist "with" Protecteddefinition ";"
+//	
+//	Singleprotecteddeclaration.Singleprotecteddeclaration0 = "protected" Definingidentifier Aspectspecification? "is"  Protecteddefinition ";"
+//	Singleprotecteddeclaration.Singleprotecteddeclaration1 = "protected" Definingidentifier Aspectspecification? "is" "new" Interfacelist "with" Protecteddefinition ";"
+//	
+//	Protecteddefinition.Protecteddefinition0 = Protectedoperationdeclaration*  "end" Identifier?
+//	Protecteddefinition.Protecteddefinition1 = Protectedoperationdeclaration* "private" Protectedelementdeclaration* "end" Identifier?
+//	
+//	Protectedoperationdeclaration.Protectedoperationdeclaration0 = Subprogramdeclaration
+//	Protectedoperationdeclaration.Protectedoperationdeclaration1 = Entrydeclaration
+//	Protectedoperationdeclaration.Protectedoperationdeclaration2 = Aspectclause
+//	
+//	Protectedelementdeclaration.Protectedelementdeclaration0 = Protectedoperationdeclaration
+//	Protectedelementdeclaration.Protectedelementdeclaration1 = Componentdeclaration
+//	
+//	Protectedbody.Protectedbody0 = "protected body" Definingidentifier Aspectspecification? "is" Protectedoperationitem* "end" Identifier? ";"
+//	
+//	Protectedoperationitem.Protectedoperationitem0 = Subprogramdeclaration
+//	Protectedoperationitem.Protectedoperationitem1 = Subprogrambody
+//	Protectedoperationitem.Protectedoperationitem2 = Entrybody
+//	Protectedoperationitem.Protectedoperationitem3 = Aspectclause
+//	
+//	Synchronizationkind.Synchronizationkind0 = "By_Entry"
+//	Synchronizationkind.Synchronizationkind1 = "By_Protected_Procedure"
+//	Synchronizationkind.Synchronizationkind2 = "Optional"
+//	
+//	Entrydeclaration.Entrydeclaration0 = Overridingindicator? "entry" Definingidentifier  Parameterprofile Aspectspecification? ";"
+//	Entrydeclaration.Entrydeclaration1 = Overridingindicator? "entry" Definingidentifier "(" Discretesubtypedefinition ")" Parameterprofile Aspectspecification? ";"
+//	
+//	Acceptstatement.Acceptstatement0 = "accept" Directname  Parameterprofile  ";"
+//	Acceptstatement.Acceptstatement1 = "accept" Directname "(" Entryindex ")" Parameterprofile  ";"
+//	Acceptstatement.Acceptstatement2 = "accept" Directname  Parameterprofile "do" Handledsequenceofstatements "end" Identifier? ";"
+//	Acceptstatement.Acceptstatement3 = "accept" Directname "(" Entryindex ")" Parameterprofile "do" Handledsequenceofstatements "end" Identifier? ";"
+//	
+//	Entryindex.Entryindex0 = Expression
+//	
+//	Entrybody.Entrybody0 = "entry" Definingidentifier Entrybodyformalpart Entrybarrier "is" Declarativepart "begin" Handledsequenceofstatements "end" Identifier? ";"
+//	
+//	Entrybodyformalpart.Entrybodyformalpart0 =  Parameterprofile
+//	Entrybodyformalpart.Entrybodyformalpart1 = "(" Entryindexspecification ")" Parameterprofile
+//	
+//	Entrybarrier.Entrybarrier0 = "when" Condition
+//	
+//	Entryindexspecification.Entryindexspecification0 = "for" Definingidentifier "in" Discretesubtypedefinition
+//	
 	Entrycallstatement.Entrycallstatement0 = Name Actualparameterpart? ";"
-	
-	Requeuestatement.Requeuestatement0 = "requeue" Name  ";"
-	Requeuestatement.Requeuestatement1 = "requeue" Name "with abort" ";"
-	
-	Delaystatement.Delaystatement0 = Delayuntilstatement
-	Delaystatement.Delaystatement1 = Delayrelativestatement
-	
-	Delayuntilstatement.Delayuntilstatement0 = "delay until" Expression ";"
-	
-	Delayrelativestatement.Delayrelativestatement0 = "delay" Expression ";"
-	
-	Selectstatement.Selectstatement0 = Selectiveaccept
-	Selectstatement.Selectstatement1 = Timedentrycall
-	Selectstatement.Selectstatement2 = Conditionalentrycall
-	Selectstatement.Selectstatement3 = Asynchronousselect
-	
-	Selectiveaccept.Selectiveaccept0 = "select" {Repitition81 "or"}+  "end select ;"
-	Selectiveaccept.Selectiveaccept1 = "select" {Repitition81 "or"}+ "else" Sequenceofstatements "end select ;"
-	Repitition81.SelectiveacceptRepitition810 = Guard? Selectalternative
-	
-	Guard.Guard0 = "when" Condition "=>"
-	
-	Selectalternative.Selectalternative0 = Acceptalternative
-	Selectalternative.Selectalternative1 = Delayalternative
-	Selectalternative.Selectalternative2 = Terminatealternative
-	
-	Acceptalternative.Acceptalternative0 = Acceptstatement Sequenceofstatements?
-	
-	Delayalternative.Delayalternative0 = Delaystatement Sequenceofstatements?
-	
-	Terminatealternative.Terminatealternative0 = "terminate ;"
-	
-	Timedentrycall.Timedentrycall0 = "select" Entrycallalternative "or" Delayalternative "end select ;"
-	
-	Entrycallalternative.Entrycallalternative0 = Procedureorentrycall Sequenceofstatements?
-	
-	Procedureorentrycall.Procedureorentrycall0 = Procedurecallstatement
-	Procedureorentrycall.Procedureorentrycall1 = Entrycallstatement
-	
-	Conditionalentrycall.Conditionalentrycall0 = "select" Entrycallalternative "else" Sequenceofstatements "end select ;"
-	
-	Asynchronousselect.Asynchronousselect0 = "select" Triggeringalternative "then abort" Abortablepart "end select ;"
-	
-	Triggeringalternative.Triggeringalternative0 = Triggeringstatement Sequenceofstatements?
-	
-	Triggeringstatement.Triggeringstatement0 = Procedureorentrycall
-	Triggeringstatement.Triggeringstatement1 = Delaystatement
-	
-	Abortablepart.Abortablepart0 = Sequenceofstatements
-	
-	Abortstatement.Abortstatement0 = "abort" {Name ","}+ ";"
+//	
+//	Requeuestatement.Requeuestatement0 = "requeue" Name  ";"
+//	Requeuestatement.Requeuestatement1 = "requeue" Name "with abort" ";"
+//	
+//	Delaystatement.Delaystatement0 = Delayuntilstatement
+//	Delaystatement.Delaystatement1 = Delayrelativestatement
+//	
+//	Delayuntilstatement.Delayuntilstatement0 = "delay until" Expression ";"
+//	
+//	Delayrelativestatement.Delayrelativestatement0 = "delay" Expression ";"
+//	
+//	Selectstatement.Selectstatement0 = Selectiveaccept
+//	Selectstatement.Selectstatement1 = Timedentrycall
+//	Selectstatement.Selectstatement2 = Conditionalentrycall
+//	Selectstatement.Selectstatement3 = Asynchronousselect
+//	
+//	Selectiveaccept.Selectiveaccept0 = "select" {Repitition81 "or"}+  "end select ;"
+//	Selectiveaccept.Selectiveaccept1 = "select" {Repitition81 "or"}+ "else" Sequenceofstatements "end select ;"
+//	Repitition81.SelectiveacceptRepitition810 = Guard? Selectalternative
+//	
+//	Guard.Guard0 = "when" Condition "=>"
+//	
+//	Selectalternative.Selectalternative0 = Acceptalternative
+//	Selectalternative.Selectalternative1 = Delayalternative
+//	Selectalternative.Selectalternative2 = Terminatealternative
+//	
+//	Acceptalternative.Acceptalternative0 = Acceptstatement Sequenceofstatements?
+//	
+//	Delayalternative.Delayalternative0 = Delaystatement Sequenceofstatements?
+//	
+//	Terminatealternative.Terminatealternative0 = "terminate ;"
+//	
+//	Timedentrycall.Timedentrycall0 = "select" Entrycallalternative "or" Delayalternative "end select ;"
+//	
+//	Entrycallalternative.Entrycallalternative0 = Procedureorentrycall Sequenceofstatements?
+//	
+//	Procedureorentrycall.Procedureorentrycall0 = Procedurecallstatement
+//	Procedureorentrycall.Procedureorentrycall1 = Entrycallstatement
+//	
+//	Conditionalentrycall.Conditionalentrycall0 = "select" Entrycallalternative "else" Sequenceofstatements "end select ;"
+//	
+//	Asynchronousselect.Asynchronousselect0 = "select" Triggeringalternative "then abort" Abortablepart "end select ;"
+//	
+//	Triggeringalternative.Triggeringalternative0 = Triggeringstatement Sequenceofstatements?
+//	
+//	Triggeringstatement.Triggeringstatement0 = Procedureorentrycall
+//	Triggeringstatement.Triggeringstatement1 = Delaystatement
+//	
+//	Abortablepart.Abortablepart0 = Sequenceofstatements
+//	
+//	Abortstatement.Abortstatement0 = "abort" {Name ","}+ ";"
 	
 	

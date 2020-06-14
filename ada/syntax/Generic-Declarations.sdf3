@@ -16,131 +16,131 @@ imports
 	
 
 context-free syntax
-
-	Genericdeclaration.Genericdeclaration0 = Genericsubprogramdeclaration
-	Genericdeclaration.Genericdeclaration1 = Genericpackagedeclaration
-	
-	Genericsubprogramdeclaration.Genericsubprogramdeclaration0 = Genericformalpart Subprogramspecification Aspectspecification? ";"
-	
-	Genericpackagedeclaration.Genericpackagedeclaration0 = Genericformalpart Packagespecification ";"
-	
-	Genericformalpart.Genericformalpart0 = "generic" Repitition71*
-	Repitition71.GenericformalpartRepitition710 = Genericformalparameterdeclaration
-	Repitition71.GenericformalpartRepitition711 = Useclause
-	
-	Genericformalparameterdeclaration.Genericformalparameterdeclaration0 = Formalobjectdeclaration
-	Genericformalparameterdeclaration.Genericformalparameterdeclaration1 = Formaltypedeclaration
-	Genericformalparameterdeclaration.Genericformalparameterdeclaration2 = Formalsubprogramdeclaration
-	Genericformalparameterdeclaration.Genericformalparameterdeclaration3 = Formalpackagedeclaration
-	
-	Genericinstantiation.Genericinstantiation0 = "package" Definingprogramunitname "is new" Name Genericactualpart? Aspectspecification? ";"
-	Genericinstantiation.Genericinstantiation1 = Overridingindicator? "procedure" Definingprogramunitname "is new" Name Genericactualpart? Aspectspecification? ";"
-	Genericinstantiation.Genericinstantiation2 = Overridingindicator? "function" Definingdesignator "is new" Name Genericactualpart? Aspectspecification? ";"
-	
-	Genericactualpart.Genericactualpart0 = "(" {Genericassociation ","}+ ")"
-	
-	Genericassociation.Genericassociation0 =  Explicitgenericactualparameter
-	Genericassociation.Genericassociation1 = Selectorname "=>" Explicitgenericactualparameter
-	
-	Explicitgenericactualparameter.Explicitgenericactualparameter0 = "expression"
-	Explicitgenericactualparameter.Explicitgenericactualparameter1 = Name
-	Explicitgenericactualparameter.Explicitgenericactualparameter2 = Name
-	Explicitgenericactualparameter.Explicitgenericactualparameter3 = Name
-	Explicitgenericactualparameter.Explicitgenericactualparameter4 = Subtypemark
-	Explicitgenericactualparameter.Explicitgenericactualparameter5 = Name
-	
-	Formalobjectdeclaration.Formalobjectdeclaration0 = Definingidentifierlist ":" Mode Nullexclusion? Subtypemark  Aspectspecification? ";"
-	Formalobjectdeclaration.Formalobjectdeclaration1 = Definingidentifierlist ":" Mode Nullexclusion? Subtypemark ":=" Defaultexpression Aspectspecification? ";"
-	Formalobjectdeclaration.Formalobjectdeclaration2 = Definingidentifierlist ":" Mode Accessdefinition  Aspectspecification? ";"
-	Formalobjectdeclaration.Formalobjectdeclaration3 = Definingidentifierlist ":" Mode Accessdefinition ":=" Defaultexpression Aspectspecification? ";"
-	
-	Formaltypedeclaration.Formaltypedeclaration0 = Formalcompletetypedeclaration
-	Formaltypedeclaration.Formaltypedeclaration1 = Formalincompletetypedeclaration
-	
-	Formalcompletetypedeclaration.Formalcompletetypedeclaration0 = "type" Definingidentifier Discriminantpart? "is" Formaltypedefinition Aspectspecification? ";"
-	
-	Formalincompletetypedeclaration.Formalincompletetypedeclaration0 = "type" Definingidentifier Discriminantpart?  ";"
-	Formalincompletetypedeclaration.Formalincompletetypedeclaration1 = "type" Definingidentifier Discriminantpart? "is tagged" ";"
-	
-	Formaltypedefinition.Formaltypedefinition0 = Formalprivatetypedefinition
-	Formaltypedefinition.Formaltypedefinition1 = Formalderivedtypedefinition
-	Formaltypedefinition.Formaltypedefinition2 = Formaldiscretetypedefinition
-	Formaltypedefinition.Formaltypedefinition3 = Formalsignedintegertypedefinition
-	Formaltypedefinition.Formaltypedefinition4 = Formalmodulartypedefinition
-	Formaltypedefinition.Formaltypedefinition5 = Formalfloatingpointdefinition
-	Formaltypedefinition.Formaltypedefinition6 = Formalordinaryfixedpointdefinition
-	Formaltypedefinition.Formaltypedefinition7 = Formaldecimalfixedpointdefinition
-	Formaltypedefinition.Formaltypedefinition8 = Formalarraytypedefinition
-	Formaltypedefinition.Formaltypedefinition9 = Formalaccesstypedefinition
-	Formaltypedefinition.Formaltypedefinition10 = Formalinterfacetypedefinition
-	
-	Formalprivatetypedefinition.Formalprivatetypedefinition0 =   "private"
-	Formalprivatetypedefinition.Formalprivatetypedefinition1 =  "tagged"  "private"
-	Formalprivatetypedefinition.Formalprivatetypedefinition2 = "abstract" "tagged"  "private"
-	Formalprivatetypedefinition.Formalprivatetypedefinition3 =  "limited" "private"
-	Formalprivatetypedefinition.Formalprivatetypedefinition4 =  "tagged" "limited" "private"
-	Formalprivatetypedefinition.Formalprivatetypedefinition5 = "abstract" "tagged" "limited" "private"
-	
-	Formalderivedtypedefinition.Formalderivedtypedefinition0 =   "new" Subtypemark 
-	Formalderivedtypedefinition.Formalderivedtypedefinition1 = "abstract"  "new" Subtypemark 
-	Formalderivedtypedefinition.Formalderivedtypedefinition2 =  "limited" "new" Subtypemark 
-	Formalderivedtypedefinition.Formalderivedtypedefinition3 = "abstract" "limited" "new" Subtypemark 
-	Formalderivedtypedefinition.Formalderivedtypedefinition4 =  "synchronized" "new" Subtypemark 
-	Formalderivedtypedefinition.Formalderivedtypedefinition5 = "abstract" "synchronized" "new" Subtypemark 
-	Formalderivedtypedefinition.Formalderivedtypedefinition6 =   "new" Subtypemark  "with private"
-	Formalderivedtypedefinition.Formalderivedtypedefinition7 = "abstract"  "new" Subtypemark  "with private"
-	Formalderivedtypedefinition.Formalderivedtypedefinition8 =  "limited" "new" Subtypemark  "with private"
-	Formalderivedtypedefinition.Formalderivedtypedefinition9 = "abstract" "limited" "new" Subtypemark  "with private"
-	Formalderivedtypedefinition.Formalderivedtypedefinition10 =  "synchronized" "new" Subtypemark  "with private"
-	Formalderivedtypedefinition.Formalderivedtypedefinition11 = "abstract" "synchronized" "new" Subtypemark  "with private"
-	Formalderivedtypedefinition.Formalderivedtypedefinition12 =   "new" Subtypemark "and" Interfacelist "with private"
-	Formalderivedtypedefinition.Formalderivedtypedefinition13 = "abstract"  "new" Subtypemark "and" Interfacelist "with private"
-	Formalderivedtypedefinition.Formalderivedtypedefinition14 =  "limited" "new" Subtypemark "and" Interfacelist "with private"
-	Formalderivedtypedefinition.Formalderivedtypedefinition15 = "abstract" "limited" "new" Subtypemark "and" Interfacelist "with private"
-	Formalderivedtypedefinition.Formalderivedtypedefinition16 =  "synchronized" "new" Subtypemark "and" Interfacelist "with private"
-	Formalderivedtypedefinition.Formalderivedtypedefinition17 = "abstract" "synchronized" "new" Subtypemark "and" Interfacelist "with private"
-	
-	Formaldiscretetypedefinition.Formaldiscretetypedefinition0 = "( <> )"
-	
-	Formalsignedintegertypedefinition.Formalsignedintegertypedefinition0 = "range <>"
-	
-	Formalmodulartypedefinition.Formalmodulartypedefinition0 = "mod <>"
-	
-	Formalfloatingpointdefinition.Formalfloatingpointdefinition0 = "digits <>"
-	
-	Formalordinaryfixedpointdefinition.Formalordinaryfixedpointdefinition0 = "delta <>"
-	
-	Formaldecimalfixedpointdefinition.Formaldecimalfixedpointdefinition0 = "delta <> digits <>"
-	
-	Formalarraytypedefinition.Formalarraytypedefinition0 = Arraytypedefinition
-	
-	Formalaccesstypedefinition.Formalaccesstypedefinition0 = Accesstypedefinition
-	
-	Formalinterfacetypedefinition.Formalinterfacetypedefinition0 = Interfacetypedefinition
-	
-	Formalsubprogramdeclaration.Formalsubprogramdeclaration0 = Formalconcretesubprogramdeclaration
-	Formalsubprogramdeclaration.Formalsubprogramdeclaration1 = Formalabstractsubprogramdeclaration
-	
-	Formalconcretesubprogramdeclaration.Formalconcretesubprogramdeclaration0 = "with" Subprogramspecification  Aspectspecification? ";"
-	Formalconcretesubprogramdeclaration.Formalconcretesubprogramdeclaration1 = "with" Subprogramspecification "is" Subprogramdefault Aspectspecification? ";"
-	
-	Formalabstractsubprogramdeclaration.Formalabstractsubprogramdeclaration0 = "with" Subprogramspecification "is abstract" Subprogramdefault? Aspectspecification? ";"
-	
-	Subprogramdefault.Subprogramdefault0 = Defaultname
-	Subprogramdefault.Subprogramdefault1 = "<>"
-	Subprogramdefault.Subprogramdefault2 = "null"
-	
-	Defaultname.Defaultname0 = Name
-	
-	Formalpackagedeclaration.Formalpackagedeclaration0 = "with package" Definingidentifier "is new" Name Formalpackageactualpart Aspectspecification? ";"
-	
-	Formalpackageactualpart.Formalpackageactualpart0 = "("  "<> )"
-	Formalpackageactualpart.Formalpackageactualpart1 = "(" "others =>" "<> )"
-	Formalpackageactualpart.Formalpackageactualpart2 = Genericactualpart?
-	Formalpackageactualpart.Formalpackageactualpart3 = "(" {Formalpackageassociation ","}+  ")"
-	Formalpackageactualpart.Formalpackageactualpart4 = "(" {Formalpackageassociation ","}+ ", others => <>" ")"
-	
-	Formalpackageassociation.Formalpackageassociation0 = Genericassociation
-	Formalpackageassociation.Formalpackageassociation1 = Selectorname "=> <>"
+//
+//	Genericdeclaration.Genericdeclaration0 = Genericsubprogramdeclaration
+//	Genericdeclaration.Genericdeclaration1 = Genericpackagedeclaration
+//	
+//	Genericsubprogramdeclaration.Genericsubprogramdeclaration0 = Genericformalpart Subprogramspecification Aspectspecification? ";"
+//	
+//	Genericpackagedeclaration.Genericpackagedeclaration0 = Genericformalpart Packagespecification ";"
+//	
+//	Genericformalpart.Genericformalpart0 = "generic" Repitition71*
+//	Repitition71.GenericformalpartRepitition710 = Genericformalparameterdeclaration
+//	Repitition71.GenericformalpartRepitition711 = Useclause
+//	
+//	Genericformalparameterdeclaration.Genericformalparameterdeclaration0 = Formalobjectdeclaration
+//	Genericformalparameterdeclaration.Genericformalparameterdeclaration1 = Formaltypedeclaration
+//	Genericformalparameterdeclaration.Genericformalparameterdeclaration2 = Formalsubprogramdeclaration
+//	Genericformalparameterdeclaration.Genericformalparameterdeclaration3 = Formalpackagedeclaration
+//	
+//	Genericinstantiation.Genericinstantiation0 = "package" Definingprogramunitname "is new" Name Genericactualpart? Aspectspecification? ";"
+//	Genericinstantiation.Genericinstantiation1 = Overridingindicator? "procedure" Definingprogramunitname "is new" Name Genericactualpart? Aspectspecification? ";"
+//	Genericinstantiation.Genericinstantiation2 = Overridingindicator? "function" Definingdesignator "is new" Name Genericactualpart? Aspectspecification? ";"
+//	
+//	Genericactualpart.Genericactualpart0 = "(" {Genericassociation ","}+ ")"
+//	
+//	Genericassociation.Genericassociation0 =  Explicitgenericactualparameter
+//	Genericassociation.Genericassociation1 = Selectorname "=>" Explicitgenericactualparameter
+//	
+//	Explicitgenericactualparameter.Explicitgenericactualparameter0 = "expression"
+//	Explicitgenericactualparameter.Explicitgenericactualparameter1 = Name
+//	Explicitgenericactualparameter.Explicitgenericactualparameter2 = Name
+//	Explicitgenericactualparameter.Explicitgenericactualparameter3 = Name
+//	Explicitgenericactualparameter.Explicitgenericactualparameter4 = Subtypemark
+//	Explicitgenericactualparameter.Explicitgenericactualparameter5 = Name
+//	
+//	Formalobjectdeclaration.Formalobjectdeclaration0 = Definingidentifierlist ":" Mode Nullexclusion? Subtypemark  Aspectspecification? ";"
+//	Formalobjectdeclaration.Formalobjectdeclaration1 = Definingidentifierlist ":" Mode Nullexclusion? Subtypemark ":=" Defaultexpression Aspectspecification? ";"
+//	Formalobjectdeclaration.Formalobjectdeclaration2 = Definingidentifierlist ":" Mode Accessdefinition  Aspectspecification? ";"
+//	Formalobjectdeclaration.Formalobjectdeclaration3 = Definingidentifierlist ":" Mode Accessdefinition ":=" Defaultexpression Aspectspecification? ";"
+//	
+//	Formaltypedeclaration.Formaltypedeclaration0 = Formalcompletetypedeclaration
+//	Formaltypedeclaration.Formaltypedeclaration1 = Formalincompletetypedeclaration
+//	
+//	Formalcompletetypedeclaration.Formalcompletetypedeclaration0 = "type" Definingidentifier Discriminantpart? "is" Formaltypedefinition Aspectspecification? ";"
+//	
+//	Formalincompletetypedeclaration.Formalincompletetypedeclaration0 = "type" Definingidentifier Discriminantpart?  ";"
+//	Formalincompletetypedeclaration.Formalincompletetypedeclaration1 = "type" Definingidentifier Discriminantpart? "is tagged" ";"
+//	
+//	Formaltypedefinition.Formaltypedefinition0 = Formalprivatetypedefinition
+//	Formaltypedefinition.Formaltypedefinition1 = Formalderivedtypedefinition
+//	Formaltypedefinition.Formaltypedefinition2 = Formaldiscretetypedefinition
+//	Formaltypedefinition.Formaltypedefinition3 = Formalsignedintegertypedefinition
+//	Formaltypedefinition.Formaltypedefinition4 = Formalmodulartypedefinition
+//	Formaltypedefinition.Formaltypedefinition5 = Formalfloatingpointdefinition
+//	Formaltypedefinition.Formaltypedefinition6 = Formalordinaryfixedpointdefinition
+//	Formaltypedefinition.Formaltypedefinition7 = Formaldecimalfixedpointdefinition
+//	Formaltypedefinition.Formaltypedefinition8 = Formalarraytypedefinition
+//	Formaltypedefinition.Formaltypedefinition9 = Formalaccesstypedefinition
+//	Formaltypedefinition.Formaltypedefinition10 = Formalinterfacetypedefinition
+//	
+//	Formalprivatetypedefinition.Formalprivatetypedefinition0 =   "private"
+//	Formalprivatetypedefinition.Formalprivatetypedefinition1 =  "tagged"  "private"
+//	Formalprivatetypedefinition.Formalprivatetypedefinition2 = "abstract" "tagged"  "private"
+//	Formalprivatetypedefinition.Formalprivatetypedefinition3 =  "limited" "private"
+//	Formalprivatetypedefinition.Formalprivatetypedefinition4 =  "tagged" "limited" "private"
+//	Formalprivatetypedefinition.Formalprivatetypedefinition5 = "abstract" "tagged" "limited" "private"
+//	
+//	Formalderivedtypedefinition.Formalderivedtypedefinition0 =   "new" Subtypemark 
+//	Formalderivedtypedefinition.Formalderivedtypedefinition1 = "abstract"  "new" Subtypemark 
+//	Formalderivedtypedefinition.Formalderivedtypedefinition2 =  "limited" "new" Subtypemark 
+//	Formalderivedtypedefinition.Formalderivedtypedefinition3 = "abstract" "limited" "new" Subtypemark 
+//	Formalderivedtypedefinition.Formalderivedtypedefinition4 =  "synchronized" "new" Subtypemark 
+//	Formalderivedtypedefinition.Formalderivedtypedefinition5 = "abstract" "synchronized" "new" Subtypemark 
+//	Formalderivedtypedefinition.Formalderivedtypedefinition6 =   "new" Subtypemark  "with private"
+//	Formalderivedtypedefinition.Formalderivedtypedefinition7 = "abstract"  "new" Subtypemark  "with private"
+//	Formalderivedtypedefinition.Formalderivedtypedefinition8 =  "limited" "new" Subtypemark  "with private"
+//	Formalderivedtypedefinition.Formalderivedtypedefinition9 = "abstract" "limited" "new" Subtypemark  "with private"
+//	Formalderivedtypedefinition.Formalderivedtypedefinition10 =  "synchronized" "new" Subtypemark  "with private"
+//	Formalderivedtypedefinition.Formalderivedtypedefinition11 = "abstract" "synchronized" "new" Subtypemark  "with private"
+//	Formalderivedtypedefinition.Formalderivedtypedefinition12 =   "new" Subtypemark "and" Interfacelist "with private"
+//	Formalderivedtypedefinition.Formalderivedtypedefinition13 = "abstract"  "new" Subtypemark "and" Interfacelist "with private"
+//	Formalderivedtypedefinition.Formalderivedtypedefinition14 =  "limited" "new" Subtypemark "and" Interfacelist "with private"
+//	Formalderivedtypedefinition.Formalderivedtypedefinition15 = "abstract" "limited" "new" Subtypemark "and" Interfacelist "with private"
+//	Formalderivedtypedefinition.Formalderivedtypedefinition16 =  "synchronized" "new" Subtypemark "and" Interfacelist "with private"
+//	Formalderivedtypedefinition.Formalderivedtypedefinition17 = "abstract" "synchronized" "new" Subtypemark "and" Interfacelist "with private"
+//	
+//	Formaldiscretetypedefinition.Formaldiscretetypedefinition0 = "( <> )"
+//	
+//	Formalsignedintegertypedefinition.Formalsignedintegertypedefinition0 = "range <>"
+//	
+//	Formalmodulartypedefinition.Formalmodulartypedefinition0 = "mod <>"
+//	
+//	Formalfloatingpointdefinition.Formalfloatingpointdefinition0 = "digits <>"
+//	
+//	Formalordinaryfixedpointdefinition.Formalordinaryfixedpointdefinition0 = "delta <>"
+//	
+//	Formaldecimalfixedpointdefinition.Formaldecimalfixedpointdefinition0 = "delta <> digits <>"
+//	
+//	Formalarraytypedefinition.Formalarraytypedefinition0 = Arraytypedefinition
+//	
+//	Formalaccesstypedefinition.Formalaccesstypedefinition0 = Accesstypedefinition
+//	
+//	Formalinterfacetypedefinition.Formalinterfacetypedefinition0 = Interfacetypedefinition
+//	
+//	Formalsubprogramdeclaration.Formalsubprogramdeclaration0 = Formalconcretesubprogramdeclaration
+//	Formalsubprogramdeclaration.Formalsubprogramdeclaration1 = Formalabstractsubprogramdeclaration
+//	
+//	Formalconcretesubprogramdeclaration.Formalconcretesubprogramdeclaration0 = "with" Subprogramspecification  Aspectspecification? ";"
+//	Formalconcretesubprogramdeclaration.Formalconcretesubprogramdeclaration1 = "with" Subprogramspecification "is" Subprogramdefault Aspectspecification? ";"
+//	
+//	Formalabstractsubprogramdeclaration.Formalabstractsubprogramdeclaration0 = "with" Subprogramspecification "is abstract" Subprogramdefault? Aspectspecification? ";"
+//	
+//	Subprogramdefault.Subprogramdefault0 = Defaultname
+//	Subprogramdefault.Subprogramdefault1 = "<>"
+//	Subprogramdefault.Subprogramdefault2 = "null"
+//	
+//	Defaultname.Defaultname0 = Name
+//	
+//	Formalpackagedeclaration.Formalpackagedeclaration0 = "with package" Definingidentifier "is new" Name Formalpackageactualpart Aspectspecification? ";"
+//	
+//	Formalpackageactualpart.Formalpackageactualpart0 = "("  "<> )"
+//	Formalpackageactualpart.Formalpackageactualpart1 = "(" "others =>" "<> )"
+//	Formalpackageactualpart.Formalpackageactualpart2 = Genericactualpart?
+//	Formalpackageactualpart.Formalpackageactualpart3 = "(" {Formalpackageassociation ","}+  ")"
+//	Formalpackageactualpart.Formalpackageactualpart4 = "(" {Formalpackageassociation ","}+ ", others => <>" ")"
+//	
+//	Formalpackageassociation.Formalpackageassociation0 = Genericassociation
+//	Formalpackageassociation.Formalpackageassociation1 = Selectorname "=> <>"
 	
 	

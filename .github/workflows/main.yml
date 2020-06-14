@@ -20,4 +20,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Verify language and run tests
-      run: mvn clean verify
+      run: mvn clean verify --no-transfer-progress
