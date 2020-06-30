@@ -17,7 +17,7 @@ imports
 context-free syntax
 
 //	Basicdeclaration.Basicdeclaration13 = Typedeclaration
-//	Basicdeclaration.Basicdeclaration14 = Objectdeclaration
+	Basicdeclaration.Basicdeclaration14 = Objectdeclaration
 //	Basicdeclaration.Basicdeclaration15 = Subprogramdeclaration
 //	Basicdeclaration.Basicdeclaration16 = Nullproceduredeclaration
 //	Basicdeclaration.Basicdeclaration17 = Packagedeclaration
@@ -52,25 +52,25 @@ context-free syntax
 //	
 //	Subtypedeclaration.Subtypedeclaration1 = "subtype" Definingidentifier "is" Subtypeindication Aspectspecification? ";"
 //	
-//	Subtypeindication.Subtypeindication1 = Nullexclusion? Subtypemark Constraint?
+	Subtypeindication.Subtypeindication1 = Nullexclusion? Subtypemark Constraint?
 //	
 	Subtypemark.Subtypemark1 = Name
 //	
-//	Constraint.Constraint2 = Scalarconstraint
+	Constraint.Constraint2 = Scalarconstraint
 //	Constraint.Constraint3 = Compositeconstraint
 //	
-//	Scalarconstraint.Scalarconstraint3 = Rangeconstraint
+	Scalarconstraint.Scalarconstraint3 = Rangeconstraint
 //	Scalarconstraint.Scalarconstraint4 = Digitsconstraint
 //	Scalarconstraint.Scalarconstraint5 = Deltaconstraint
 //	
 //	Compositeconstraint.Compositeconstraint2 = Indexconstraint
 //	Compositeconstraint.Compositeconstraint3 = Discriminantconstraint
 //	
-//	Objectdeclaration.Objectdeclaration26 = Definingidentifierlist ":"   Subtypeindication  Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration26 = Definingidentifierlist ":"   Subtypeindication  Aspectspecification? ";"
 //	Objectdeclaration.Objectdeclaration27 = Definingidentifierlist ":" "aliased"  Subtypeindication  Aspectspecification? ";"
 //	Objectdeclaration.Objectdeclaration28 = Definingidentifierlist ":"  "constant" Subtypeindication  Aspectspecification? ";"
 //	Objectdeclaration.Objectdeclaration29 = Definingidentifierlist ":" "aliased" "constant" Subtypeindication  Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration30 = Definingidentifierlist ":"   Subtypeindication ":=" Expression Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration30 = Definingidentifierlist ":"   Subtypeindication ":=" Expression Aspectspecification? ";"
 //	Objectdeclaration.Objectdeclaration31 = Definingidentifierlist ":" "aliased"  Subtypeindication ":=" Expression Aspectspecification? ";"
 //	Objectdeclaration.Objectdeclaration32 = Definingidentifierlist ":"  "constant" Subtypeindication ":=" Expression Aspectspecification? ";"
 //	Objectdeclaration.Objectdeclaration33 = Definingidentifierlist ":" "aliased" "constant" Subtypeindication ":=" Expression Aspectspecification? ";"
@@ -110,10 +110,10 @@ context-free syntax
 //	Derivedtypedefinition.Derivedtypedefinition22 =  "limited" "new" Subtypeindication "and" Interfacelist Recordextensionpart
 //	Derivedtypedefinition.Derivedtypedefinition23 = "abstract" "limited" "new" Subtypeindication "and" Interfacelist Recordextensionpart
 //	
-//	Rangeconstraint.Rangeconstraint1 = "range" Range
+	Rangeconstraint.Rangeconstraint1 = "range" Range
 //	
 //	Range.Range2 = Rangeattributereference
-//	Range.Range3 = Simpleexpression ".." Simpleexpression
+	Range.Range3 = Simpleexpression ".." Simpleexpression
 //	
 //	Enumerationtypedefinition.Enumerationtypedefinition1 = "(" {Enumerationliteralspecification ","}+ ")"
 //	
@@ -153,10 +153,10 @@ context-free syntax
 //	Indexsubtypedefinition.Indexsubtypedefinition1 = Subtypemark "range <>"
 //	
 //	Constrainedarraydefinition.Constrainedarraydefinition1 = "array (" {Discretesubtypedefinition ","}+ ") of" Componentdefinition
-//	
-//	Discretesubtypedefinition.Discretesubtypedefinition2 = Subtypeindication
-//	Discretesubtypedefinition.Discretesubtypedefinition3 = Range
-//	
+	
+	Discretesubtypedefinition.Discretesubtypedefinition2 = Subtypeindication
+	Discretesubtypedefinition.Discretesubtypedefinition3 = Range
+	
 //	Componentdefinition.Componentdefinition4 =  Subtypeindication
 //	Componentdefinition.Componentdefinition5 = "aliased" Subtypeindication
 //	Componentdefinition.Componentdefinition6 =  Accessdefinition
@@ -210,12 +210,12 @@ context-free syntax
 //	
 //	Variant.Variant1 = "when" Discretechoicelist "=>" Componentlist
 //	
-//	Discretechoicelist.Discretechoicelist1 = {Discretechoice "|"}+
-//	
-//	Discretechoice.Discretechoice4 = Choiceexpression
-//	Discretechoice.Discretechoice5 = Subtypeindication
-//	Discretechoice.Discretechoice6 = Range
-//	Discretechoice.Discretechoice7 = "others"
+	Discretechoicelist.Discretechoicelist1 = {Discretechoice "|"}+
+	
+	Discretechoice.Discretechoice4 = Choiceexpression
+	Discretechoice.Discretechoice5 = Subtypeindication
+	Discretechoice.Discretechoice6 = Range
+	Discretechoice.Discretechoice7 = "others"
 //	
 //	Recordextensionpart.Recordextensionpart1 = "with" Recorddefinition
 //	
@@ -261,14 +261,14 @@ context-free syntax
 //	
 	Declarativepart.Declarativepart1 = Declarativeitem*
 	
-//	Declarativeitem.Declarativeitem2 = Basicdeclarativeitem
-	Declarativeitem.Declarativeitem3 = "body"
+	Declarativeitem.Declarativeitem2 = Basicdeclarativeitem
+	Declarativeitem.Declarativeitem3 = Body
 	
-//	Basicdeclarativeitem.Basicdeclarativeitem3 = Basicdeclaration
+	Basicdeclarativeitem.Basicdeclarativeitem3 = Basicdeclaration
 //	Basicdeclarativeitem.Basicdeclarativeitem4 = Aspectclause
 //	Basicdeclarativeitem.Basicdeclarativeitem5 = Useclause
 //	
-//	Body.Body2 = Properbody
+	Body.Body2 = Properbody
 //	Body.Body3 = Bodystub
 //	
 	Properbody.Properbody4 = Subprogrambody

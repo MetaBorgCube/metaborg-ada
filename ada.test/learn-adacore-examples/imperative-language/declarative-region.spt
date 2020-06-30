@@ -1,0 +1,56 @@
+module learn-adacore-examples/imperative-language
+
+language ada
+
+test declarative region [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Main is
+   X : Integer;
+begin
+   X := 0;
+   Put_Line ("The initial value of X is " & Integer'Image (X));
+
+   Put_Line ("Performing operation on X...");
+   X := X + 1;
+
+   Put_Line ("The value of X now is " & Integer'Image (X));
+end Main;
+]] parse succeeds
+
+test declarative region variable [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Greet is
+begin
+   loop
+      Put_Line ("Please enter your name: ");
+
+      declare
+         Name : String := Get_Line;
+         --               ^ Call to the Get_Line function
+      begin
+         exit when Name = "";
+         Put_Line ("Hi " & Name & "!");
+      end;
+
+  --  Name is undefined here
+   end loop;
+
+  Put_Line ("Bye!");
+end Greet;
+]] parse succeeds
+
+test declarative region nested [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Main is
+   procedure Nested is
+   begin
+      Put_Line ("Hello World");
+   end Nested;
+begin
+   Nested;
+   --  Call to Nested
+end Main;
+]] parse succeeds

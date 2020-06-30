@@ -19,21 +19,21 @@ context-free syntax
 
 	Name.Name36 = Directname
 //	Name.Name37 = Indexedcomponent
-//	Name.Name38 = Selectedcomponent
+	Name.Name38 = Selectedcomponent
 //	Name.Name39 = Typeconversion
 //	Name.Name40 = Characterliteral
 //	Name.Name41 = Generalizedreference
 //	Name.Name42 = Explicitdereference
 //	Name.Name43 = Slice
-//	Name.Name44 = Attributereference
+	Name.Name44 = Attributereference
 //	Name.Name45 = Functioncall
 //	Name.Name46 = Qualifiedexpression
 //	Name.Name47 = Generalizedindexing
 	
 	Directname.Directname6 = Identifier
-	Directname.Directname7 = Operatorsymbol
+//	Directname.Directname7 = Operatorsymbol
 //	
-//	Prefix.Prefix6 = Name
+	Prefix.Prefix6 = Name
 //	Prefix.Prefix7 = Implicitdereference
 //	
 //	Explicitdereference.Explicitdereference3 = Name ". all"
@@ -43,17 +43,17 @@ context-free syntax
 //	Indexedcomponent.Indexedcomponent3 = Prefix "(" {Expression ","}+ ")"
 //	
 //	Slice.Slice3 = Prefix "(" Discreterange ")"
-//	
-//	Selectedcomponent.Selectedcomponent3 = Prefix "." Selectorname
-//	
-//	Selectorname.Selectorname9 = Identifier
+	
+	Selectedcomponent.Selectedcomponent3 = Prefix "." Selectorname
+	
+	Selectorname.Selectorname9 = Identifier
 //	Selectorname.Selectorname10 = Characterliteral
 //	Selectorname.Selectorname11 = Operatorsymbol
 //	
-//	Attributereference.Attributereference3 = Prefix "'" Attributedesignator
+	Attributereference.Attributereference3 = Prefix "'" Attributedesignator
 //	
-//	Attributedesignator.Attributedesignator18 = Identifier 
-//	Attributedesignator.Attributedesignator19 = Identifier "(" Expression ")"
+	Attributedesignator.Attributedesignator18 = Identifier 
+	Attributedesignator.Attributedesignator19 = Identifier "(" Expression ")"
 //	Attributedesignator.Attributedesignator20 = "Access"
 //	Attributedesignator.Attributedesignator21 = "Delta"
 //	Attributedesignator.Attributedesignator22 = "Digits"
@@ -101,34 +101,32 @@ context-free syntax
 //	Arraycomponentassociation.Arraycomponentassociation6 = Discretechoicelist "=>" Expression
 //	Arraycomponentassociation.Arraycomponentassociation7 = Discretechoicelist "=> <>"
 //	
-//	Expression.Expression15 = {Relation "and"}+
-//	Expression.Expression16 = {Relation "or"}+
-//	Expression.Expression17 = {Relation "xor"}+
-	Expression.Expression18 = Relation {Repitition72 "and"}*
-	Expression.Expression19 = Relation {Repitition73 "or"}*
-	Repitition72.ExpressionRepitition720 = "then" Relation
-	Repitition73.ExpressionRepitition730 = "else" "relation"
-//	
-//	Choiceexpression.Choiceexpression15 = {Choicerelation "and"}+
-//	Choiceexpression.Choiceexpression16 = {Choicerelation "or"}+
-//	Choiceexpression.Choiceexpression17 = {Choicerelation "xor"}+
-//	Choiceexpression.Choiceexpression18 = Choicerelation {Repitition74 "and"}*
-//	Choiceexpression.Choiceexpression19 = Choicerelation {Repitition75 "or"}*
-//	Repitition74.ChoiceexpressionRepitition740 = "then" Choicerelation
-//	Repitition75.ChoiceexpressionRepitition750 = "else" Choicerelation
-//	
-//	Choicerelation.Choicerelation6 = Simpleexpression 
-//	Choicerelation.Choicerelation7 = Simpleexpression Relationaloperator Simpleexpression
-//	
+	Expression.ExpressionRelation = Relation {prefer}
+	Expression.Expression15 = {Relation "and"}+
+	Expression.Expression16 = {Relation "or"}+
+	Expression.Expression17 = {Relation "xor"}+
+	Expression.Expression18 = {Relation "and then"}+
+	Expression.Expression19 = {Relation "or else"}+
+	
+	Choiceexpression.ChoiceExpressionRelation = Choicerelation {prefer}
+	Choiceexpression.Choiceexpression15 = {Choicerelation "and"}+
+	Choiceexpression.Choiceexpression16 = {Choicerelation "or"}+
+	Choiceexpression.Choiceexpression17 = {Choicerelation "xor"}+
+	Choiceexpression.Choiceexpression18 = {Choicerelation "and then"}+
+	Choiceexpression.Choiceexpression19 = {Choicerelation "or else"}+
+	
+	Choicerelation.Choicerelation6 = Simpleexpression 
+	Choicerelation.Choicerelation7 = Simpleexpression Relationaloperator Simpleexpression
+	
 	Relation.Relation12 = Simpleexpression 
-//	Relation.Relation13 = Simpleexpression Relationaloperator Simpleexpression
-//	Relation.Relation14 = Simpleexpression  "in" Membershipchoicelist
+	Relation.Relation13 = Simpleexpression Relationaloperator Simpleexpression
+	Relation.Relation14 = Simpleexpression  "in" Membershipchoicelist
 //	Relation.Relation15 = Simpleexpression "not" "in" Membershipchoicelist
 //	
-//	Membershipchoicelist.Membershipchoicelist3 = {Membershipchoice "|"}+
+	Membershipchoicelist.Membershipchoicelist3 = {Membershipchoice "|"}+
 //	
 //	Membershipchoice.Membershipchoice9 = Choiceexpression
-//	Membershipchoice.Membershipchoice10 = Range
+	Membershipchoice.Membershipchoice10 = Range
 //	Membershipchoice.Membershipchoice11 = Subtypemark
 //	
 	Simpleexpression.Simpleexpression4 = Unaryaddingoperator? Term Repitition76*
@@ -144,17 +142,20 @@ context-free syntax
 	
 	Primary.Primary27 = Numericliteral
 	Primary.Primary28 = "null"
-//	Primary.Primary29 = Stringliteral
+	Primary.Primary29 = Stringliteral
 //	Primary.Primary30 = Aggregate
-//	Primary.Primary31 = Name
+	Primary.Primary31 = Name
 //	Primary.Primary32 = Allocator
 //	Primary.Primary33 = "(" Expression ")"
-//	Primary.Primary34 = "(" Conditionalexpression ")"
+	Primary.Primary34 = "(" Conditionalexpression ")"
 //	Primary.Primary35 = "(" Quantifiedexpression ")"
 	
-	Logicaloperator.Logicaloperator9 = "and"
-	Logicaloperator.Logicaloperator10 = "or"
-	Logicaloperator.Logicaloperator11 = "xor"
+	Logicaloperator.LogOpAnd = "and"
+	Logicaloperator.LogOpOr = "or"
+	Logicaloperator.LogOpXor = "xor"
+	Logicaloperator.LogOpAndThen = "and then"
+	Logicaloperator.LogOpOrElse = "or else"
+	
 	
 	Relationaloperator.Relationaloperator18 = "="
 	Relationaloperator.Relationaloperator19 = "/="
@@ -179,19 +180,19 @@ context-free syntax
 	Highestprecedenceoperator.Highestprecedenceoperator10 = "abs"
 	Highestprecedenceoperator.Highestprecedenceoperator11 = "not"
 	
-//	Conditionalexpression.Conditionalexpression6 = Ifexpression
-//	Conditionalexpression.Conditionalexpression7 = Caseexpression
-//	
-//	Ifexpression.Ifexpression10 = "if" {Repitition78 "elsif"}+ 
-//	Ifexpression.Ifexpression11 = "if" {Repitition78 "elsif"}+ "else" Expression
-//	Repitition78.IfexpressionRepitition780 = Condition "then" Expression
-//	
-//	Condition.Condition3 = Expression
-//	
-//	Caseexpression.Caseexpression3 = "case" Expression "is" {Caseexpressionalternative ","}+
-//	
-//	Caseexpressionalternative.Caseexpressionalternative3 = "when" Discretechoicelist "=>" Expression
-//	
+	Conditionalexpression.Conditionalexpression6 = Ifexpression
+	Conditionalexpression.Conditionalexpression7 = Caseexpression
+	
+	Ifexpression.Ifexpression10 = "if" {Repitition78 "elsif"}+ 
+	Ifexpression.Ifexpression11 = "if" {Repitition78 "elsif"}+ "else" Expression
+	Repitition78.IfexpressionRepitition780 = Condition "then" Expression
+	
+	Condition.Condition3 = Expression
+	
+	Caseexpression.Caseexpression3 = "case" Expression "is" {Caseexpressionalternative ","}+
+	
+	Caseexpressionalternative.Caseexpressionalternative3 = "when" Discretechoicelist "=>" Expression
+	
 //	Quantifiedexpression.Quantifiedexpression6 = "for" Quantifier Loopparameterspecification "=>" Predicate
 //	Quantifiedexpression.Quantifiedexpression7 = "for" Quantifier Iteratorspecification "=>" Predicate
 //	

@@ -21,14 +21,14 @@ context-free start-symbols
 
 context-free syntax
 
-	Compilation.Compilation0 = Compilationunit*
+	Compilation.Compilation = Compilationunit*
 //	
-	Compilationunit.Compilationunit0 = Contextclause Libraryitem
-//	Compilationunit.Compilationunit1 = Contextclause Subunit
+	Compilationunit.CompilationunitLibrary = Contextclause Libraryitem
+//	Compilationunit.CompilationunitSubunit = Contextclause Subunit
 //	
 //	Libraryitem.Libraryitem0 =  Libraryunitdeclaration
 //	Libraryitem.Libraryitem1 = "private" Libraryunitdeclaration
-	Libraryitem.Libraryitem2 = Libraryunitbody
+	Libraryitem.LibraryUnitBody = Libraryunitbody
 //	Libraryitem.Libraryitem3 =  Libraryunitrenamingdeclaration
 //	Libraryitem.Libraryitem4 = "private" Libraryunitrenamingdeclaration
 //	
@@ -41,7 +41,7 @@ context-free syntax
 //	Libraryunitrenamingdeclaration.Libraryunitrenamingdeclaration1 = Genericrenamingdeclaration
 //	Libraryunitrenamingdeclaration.Libraryunitrenamingdeclaration2 = Subprogramrenamingdeclaration
 //	
-	Libraryunitbody.Libraryunitbody0 = Subprogrambody
+	Libraryunitbody.LibraryUnitSubprogramBody = Subprogrambody
 //	Libraryunitbody.Libraryunitbody1 = Packagebody
 //	
 	Parentunitname.Parentunitname0 = Name

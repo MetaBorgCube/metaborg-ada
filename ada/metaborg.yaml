@@ -19,9 +19,10 @@ debug:
 language:
   sdf:
     pretty-print: ada
-    sdf2table: java
+    sdf2table: dynamic
     placeholder:
       prefix: "$"
+    jsglr-version: incremental
   stratego:
     format: ctree
     args:
