@@ -27,15 +27,15 @@ context-free syntax
 	Functionspecification.Functionspecification0 = "function" Definingdesignator Parameterandresultprofile
 	
 	Designator.Designator0 =  Identifier
-//	Designator.Designator1 = Parentunitname "." Identifier
+	Designator.Designator1 = Parentunitname "." Identifier
 //	Designator.Designator2 = Operatorsymbol
 	
 	Definingdesignator.Definingdesignator0 = Definingprogramunitname
 //	Definingdesignator.Definingdesignator1 = Definingoperatorsymbol
 //	
 	Definingprogramunitname.Definingprogramunitname0 =  Definingidentifier
-//	Definingprogramunitname.Definingprogramunitname1 = Parentunitname "." Definingidentifier
-//	
+	Definingprogramunitname.Definingprogramunitname1 = Parentunitname "." Definingidentifier
+	
 //	Operatorsymbol.Operatorsymbol0 = Stringliteral
 //	
 //	Definingoperatorsymbol.Definingoperatorsymbol0 = Operatorsymbol

@@ -46,11 +46,11 @@ context-free syntax
 	Nullstatement.Nullstatement0 = "null"";"
 	
 	Label.Label0 = "<<" Statementidentifier ">>"
-//	
+	
 	Statementidentifier.Statementidentifier0 = Directname
-//	
+	
 	Assignmentstatement.Assignmentstatement0 = Name ":=" Expression ";"
-//	
+	
 	Ifstatement.Ifstatement0 = "if" {Repitition80 "elsif"}+  "end if;"
 	Ifstatement.Ifstatement1 = "if" {Repitition80 "elsif"}+ "else" Sequenceofstatements "end if;"
 	Repitition80.IfstatementRepitition800 = Condition "then" Sequenceofstatements

@@ -67,12 +67,12 @@ context-free syntax
 //	Compositeconstraint.Compositeconstraint3 = Discriminantconstraint
 //	
 	Objectdeclaration.Objectdeclaration26 = Definingidentifierlist ":"   Subtypeindication  Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration27 = Definingidentifierlist ":" "aliased"  Subtypeindication  Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration28 = Definingidentifierlist ":"  "constant" Subtypeindication  Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration29 = Definingidentifierlist ":" "aliased" "constant" Subtypeindication  Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration27 = Definingidentifierlist ":" "aliased"  Subtypeindication  Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration28 = Definingidentifierlist ":"  "constant" Subtypeindication  Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration29 = Definingidentifierlist ":" "aliased" "constant" Subtypeindication  Aspectspecification? ";"
 	Objectdeclaration.Objectdeclaration30 = Definingidentifierlist ":"   Subtypeindication ":=" Expression Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration31 = Definingidentifierlist ":" "aliased"  Subtypeindication ":=" Expression Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration32 = Definingidentifierlist ":"  "constant" Subtypeindication ":=" Expression Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration31 = Definingidentifierlist ":" "aliased"  Subtypeindication ":=" Expression Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration32 = Definingidentifierlist ":"  "constant" Subtypeindication ":=" Expression Aspectspecification? ";"
 //	Objectdeclaration.Objectdeclaration33 = Definingidentifierlist ":" "aliased" "constant" Subtypeindication ":=" Expression Aspectspecification? ";"
 //	Objectdeclaration.Objectdeclaration34 = Definingidentifierlist ":"   Accessdefinition  Aspectspecification? ";"
 //	Objectdeclaration.Objectdeclaration35 = Definingidentifierlist ":" "aliased"  Accessdefinition  Aspectspecification? ";"
@@ -266,8 +266,8 @@ context-free syntax
 	
 	Basicdeclarativeitem.Basicdeclarativeitem3 = Basicdeclaration
 //	Basicdeclarativeitem.Basicdeclarativeitem4 = Aspectclause
-//	Basicdeclarativeitem.Basicdeclarativeitem5 = Useclause
-//	
+	Basicdeclarativeitem.Basicdeclarativeitem5 = Useclause
+	
 	Body.Body2 = Properbody
 //	Body.Body3 = Bodystub
 //	

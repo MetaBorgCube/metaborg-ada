@@ -17,22 +17,22 @@ imports
 
 context-free syntax
 
-//	Packagedeclaration.Packagedeclaration0 = Packagespecification ";"
-//	
-//	Packagespecification.Packagespecification0 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem*  "end" 
-//	Packagespecification.Packagespecification1 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem* "private" Basicdeclarativeitem* "end" 
-//	Packagespecification.Packagespecification2 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem*  "end"  Identifier
-//	Packagespecification.Packagespecification3 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem* "private" Basicdeclarativeitem* "end"  Identifier
-//	Packagespecification.Packagespecification4 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem*  "end" Parentunitname "." Identifier
-//	Packagespecification.Packagespecification5 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem* "private" Basicdeclarativeitem* "end" Parentunitname "." Identifier
-//	
-//	Packagebody.Packagebody0 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart  "end"  ";"
-//	Packagebody.Packagebody1 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end"  ";"
-//	Packagebody.Packagebody2 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart  "end"  Identifier ";"
-//	Packagebody.Packagebody3 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end"  Identifier ";"
-//	Packagebody.Packagebody4 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart  "end" Parentunitname "." Identifier ";"
-//	Packagebody.Packagebody5 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end" Parentunitname "." Identifier ";"
-//	
+	Packagedeclaration.Packagedeclaration0 = Packagespecification ";"
+	
+	Packagespecification.Packagespecification0 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem*  "end" 
+	Packagespecification.Packagespecification1 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem* "private" Basicdeclarativeitem* "end" 
+	Packagespecification.Packagespecification2 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem*  "end"  Identifier
+	Packagespecification.Packagespecification3 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem* "private" Basicdeclarativeitem* "end"  Identifier
+	Packagespecification.Packagespecification4 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem*  "end" Parentunitname "." Identifier
+	Packagespecification.Packagespecification5 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem* "private" Basicdeclarativeitem* "end" Parentunitname "." Identifier
+	
+	Packagebody.Packagebody0 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart  "end"  ";"
+	Packagebody.Packagebody1 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end"  ";"
+	Packagebody.Packagebody2 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart  "end"  Identifier ";"
+	Packagebody.Packagebody3 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end"  Identifier ";"
+	Packagebody.Packagebody4 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart  "end" Parentunitname "." Identifier ";"
+	Packagebody.Packagebody5 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end" Parentunitname "." Identifier ";"
+	
 //	Privatetypedeclaration.Privatetypedeclaration0 = "type" Definingidentifier Discriminantpart? "is"   "private" Aspectspecification? ";"
 //	Privatetypedeclaration.Privatetypedeclaration1 = "type" Definingidentifier Discriminantpart? "is"  "tagged"  "private" Aspectspecification? ";"
 //	Privatetypedeclaration.Privatetypedeclaration2 = "type" Definingidentifier Discriminantpart? "is" "abstract" "tagged"  "private" Aspectspecification? ";"

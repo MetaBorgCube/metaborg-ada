@@ -34,7 +34,7 @@ context-free syntax
 	
 	Libraryunitdeclaration.Libraryunitdeclaration0 = Subprogramdeclaration
 //	Libraryunitdeclaration.Libraryunitdeclaration1 = Genericdeclaration
-//	Libraryunitdeclaration.Libraryunitdeclaration2 = Packagedeclaration
+	Libraryunitdeclaration.Libraryunitdeclaration2 = Packagedeclaration
 //	Libraryunitdeclaration.Libraryunitdeclaration3 = Genericinstantiation
 //	
 //	Libraryunitrenamingdeclaration.Libraryunitrenamingdeclaration0 = Packagerenamingdeclaration
@@ -42,8 +42,8 @@ context-free syntax
 //	Libraryunitrenamingdeclaration.Libraryunitrenamingdeclaration2 = Subprogramrenamingdeclaration
 //	
 	Libraryunitbody.LibraryUnitSubprogramBody = Subprogrambody
-//	Libraryunitbody.Libraryunitbody1 = Packagebody
-//	
+	Libraryunitbody.Libraryunitbody1 = Packagebody
+	
 	Parentunitname.Parentunitname0 = Name
 	
 	Contextclause.Contextclause0 = Contextitem*

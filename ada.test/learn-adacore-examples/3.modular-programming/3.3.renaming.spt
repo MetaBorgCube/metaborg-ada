@@ -1,0 +1,23 @@
+module learn-adacore-examples/modular-programming
+
+language ada
+
+test renaming package [[
+with Ada.Text_IO;
+
+procedure Main is
+   package TIO renames Ada.Text_IO;
+begin
+   TIO.Put_Line ("Hello");
+end Main;
+]]
+
+test renaming package verbosity [[
+with Ada.Text_IO;
+
+procedure Main is
+   procedure Say (Something : String) renames Ada.Text_IO.Put_Line;
+begin
+   Say ("Hello");
+end Main;
+]]
