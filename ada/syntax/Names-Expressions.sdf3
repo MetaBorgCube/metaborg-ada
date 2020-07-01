@@ -140,22 +140,19 @@ context-free syntax
 	Factor.Factor14 = "abs" Primary
 	Factor.Factor15 = "not" Primary
 	
-	Primary.Primary27 = Numericliteral
-	Primary.Primary28 = "null"
-	Primary.Primary29 = Stringliteral
+	Primary.Primary27 = Numericliteral {prefer}
+	Primary.Primary28 = "null" {prefer}
+	Primary.Primary29 = Stringliteral {prefer}
 //	Primary.Primary30 = Aggregate
-	Primary.Primary31 = Name
+	Primary.Primary31 = Name {prefer}
 //	Primary.Primary32 = Allocator
-//	Primary.Primary33 = "(" Expression ")"
+	Primary.Primary33 = "(" Expression ")"
 	Primary.Primary34 = "(" Conditionalexpression ")"
 //	Primary.Primary35 = "(" Quantifiedexpression ")"
 	
 	Logicaloperator.LogOpAnd = "and"
 	Logicaloperator.LogOpOr = "or"
-	Logicaloperator.LogOpXor = "xor"
-	Logicaloperator.LogOpAndThen = "and then"
-	Logicaloperator.LogOpOrElse = "or else"
-	
+	Logicaloperator.LogOpXor = "xor"	
 	
 	Relationaloperator.Relationaloperator18 = "="
 	Relationaloperator.Relationaloperator19 = "/="

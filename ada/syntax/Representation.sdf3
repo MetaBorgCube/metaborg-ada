@@ -17,15 +17,15 @@ imports
 
 context-free syntax
 
-//	Aspectclause.Aspectclause20 = Attributedefinitionclause
+	Aspectclause.Aspectclause20 = Attributedefinitionclause
 //	Aspectclause.Aspectclause21 = Enumerationrepresentationclause
-//	Aspectclause.Aspectclause22 = Recordrepresentationclause
-//	Aspectclause.Aspectclause23 = Atclause
-//	
-//	Localname.Localname0 = Directname
-//	Localname.Localname1 = Directname "'" Attributedesignator
-//	Localname.Localname2 = Name
-//	
+	Aspectclause.Aspectclause22 = Recordrepresentationclause
+	Aspectclause.Aspectclause23 = Atclause
+	
+	Localname.Localname0 = Directname
+	Localname.Localname1 = Directname "'" Attributedesignator
+	Localname.Localname2 = Name
+	
 	Aspectspecification.Aspectspecification0 = "with" {Repitition79 ","}+
 	Repitition79.AspectspecificationRepitition790 = Aspectmark 
 	Repitition79.AspectspecificationRepitition791 = Aspectmark "=>" Aspectdefinition
@@ -36,39 +36,39 @@ context-free syntax
 	Aspectdefinition.Aspectdefinition0 = Name
 //	Aspectdefinition.Aspectdefinition1 = Expression
 	Aspectdefinition.Aspectdefinition2 = Identifier
-//	
-//	Attributedefinitionclause.Attributedefinitionclause0 = "for" Localname "'" Attributedesignator "use" Expression ";"
-//	Attributedefinitionclause.Attributedefinitionclause1 = "for" Localname "'" Attributedesignator "use" Name ";"
-//	
+	
+	Attributedefinitionclause.Attributedefinitionclause0 = "for" Localname "'" Attributedesignator "use" Expression ";"
+	Attributedefinitionclause.Attributedefinitionclause1 = "for" Localname "'" Attributedesignator "use" Name ";"
+	
 //	Enumerationrepresentationclause.Enumerationrepresentationclause0 = "for" Localname "use" Enumerationaggregate ";"
 //	
 //	Enumerationaggregate.Enumerationaggregate0 = Arrayaggregate
-//	
-//	Recordrepresentationclause.Recordrepresentationclause0 = "for" Localname "use record" Modclause? Componentclause* "end record ;"
-//	
-//	Componentclause.Componentclause0 = Localname "at" Position "range" Firstbit ".." Lastbit ";"
-//	
-//	Position.Position0 = Expression
-//	
-//	Firstbit.Firstbit0 = Simpleexpression
-//	
-//	Lastbit.Lastbit0 = Simpleexpression
-//	
+	
+	Recordrepresentationclause.Recordrepresentationclause0 = "for" Localname "use record" Modclause? Componentclause* "end record ;"
+	
+	Componentclause.Componentclause0 = Localname "at" Position "range" Firstbit ".." Lastbit ";"
+	
+	Position.Position0 = Expression
+	
+	Firstbit.Firstbit0 = Simpleexpression
+	
+	Lastbit.Lastbit0 = Simpleexpression
+	
 //	Codestatement.Codestatement0 = Qualifiedexpression ";"
-//	
-//	Storagepoolindicator.Storagepoolindicator0 = Name
-//	Storagepoolindicator.Storagepoolindicator1 = "null"
-//	
-//	Restriction.Restriction0 = Identifier
-//	Restriction.Restriction1 = Identifier "=>" Restrictionparameterargument
-//	
-//	Restrictionparameterargument.Restrictionparameterargument0 = Name
-//	Restrictionparameterargument.Restrictionparameterargument1 = Expression
-//	
-//	Deltaconstraint.Deltaconstraint0 = "delta" Expression Rangeconstraint?
-//	
-//	Atclause.Atclause0 = "for" Directname "use at" Expression ";"
-//	
-//	Modclause.Modclause0 = "at mod" Expression ";"
-//	
+	
+	Storagepoolindicator.Storagepoolindicator0 = Name
+	Storagepoolindicator.Storagepoolindicator1 = "null"
+	
+	Restriction.Restriction0 = Identifier
+	Restriction.Restriction1 = Identifier "=>" Restrictionparameterargument
+	
+	Restrictionparameterargument.Restrictionparameterargument0 = Name
+	Restrictionparameterargument.Restrictionparameterargument1 = Expression
+	
+	Deltaconstraint.Deltaconstraint0 = "delta" Expression Rangeconstraint?
+	
+	Atclause.Atclause0 = "for" Directname "use at" Expression ";"
+	
+	Modclause.Modclause0 = "at mod" Expression ";"
+	
 	

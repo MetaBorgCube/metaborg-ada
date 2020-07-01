@@ -26,8 +26,8 @@ lexical syntax
 	Decimalliteral 	= Numeral ("." Numeral)? Exponent?
 	Numeral				 	= [0-9] [\_0-9]*
 	Underlinechar		= "_"
-	Exponent				= "E" "+"? Numeral
-	Exponent				= "E" "-" Numeral
+	Exponent				= ("E" | "e") "+"? Numeral
+	Exponent				= ("E" | "e") "-" Numeral
 	
 	Basedliteral		= Numeral "#" Basednumeral ("." Basednumeral)? "#" Exponent?
 	Basednumeral		= Extendeddigit (Underlinechar? Extendeddigit)*

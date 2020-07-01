@@ -1,0 +1,92 @@
+module learn-adacore-examples/strongly-typed-language
+
+language ada
+
+test custom floating point[[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Custom_Floating_Types is
+   type T3  is digits 3;
+   type T15 is digits 15;
+   type T18 is digits 18;
+begin
+   Put_Line ("T3  requires " & Integer'Image (T3'Size) & " bits");
+   Put_Line ("T15 requires " & Integer'Image (T15'Size) & " bits");
+   Put_Line ("T18 requires " & Integer'Image (T18'Size) & " bits");
+end Custom_Floating_Types;
+]] parse succeeds
+
+test custom range[[
+with Ada.Text_IO;  use Ada.Text_IO;
+with Ada.Numerics; use Ada.Numerics;
+
+procedure Custom_Range_Types is
+   type T6_Inv_Trig  is digits 6 range -Pi / 2.0 .. Pi / 2.0;
+begin
+   null;
+end Custom_Range_Types;
+]] parse succeeds
+
+test display custom floating point[[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Display_Custom_Floating_Types is
+   type T3  is digits 3;
+   type T18 is digits 18;
+
+   C1 : constant := 1.0e-4;
+
+   A : T3  := 1.0 + C1;
+   B : T18 := 1.0 + C1;
+begin
+   Put_Line ("The value of A is " & T3'Image (A));
+   Put_Line ("The value of B is " & T18'Image (B));
+end Display_Custom_Floating_Types;
+]] parse succeeds
+
+test floating point[[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Floating_Point_Demo is
+   A : Float := 2.5;
+begin
+   Put_Line ("The value of A is " & Float'Image (A));
+end Floating_Point_Demo;
+]] parse succeeds
+
+test floating point operation[[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Floating_Point_Operations is
+   A : Float := 2.5;
+begin
+   A := abs (A - 4.5);
+   Put_Line ("The value of A is " & Float'Image (A));
+   A := A ** 2 + 1.0;
+   Put_Line ("The value of A is " & Float'Image (A));
+end Floating_Point_Operations;
+]] parse succeeds
+
+test floating point range exception [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Floating_Point_Range_Exception is
+   type T_Norm  is new Float range -1.0 .. 1.0;
+   A  : T_Norm;
+begin
+   A := 2.0; -- exception
+   Put_Line ("The value of A is " & T_Norm'Image (A));
+end Floating_Point_Range_Exception;
+]] parse succeeds
+
+test floating point range [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Floating_Point_Range is
+   type T_Norm  is new Float range -1.0 .. 1.0;
+   A  : T_Norm;
+begin
+   A := 1.0;
+   Put_Line ("The value of A is " & T_Norm'Image (A));
+end Floating_Point_Range;
+]] parse succeeds

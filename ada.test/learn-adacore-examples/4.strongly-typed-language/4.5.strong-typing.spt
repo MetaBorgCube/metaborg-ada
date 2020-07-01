@@ -1,0 +1,70 @@
+module learn-adacore-examples/strongly-typed-language
+
+language ada
+
+test conversion [[
+with Ada.Text_IO; use Ada.Text_IO;
+procedure Conv is
+   type Meters is new Float;
+   type Miles is new Float;
+   Dist_Imperial : Miles;
+   Dist_Metric : constant Meters := 100.0;
+begin
+   Dist_Imperial := (Miles (Dist_Metric) * 1609.0) / 1000.0;
+   --                ^ Type conversion, from Meters to Miles
+   --  Now the code is correct
+
+   Put_Line (Miles'Image (Dist_Imperial));
+end Conv;
+]] parse succeeds
+
+test conversion function [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Conv is
+   type Meters is new Float;
+   type Miles is new Float;
+
+   --  Function declaration, like procedure but returns a value.
+   function To_Miles (M : Meters) return Miles is
+   --                             ^ Return type
+   begin
+      return (Miles (M) * 1609.0) / 1000.0;
+   end To_Miles;
+
+   Dist_Imperial : Miles;
+   Dist_Metric   : constant Meters := 100.0;
+begin
+   Dist_Imperial := To_Miles (Dist_Metric);
+   Put_Line (Miles'Image (Dist_Imperial));
+end Conv;
+]] parse succeeds
+
+test illegal example [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Illegal_Example is
+   --  Declare two different floating point types
+   type Meters is new Float;
+   type Miles is new Float;
+
+   Dist_Imperial : Miles;
+
+   --  Declare a constant
+   Dist_Metric : constant Meters := 100.0;
+begin
+   --  Not correct: types mismatch
+   Dist_Imperial := (Dist_Metric * 1609.0) / 1000.0;
+   Put_Line (Miles'Image (Dist_Imperial));
+end Illegal_Example;
+]] parse succeeds
+
+test illegal mixing [[
+procedure Main is
+   A : Integer := 3;
+   B : Integer := 2;
+   F : Float;
+begin
+   F := A / B; -- Compiler shouldn't accept. Change to: `F := Float (A) / Float (B);`.
+end Main;
+]] parse succeeds

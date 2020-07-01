@@ -16,44 +16,44 @@ imports
 	
 context-free syntax
 
-//	Basicdeclaration.Basicdeclaration13 = Typedeclaration
+	Basicdeclaration.Basicdeclaration13 = Typedeclaration
 	Basicdeclaration.Basicdeclaration14 = Objectdeclaration
 	Basicdeclaration.Basicdeclaration15 = Subprogramdeclaration
 //	Basicdeclaration.Basicdeclaration16 = Nullproceduredeclaration
 //	Basicdeclaration.Basicdeclaration17 = Packagedeclaration
 //	Basicdeclaration.Basicdeclaration18 = Exceptiondeclaration
 //	Basicdeclaration.Basicdeclaration19 = Genericinstantiation
-//	Basicdeclaration.Basicdeclaration20 = Subtypedeclaration
-//	Basicdeclaration.Basicdeclaration21 = Numberdeclaration
+	Basicdeclaration.Basicdeclaration20 = Subtypedeclaration
+	Basicdeclaration.Basicdeclaration21 = Numberdeclaration
 //	Basicdeclaration.Basicdeclaration22 = Abstractsubprogramdeclaration
 //	Basicdeclaration.Basicdeclaration23 = Expressionfunctiondeclaration
 	Basicdeclaration.Basicdeclaration24 = Renamingdeclaration
 //	Basicdeclaration.Basicdeclaration25 = Genericdeclaration
 //	
 	Definingidentifier.Definingidentifier1 = Identifier
-//	
-//	Typedeclaration.Typedeclaration4 = Fulltypedeclaration
-//	Typedeclaration.Typedeclaration5 = Incompletetypedeclaration
-//	Typedeclaration.Typedeclaration6 = Privatetypedeclaration
-//	Typedeclaration.Typedeclaration7 = Privateextensiondeclaration
-//	
-//	Fulltypedeclaration.Fulltypedeclaration3 = "type" Definingidentifier Knowndiscriminantpart? "is" Typedefinition Aspectspecification? ";"
+	
+	Typedeclaration.Typedeclaration4 = Fulltypedeclaration
+	Typedeclaration.Typedeclaration5 = Incompletetypedeclaration
+	Typedeclaration.Typedeclaration6 = Privatetypedeclaration
+	Typedeclaration.Typedeclaration7 = Privateextensiondeclaration
+	
+	Fulltypedeclaration.Fulltypedeclaration3 = "type" Definingidentifier Knowndiscriminantpart? "is" Typedefinition Aspectspecification? ";"
 //	Fulltypedeclaration.Fulltypedeclaration4 = Tasktypedeclaration
 //	Fulltypedeclaration.Fulltypedeclaration5 = Protectedtypedeclaration
-//	
-//	Typedefinition.Typedefinition8 = Enumerationtypedefinition
-//	Typedefinition.Typedefinition9 = Realtypedefinition
-//	Typedefinition.Typedefinition10 = Recordtypedefinition
-//	Typedefinition.Typedefinition11 = Derivedtypedefinition
-//	Typedefinition.Typedefinition12 = Integertypedefinition
-//	Typedefinition.Typedefinition13 = Arraytypedefinition
+	
+	Typedefinition.Typedefinition8 = Enumerationtypedefinition
+	Typedefinition.Typedefinition9 = Realtypedefinition
+	Typedefinition.Typedefinition10 = Recordtypedefinition
+	Typedefinition.Typedefinition11 = Derivedtypedefinition
+	Typedefinition.Typedefinition12 = Integertypedefinition
+	Typedefinition.Typedefinition13 = Arraytypedefinition
 //	Typedefinition.Typedefinition14 = Accesstypedefinition
 //	Typedefinition.Typedefinition15 = Interfacetypedefinition
-//	
-//	Subtypedeclaration.Subtypedeclaration1 = "subtype" Definingidentifier "is" Subtypeindication Aspectspecification? ";"
-//	
+	
+	Subtypedeclaration.Subtypedeclaration1 = "subtype" Definingidentifier "is" Subtypeindication Aspectspecification? ";"
+	
 	Subtypeindication.Subtypeindication1 = Nullexclusion? Subtypemark Constraint?
-//	
+	
 	Subtypemark.Subtypemark1 = Name
 //	
 	Constraint.Constraint2 = Scalarconstraint
@@ -73,34 +73,34 @@ context-free syntax
 	Objectdeclaration.Objectdeclaration30 = Definingidentifierlist ":"   Subtypeindication ":=" Expression Aspectspecification? ";"
 	Objectdeclaration.Objectdeclaration31 = Definingidentifierlist ":" "aliased"  Subtypeindication ":=" Expression Aspectspecification? ";"
 	Objectdeclaration.Objectdeclaration32 = Definingidentifierlist ":"  "constant" Subtypeindication ":=" Expression Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration33 = Definingidentifierlist ":" "aliased" "constant" Subtypeindication ":=" Expression Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration34 = Definingidentifierlist ":"   Accessdefinition  Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration35 = Definingidentifierlist ":" "aliased"  Accessdefinition  Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration36 = Definingidentifierlist ":"  "constant" Accessdefinition  Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration37 = Definingidentifierlist ":" "aliased" "constant" Accessdefinition  Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration38 = Definingidentifierlist ":"   Accessdefinition ":=" Expression Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration39 = Definingidentifierlist ":" "aliased"  Accessdefinition ":=" Expression Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration40 = Definingidentifierlist ":"  "constant" Accessdefinition ":=" Expression Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration41 = Definingidentifierlist ":" "aliased" "constant" Accessdefinition ":=" Expression Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration42 = Definingidentifierlist ":"   Arraytypedefinition  Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration43 = Definingidentifierlist ":" "aliased"  Arraytypedefinition  Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration44 = Definingidentifierlist ":"  "constant" Arraytypedefinition  Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration45 = Definingidentifierlist ":" "aliased" "constant" Arraytypedefinition  Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration46 = Definingidentifierlist ":"   Arraytypedefinition ":=" Expression Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration47 = Definingidentifierlist ":" "aliased"  Arraytypedefinition ":=" Expression Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration48 = Definingidentifierlist ":"  "constant" Arraytypedefinition ":=" Expression Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration49 = Definingidentifierlist ":" "aliased" "constant" Arraytypedefinition ":=" Expression Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration33 = Definingidentifierlist ":" "aliased" "constant" Subtypeindication ":=" Expression Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration34 = Definingidentifierlist ":"   Accessdefinition  Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration35 = Definingidentifierlist ":" "aliased"  Accessdefinition  Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration36 = Definingidentifierlist ":"  "constant" Accessdefinition  Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration37 = Definingidentifierlist ":" "aliased" "constant" Accessdefinition  Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration38 = Definingidentifierlist ":"   Accessdefinition ":=" Expression Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration39 = Definingidentifierlist ":" "aliased"  Accessdefinition ":=" Expression Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration40 = Definingidentifierlist ":"  "constant" Accessdefinition ":=" Expression Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration41 = Definingidentifierlist ":" "aliased" "constant" Accessdefinition ":=" Expression Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration42 = Definingidentifierlist ":"   Arraytypedefinition  Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration43 = Definingidentifierlist ":" "aliased"  Arraytypedefinition  Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration44 = Definingidentifierlist ":"  "constant" Arraytypedefinition  Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration45 = Definingidentifierlist ":" "aliased" "constant" Arraytypedefinition  Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration46 = Definingidentifierlist ":"   Arraytypedefinition ":=" Expression Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration47 = Definingidentifierlist ":" "aliased"  Arraytypedefinition ":=" Expression Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration48 = Definingidentifierlist ":"  "constant" Arraytypedefinition ":=" Expression Aspectspecification? ";"
+	Objectdeclaration.Objectdeclaration49 = Definingidentifierlist ":" "aliased" "constant" Arraytypedefinition ":=" Expression Aspectspecification? ";"
 //	Objectdeclaration.Objectdeclaration50 = Singletaskdeclaration
 //	Objectdeclaration.Objectdeclaration51 = Singleprotecteddeclaration
 //	
 	Definingidentifierlist.Definingidentifierlist1 = {Definingidentifier ","}+
-//	
-//	Numberdeclaration.Numberdeclaration1 = Definingidentifierlist ": constant :=" Expression ";"
-//	
-//	Derivedtypedefinition.Derivedtypedefinition12 =   "new" Subtypeindication 
-//	Derivedtypedefinition.Derivedtypedefinition13 = "abstract"  "new" Subtypeindication 
-//	Derivedtypedefinition.Derivedtypedefinition14 =  "limited" "new" Subtypeindication 
-//	Derivedtypedefinition.Derivedtypedefinition15 = "abstract" "limited" "new" Subtypeindication 
+	
+	Numberdeclaration.Numberdeclaration1 = Definingidentifierlist ": constant :=" Expression ";"
+	
+	Derivedtypedefinition.Derivedtypedefinition12 =   "new" Subtypeindication 
+	Derivedtypedefinition.Derivedtypedefinition13 = "abstract"  "new" Subtypeindication 
+	Derivedtypedefinition.Derivedtypedefinition14 =  "limited" "new" Subtypeindication 
+	Derivedtypedefinition.Derivedtypedefinition15 = "abstract" "limited" "new" Subtypeindication 
 //	Derivedtypedefinition.Derivedtypedefinition16 =   "new" Subtypeindication  Recordextensionpart
 //	Derivedtypedefinition.Derivedtypedefinition17 = "abstract"  "new" Subtypeindication  Recordextensionpart
 //	Derivedtypedefinition.Derivedtypedefinition18 =  "limited" "new" Subtypeindication  Recordextensionpart
@@ -114,105 +114,105 @@ context-free syntax
 //	
 //	Range.Range2 = Rangeattributereference
 	Range.Range3 = Simpleexpression ".." Simpleexpression
-//	
-//	Enumerationtypedefinition.Enumerationtypedefinition1 = "(" {Enumerationliteralspecification ","}+ ")"
-//	
-//	Enumerationliteralspecification.Enumerationliteralspecification2 = Definingidentifier
-//	Enumerationliteralspecification.Enumerationliteralspecification3 = Definingcharacterliteral
-//	
-//	Definingcharacterliteral.Definingcharacterliteral1 = Characterliteral
-//	
-//	Integertypedefinition.Integertypedefinition2 = Signedintegertypedefinition
-//	Integertypedefinition.Integertypedefinition3 = Modulartypedefinition
-//	
-//	Signedintegertypedefinition.Signedintegertypedefinition1 = "range" Simpleexpression ".." Simpleexpression
-//	
-//	Modulartypedefinition.Modulartypedefinition1 = "mod" Expression
-//	
-//	Realtypedefinition.Realtypedefinition2 = Floatingpointdefinition
-//	Realtypedefinition.Realtypedefinition3 = Fixedpointdefinition
-//	
-//	Floatingpointdefinition.Floatingpointdefinition1 = "digits" Expression Realrangespecification?
-//	
-//	Realrangespecification.Realrangespecification1 = "range" Simpleexpression ".." Simpleexpression
-//	
-//	Fixedpointdefinition.Fixedpointdefinition2 = Ordinaryfixedpointdefinition
-//	Fixedpointdefinition.Fixedpointdefinition3 = Decimalfixedpointdefinition
-//	
-//	Ordinaryfixedpointdefinition.Ordinaryfixedpointdefinition1 = "delta" Expression Realrangespecification
-//	
-//	Decimalfixedpointdefinition.Decimalfixedpointdefinition1 = "delta" Expression "digits" Expression Realrangespecification?
-//	
-//	Digitsconstraint.Digitsconstraint1 = "digits" Expression Rangeconstraint?
-//	
-//	Arraytypedefinition.Arraytypedefinition2 = Unconstrainedarraydefinition
-//	Arraytypedefinition.Arraytypedefinition3 = Constrainedarraydefinition
-//	
-//	Unconstrainedarraydefinition.Unconstrainedarraydefinition1 = "array (" {Indexsubtypedefinition ","}+ ") of" Componentdefinition
-//	
-//	Indexsubtypedefinition.Indexsubtypedefinition1 = Subtypemark "range <>"
-//	
-//	Constrainedarraydefinition.Constrainedarraydefinition1 = "array (" {Discretesubtypedefinition ","}+ ") of" Componentdefinition
+	
+	Enumerationtypedefinition.Enumerationtypedefinition1 = "(" {Enumerationliteralspecification ","}+ ")"
+	
+	Enumerationliteralspecification.Enumerationliteralspecification2 = Definingidentifier
+	Enumerationliteralspecification.Enumerationliteralspecification3 = Definingcharacterliteral
+	
+	Definingcharacterliteral.Definingcharacterliteral1 = Characterliteral
+	
+	Integertypedefinition.Integertypedefinition2 = Signedintegertypedefinition
+	Integertypedefinition.Integertypedefinition3 = Modulartypedefinition
+	
+	Signedintegertypedefinition.Signedintegertypedefinition1 = "range" Simpleexpression ".." Simpleexpression
+	
+	Modulartypedefinition.Modulartypedefinition1 = "mod" Expression
+	
+	Realtypedefinition.Realtypedefinition2 = Floatingpointdefinition
+	Realtypedefinition.Realtypedefinition3 = Fixedpointdefinition
+	
+	Floatingpointdefinition.Floatingpointdefinition1 = "digits" Expression Realrangespecification?
+	
+	Realrangespecification.Realrangespecification1 = "range" Simpleexpression ".." Simpleexpression
+	
+	Fixedpointdefinition.Fixedpointdefinition2 = Ordinaryfixedpointdefinition
+	Fixedpointdefinition.Fixedpointdefinition3 = Decimalfixedpointdefinition
+	
+	Ordinaryfixedpointdefinition.Ordinaryfixedpointdefinition1 = "delta" Expression Realrangespecification
+	
+	Decimalfixedpointdefinition.Decimalfixedpointdefinition1 = "delta" Expression "digits" Expression Realrangespecification?
+	
+	Digitsconstraint.Digitsconstraint1 = "digits" Expression Rangeconstraint?
+	
+	Arraytypedefinition.Arraytypedefinition2 = Unconstrainedarraydefinition
+	Arraytypedefinition.Arraytypedefinition3 = Constrainedarraydefinition
+	
+	Unconstrainedarraydefinition.Unconstrainedarraydefinition1 = "array (" {Indexsubtypedefinition ","}+ ") of" Componentdefinition
+	
+	Indexsubtypedefinition.Indexsubtypedefinition1 = Subtypemark "range <>"
+	
+	Constrainedarraydefinition.Constrainedarraydefinition1 = "array (" {Discretesubtypedefinition ","}+ ") of" Componentdefinition
 	
 	Discretesubtypedefinition.Discretesubtypedefinition2 = Subtypeindication
 	Discretesubtypedefinition.Discretesubtypedefinition3 = Range
 	
-//	Componentdefinition.Componentdefinition4 =  Subtypeindication
-//	Componentdefinition.Componentdefinition5 = "aliased" Subtypeindication
-//	Componentdefinition.Componentdefinition6 =  Accessdefinition
-//	Componentdefinition.Componentdefinition7 = "aliased" Accessdefinition
-//	
-//	Indexconstraint.Indexconstraint1 = "(" {Discreterange ","}+ ")"
-//	
-//	Discreterange.Discreterange2 = Subtypeindication
-//	Discreterange.Discreterange3 = Range
-//	
-//	Discriminantpart.Discriminantpart2 = Unknowndiscriminantpart
-//	Discriminantpart.Discriminantpart3 = Knowndiscriminantpart
-//	
-//	Unknowndiscriminantpart.Unknowndiscriminantpart1 = "( <> )"
-//	
-//	Knowndiscriminantpart.Knowndiscriminantpart1 = "(" {Discriminantspecification ";"}+ ")"
-//	
-//	Discriminantspecification.Discriminantspecification4 = Definingidentifierlist ":" Nullexclusion? Subtypemark 
-//	Discriminantspecification.Discriminantspecification5 = Definingidentifierlist ":" Nullexclusion? Subtypemark ":=" Defaultexpression
-//	Discriminantspecification.Discriminantspecification6 = Definingidentifierlist ":" Accessdefinition 
-//	Discriminantspecification.Discriminantspecification7 = Definingidentifierlist ":" Accessdefinition ":=" Defaultexpression
-//	
+	Componentdefinition.Componentdefinition4 =  Subtypeindication
+	Componentdefinition.Componentdefinition5 = "aliased" Subtypeindication
+	Componentdefinition.Componentdefinition6 =  Accessdefinition
+	Componentdefinition.Componentdefinition7 = "aliased" Accessdefinition
+	
+	Indexconstraint.Indexconstraint1 = "(" {Discreterange ","}+ ")"
+	
+	Discreterange.Discreterange2 = Subtypeindication
+	Discreterange.Discreterange3 = Range
+	
+	Discriminantpart.Discriminantpart2 = Unknowndiscriminantpart
+	Discriminantpart.Discriminantpart3 = Knowndiscriminantpart
+	
+	Unknowndiscriminantpart.Unknowndiscriminantpart1 = "( <> )"
+	
+	Knowndiscriminantpart.Knowndiscriminantpart1 = "(" {Discriminantspecification ";"}+ ")"
+	
+	Discriminantspecification.Discriminantspecification4 = Definingidentifierlist ":" Nullexclusion? Subtypemark 
+	Discriminantspecification.Discriminantspecification5 = Definingidentifierlist ":" Nullexclusion? Subtypemark ":=" Defaultexpression
+	Discriminantspecification.Discriminantspecification6 = Definingidentifierlist ":" Accessdefinition 
+	Discriminantspecification.Discriminantspecification7 = Definingidentifierlist ":" Accessdefinition ":=" Defaultexpression
+	
 	Defaultexpression.Defaultexpression1 = Expression
-//	
-//	Discriminantconstraint.Discriminantconstraint1 = "(" {Discriminantassociation ","}+ ")"
-//	
-//	Discriminantassociation.Discriminantassociation2 =  Expression
-//	Discriminantassociation.Discriminantassociation3 = {Selectorname "|"}+ "=>" Expression
-//	
-//	Recordtypedefinition.Recordtypedefinition6 =   Recorddefinition
-//	Recordtypedefinition.Recordtypedefinition7 =  "tagged"  Recorddefinition
-//	Recordtypedefinition.Recordtypedefinition8 = "abstract" "tagged"  Recorddefinition
-//	Recordtypedefinition.Recordtypedefinition9 =  "limited" Recorddefinition
-//	Recordtypedefinition.Recordtypedefinition10 =  "tagged" "limited" Recorddefinition
-//	Recordtypedefinition.Recordtypedefinition11 = "abstract" "tagged" "limited" Recorddefinition
-//	
-//	Recorddefinition.Recorddefinition2 = "record" Componentlist "end record"
-//	Recorddefinition.Recorddefinition3 = "null record"
-//	
-//	Componentlist.Componentlist3 = Componentitem+
-//	Componentlist.Componentlist4 = Componentitem* Variantpart
-//	Componentlist.Componentlist5 = "null ;"
-//	
-//	Componentitem.Componentitem2 = Componentdeclaration
-//	Componentitem.Componentitem3 = Aspectclause
-//	
-//	Componentdeclaration.Componentdeclaration2 = Definingidentifierlist ":" Componentdefinition  Aspectspecification? ";"
-//	Componentdeclaration.Componentdeclaration3 = Definingidentifierlist ":" Componentdefinition ":=" Defaultexpression Aspectspecification? ";"
-//	
-//	Variantpart.Variantpart1 = "case" Directname "is" Variant+ "end case ;"
-//	
-//	Variant.Variant1 = "when" Discretechoicelist "=>" Componentlist
-//	
+	
+	Discriminantconstraint.Discriminantconstraint1 = "(" {Discriminantassociation ","}+ ")"
+	
+	Discriminantassociation.Discriminantassociation2 =  Expression
+	Discriminantassociation.Discriminantassociation3 = {Selectorname "|"}+ "=>" Expression
+	
+	Recordtypedefinition.Recordtypedefinition6 =   Recorddefinition
+	Recordtypedefinition.Recordtypedefinition7 =  "tagged"  Recorddefinition
+	Recordtypedefinition.Recordtypedefinition8 = "abstract" "tagged"  Recorddefinition
+	Recordtypedefinition.Recordtypedefinition9 =  "limited" Recorddefinition
+	Recordtypedefinition.Recordtypedefinition10 =  "tagged" "limited" Recorddefinition
+	Recordtypedefinition.Recordtypedefinition11 = "abstract" "tagged" "limited" Recorddefinition
+	
+	Recorddefinition.Recorddefinition2 = "record" Componentlist "end record"
+	Recorddefinition.Recorddefinition3 = "null record"
+	
+	Componentlist.Componentlist3 = Componentitem+
+	Componentlist.Componentlist4 = Componentitem* Variantpart
+	Componentlist.Componentlist5 = "null ;"
+	
+	Componentitem.Componentitem2 = Componentdeclaration
+	Componentitem.Componentitem3 = Aspectclause
+	
+	Componentdeclaration.Componentdeclaration2 = Definingidentifierlist ":" Componentdefinition  Aspectspecification? ";"
+	Componentdeclaration.Componentdeclaration3 = Definingidentifierlist ":" Componentdefinition ":=" Defaultexpression Aspectspecification? ";"
+	
+	Variantpart.Variantpart1 = "case" Directname "is" Variant+ "end case ;"
+	
+	Variant.Variant1 = "when" Discretechoicelist "=>" Componentlist
+	
 	Discretechoicelist.Discretechoicelist1 = {Discretechoice "|"}+
 	
-	Discretechoice.Discretechoice4 = Choiceexpression
+	Discretechoice.Discretechoice4 = Choiceexpression {prefer}
 	Discretechoice.Discretechoice5 = Subtypeindication
 	Discretechoice.Discretechoice6 = Range
 	Discretechoice.Discretechoice7 = "others"
@@ -231,14 +231,14 @@ context-free syntax
 //	Interfacetypedefinition.Interfacetypedefinition17 = "task" "interface" "and" Interfacelist
 //	Interfacetypedefinition.Interfacetypedefinition18 = "protected" "interface" "and" Interfacelist
 //	Interfacetypedefinition.Interfacetypedefinition19 = "synchronized" "interface" "and" Interfacelist
-//	
-//	Interfacelist.Interfacelist1 = {Subtypemark "and"}+
-//	
+	
+	Interfacelist.Interfacelist1 = {Subtypemark "and"}+
+	
 //	Accesstypedefinition.Accesstypedefinition2 = Nullexclusion? Accesstoobjectdefinition
 //	Accesstypedefinition.Accesstypedefinition3 = Nullexclusion? Accesstosubprogramdefinition
 //	
 //	Accesstoobjectdefinition.Accesstoobjectdefinition1 = "access" Generalaccessmodifier? Subtypeindication
-//	
+	
 //	Generalaccessmodifier.Generalaccessmodifier2 = "all"
 //	Generalaccessmodifier.Generalaccessmodifier3 = "constant"
 //	
@@ -255,10 +255,10 @@ context-free syntax
 //	Accessdefinition.Accessdefinition9 = Nullexclusion? "access" "protected" "procedure" Parameterprofile
 //	Accessdefinition.Accessdefinition10 = Nullexclusion? "access"  "function" Parameterandresultprofile
 //	Accessdefinition.Accessdefinition11 = Nullexclusion? "access" "protected" "function" Parameterandresultprofile
-//	
-//	Incompletetypedeclaration.Incompletetypedeclaration2 = "type" Definingidentifier Discriminantpart?  ";"
-//	Incompletetypedeclaration.Incompletetypedeclaration3 = "type" Definingidentifier Discriminantpart? "is tagged" ";"
-//	
+	
+	Incompletetypedeclaration.Incompletetypedeclaration2 = "type" Definingidentifier Discriminantpart?  ";"
+	Incompletetypedeclaration.Incompletetypedeclaration3 = "type" Definingidentifier Discriminantpart? "is tagged" ";"
+	
 	Declarativepart.Declarativepart1 = Declarativeitem*
 	
 	Declarativeitem.Declarativeitem2 = Basicdeclarativeitem
