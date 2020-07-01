@@ -63,22 +63,22 @@ context-free syntax
 	
 	Usetypeclause.Usetypeclause0 = "use"  "type" {Subtypemark ","}+ ";"
 	Usetypeclause.Usetypeclause1 = "use" "all" "type" {Subtypemark ","}+ ";"
-//	
-//	Renamingdeclaration.Renamingdeclaration0 = Objectrenamingdeclaration
-//	Renamingdeclaration.Renamingdeclaration1 = Exceptionrenamingdeclaration
-//	Renamingdeclaration.Renamingdeclaration2 = Packagerenamingdeclaration
-//	Renamingdeclaration.Renamingdeclaration3 = Subprogramrenamingdeclaration
-//	Renamingdeclaration.Renamingdeclaration4 = Genericrenamingdeclaration
-//	
-//	Objectrenamingdeclaration.Objectrenamingdeclaration0 = Definingidentifier ":" Nullexclusion? Subtypemark "renames" Name Aspectspecification? ";"
-//	Objectrenamingdeclaration.Objectrenamingdeclaration1 = Definingidentifier ":" Accessdefinition "renames" Name Aspectspecification? ";"
-//	
-//	Exceptionrenamingdeclaration.Exceptionrenamingdeclaration0 = Definingidentifier ": exception renames" Name Aspectspecification? ";"
-//	
-//	Packagerenamingdeclaration.Packagerenamingdeclaration0 = "package" Definingprogramunitname "renames" Name Aspectspecification? ";"
-//	
-//	Subprogramrenamingdeclaration.Subprogramrenamingdeclaration0 = Overridingindicator? Subprogramspecification "renames" Name Aspectspecification? ";"
-//	
-//	Genericrenamingdeclaration.Genericrenamingdeclaration0 = "generic package" Definingprogramunitname "renames" Name Aspectspecification? ";"
-//	Genericrenamingdeclaration.Genericrenamingdeclaration1 = "generic procedure" Definingprogramunitname "renames" Name Aspectspecification? ";"
-//	Genericrenamingdeclaration.Genericrenamingdeclaration2 = "generic function" Definingprogramunitname "renames" Name Aspectspecification? ";"
+	
+	Renamingdeclaration.Renamingdeclaration0 = Objectrenamingdeclaration
+	Renamingdeclaration.Renamingdeclaration1 = Exceptionrenamingdeclaration
+	Renamingdeclaration.Renamingdeclaration2 = Packagerenamingdeclaration
+	Renamingdeclaration.Renamingdeclaration3 = Subprogramrenamingdeclaration
+	Renamingdeclaration.Renamingdeclaration4 = Genericrenamingdeclaration
+	
+	Objectrenamingdeclaration.Objectrenamingdeclaration0 = Definingidentifier ":" Nullexclusion? Subtypemark "renames" Name Aspectspecification? ";"
+	Objectrenamingdeclaration.Objectrenamingdeclaration1 = Definingidentifier ":" Accessdefinition "renames" Name Aspectspecification? ";"
+	
+	Exceptionrenamingdeclaration.Exceptionrenamingdeclaration0 = Definingidentifier ": exception renames" Name Aspectspecification? ";"
+	
+	Packagerenamingdeclaration.Packagerenamingdeclaration0 = "package" Definingprogramunitname "renames" Name Aspectspecification? ";"
+	
+	Subprogramrenamingdeclaration.Subprogramrenamingdeclaration0 = Overridingindicator? Subprogramspecification "renames" Name Aspectspecification? ";"
+	
+	Genericrenamingdeclaration.Genericrenamingdeclaration0 = "generic package" Definingprogramunitname "renames" Name Aspectspecification? ";"
+	Genericrenamingdeclaration.Genericrenamingdeclaration1 = "generic procedure" Definingprogramunitname "renames" Name Aspectspecification? ";"
+	Genericrenamingdeclaration.Genericrenamingdeclaration2 = "generic function" Definingprogramunitname "renames" Name Aspectspecification? ";"

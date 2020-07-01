@@ -25,14 +25,14 @@ context-free syntax
 //	
 	Compilationunit.CompilationunitLibrary = Contextclause Libraryitem
 //	Compilationunit.CompilationunitSubunit = Contextclause Subunit
-//	
-//	Libraryitem.Libraryitem0 =  Libraryunitdeclaration
-//	Libraryitem.Libraryitem1 = "private" Libraryunitdeclaration
+	
+	Libraryitem.Libraryitem0 =  Libraryunitdeclaration
+	Libraryitem.Libraryitem1 = "private" Libraryunitdeclaration
 	Libraryitem.LibraryUnitBody = Libraryunitbody
 //	Libraryitem.Libraryitem3 =  Libraryunitrenamingdeclaration
 //	Libraryitem.Libraryitem4 = "private" Libraryunitrenamingdeclaration
-//	
-//	Libraryunitdeclaration.Libraryunitdeclaration0 = Subprogramdeclaration
+	
+	Libraryunitdeclaration.Libraryunitdeclaration0 = Subprogramdeclaration
 //	Libraryunitdeclaration.Libraryunitdeclaration1 = Genericdeclaration
 //	Libraryunitdeclaration.Libraryunitdeclaration2 = Packagedeclaration
 //	Libraryunitdeclaration.Libraryunitdeclaration3 = Genericinstantiation

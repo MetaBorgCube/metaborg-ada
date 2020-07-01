@@ -18,7 +18,7 @@ context-free syntax
 
 //	Basicdeclaration.Basicdeclaration13 = Typedeclaration
 	Basicdeclaration.Basicdeclaration14 = Objectdeclaration
-//	Basicdeclaration.Basicdeclaration15 = Subprogramdeclaration
+	Basicdeclaration.Basicdeclaration15 = Subprogramdeclaration
 //	Basicdeclaration.Basicdeclaration16 = Nullproceduredeclaration
 //	Basicdeclaration.Basicdeclaration17 = Packagedeclaration
 //	Basicdeclaration.Basicdeclaration18 = Exceptiondeclaration
@@ -27,7 +27,7 @@ context-free syntax
 //	Basicdeclaration.Basicdeclaration21 = Numberdeclaration
 //	Basicdeclaration.Basicdeclaration22 = Abstractsubprogramdeclaration
 //	Basicdeclaration.Basicdeclaration23 = Expressionfunctiondeclaration
-//	Basicdeclaration.Basicdeclaration24 = Renamingdeclaration
+	Basicdeclaration.Basicdeclaration24 = Renamingdeclaration
 //	Basicdeclaration.Basicdeclaration25 = Genericdeclaration
 //	
 	Definingidentifier.Definingidentifier1 = Identifier
@@ -179,7 +179,7 @@ context-free syntax
 //	Discriminantspecification.Discriminantspecification6 = Definingidentifierlist ":" Accessdefinition 
 //	Discriminantspecification.Discriminantspecification7 = Definingidentifierlist ":" Accessdefinition ":=" Defaultexpression
 //	
-//	Defaultexpression.Defaultexpression1 = Expression
+	Defaultexpression.Defaultexpression1 = Expression
 //	
 //	Discriminantconstraint.Discriminantconstraint1 = "(" {Discriminantassociation ","}+ ")"
 //	

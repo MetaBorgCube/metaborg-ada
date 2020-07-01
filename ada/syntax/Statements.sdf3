@@ -21,8 +21,8 @@ context-free syntax
 //	
 	Statement.Statement0 = Label* Simplestatement
 	Statement.Statement1 = Label* Compoundstatement
-//	
-//	Simplestatement.Simplestatement0 = Nullstatement
+	
+	Simplestatement.Simplestatement0 = Nullstatement
 	Simplestatement.Simplestatement1 = Assignmentstatement
 //	Simplestatement.Simplestatement2 = Gotostatement
 	Simplestatement.Simplestatement3 = Simplereturnstatement
@@ -42,9 +42,9 @@ context-free syntax
 	Compoundstatement.Compoundstatement4 = Casestatement
 	Compoundstatement.Compoundstatement5 = Blockstatement
 //	Compoundstatement.Compoundstatement6 = Selectstatement
-//	
-//	Nullstatement.Nullstatement0 = "null ;"
-//	
+	
+	Nullstatement.Nullstatement0 = "null"";"
+	
 	Label.Label0 = "<<" Statementidentifier ">>"
 //	
 	Statementidentifier.Statementidentifier0 = Directname

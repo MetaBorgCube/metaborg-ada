@@ -17,7 +17,7 @@ imports
 
 context-free syntax
 
-	Name.Name36 = Directname
+	Name.Name36 = Directname {prefer}
 //	Name.Name37 = Indexedcomponent
 	Name.Name38 = Selectedcomponent
 //	Name.Name39 = Typeconversion
@@ -25,8 +25,8 @@ context-free syntax
 //	Name.Name41 = Generalizedreference
 //	Name.Name42 = Explicitdereference
 //	Name.Name43 = Slice
-	Name.Name44 = Attributereference
-//	Name.Name45 = Functioncall
+	Name.Name44 = Attributereference {prefer}
+	Name.Name45 = Functioncall
 //	Name.Name46 = Qualifiedexpression
 //	Name.Name47 = Generalizedindexing
 	
