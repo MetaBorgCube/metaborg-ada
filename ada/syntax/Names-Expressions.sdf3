@@ -67,23 +67,23 @@ context-free syntax
 //	Generalizedreference.Generalizedreference3 = Name
 //	
 //	Generalizedindexing.Generalizedindexing3 = Prefix Actualparameterpart
-//	
-//	Aggregate.Aggregate9 = Recordaggregate
+	
+	Aggregate.Aggregate9 = Recordaggregate
 //	Aggregate.Aggregate10 = Extensionaggregate
 //	Aggregate.Aggregate11 = Arrayaggregate
-//	
-//	Recordaggregate.Recordaggregate3 = "(" Recordcomponentassociationlist ")"
-//	
-//	Recordcomponentassociationlist.Recordcomponentassociationlist6 = {Recordcomponentassociation ","}+
-//	Recordcomponentassociationlist.Recordcomponentassociationlist7 = "null record"
-//	
-//	Recordcomponentassociation.Recordcomponentassociation9 =  Expression
-//	Recordcomponentassociation.Recordcomponentassociation10 = Componentchoicelist "=>" Expression
-//	Recordcomponentassociation.Recordcomponentassociation11 = Componentchoicelist "=> <>"
-//	
-//	Componentchoicelist.Componentchoicelist6 = {Selectorname "|"}+
-//	Componentchoicelist.Componentchoicelist7 = "others"
-//	
+	
+	Recordaggregate.Recordaggregate3 = "(" Recordcomponentassociationlist ")"
+	
+	Recordcomponentassociationlist.Recordcomponentassociationlist6 = {Recordcomponentassociation ","}+
+	Recordcomponentassociationlist.Recordcomponentassociationlist7 = "null record"
+	
+	Recordcomponentassociation.Recordcomponentassociation9 =  Expression
+	Recordcomponentassociation.Recordcomponentassociation10 = Componentchoicelist "=>" Expression
+	Recordcomponentassociation.Recordcomponentassociation11 = Componentchoicelist "=> <>"
+	
+	Componentchoicelist.Componentchoicelist6 = {Selectorname "|"}+
+	Componentchoicelist.Componentchoicelist7 = "others"
+	
 //	Extensionaggregate.Extensionaggregate3 = "(" Ancestorpart "with" Recordcomponentassociationlist ")"
 //	
 //	Ancestorpart.Ancestorpart6 = Expression
@@ -143,7 +143,7 @@ context-free syntax
 	Primary.Primary27 = Numericliteral {prefer}
 	Primary.Primary28 = "null" {prefer}
 	Primary.Primary29 = Stringliteral {prefer}
-//	Primary.Primary30 = Aggregate
+	Primary.Primary30 = Aggregate
 	Primary.Primary31 = Name {prefer}
 //	Primary.Primary32 = Allocator
 	Primary.Primary33 = "(" Expression ")"
