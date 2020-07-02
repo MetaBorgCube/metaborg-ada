@@ -63,19 +63,19 @@ context-free syntax
 //	Loopstatement.Loopstatement1 = Statementidentifier ":" Iterationscheme? "loop" Sequenceofstatements "end loop" Identifier? ";"
 	
 	Iterationscheme.Iterationscheme0 = "while" Condition
-	Iterationscheme.Iterationscheme1 = "for" Loopparameterspecification
-//	Iterationscheme.Iterationscheme2 = "for" Iteratorspecification
+	Iterationscheme.Iterationscheme1 = "for" Loopparameterspecification {prefer}
+	Iterationscheme.Iterationscheme2 = "for" Iteratorspecification 
 	
 	Loopparameterspecification.Loopparameterspecification0 = Definingidentifier "in"  Discretesubtypedefinition
 	Loopparameterspecification.Loopparameterspecification1 = Definingidentifier "in" "reverse" Discretesubtypedefinition
 	
 //	Iteratorspecification.Iteratorspecification0 = Definingidentifier "in"  Name
 //	Iteratorspecification.Iteratorspecification1 = Definingidentifier "in" "reverse" Name
-//	Iteratorspecification.Iteratorspecification2 = Definingidentifier  "of"  Name
-//	Iteratorspecification.Iteratorspecification3 = Definingidentifier ":" Subtypeindication "of"  Name
-//	Iteratorspecification.Iteratorspecification4 = Definingidentifier  "of" "reverse" Name
-//	Iteratorspecification.Iteratorspecification5 = Definingidentifier ":" Subtypeindication "of" "reverse" Name
-//	
+	Iteratorspecification.Iteratorspecification2 = Definingidentifier  "of"  Name
+	Iteratorspecification.Iteratorspecification3 = Definingidentifier ":" Subtypeindication "of"  Name
+	Iteratorspecification.Iteratorspecification4 = Definingidentifier  "of" "reverse" Name
+	Iteratorspecification.Iteratorspecification5 = Definingidentifier ":" Subtypeindication "of" "reverse" Name
+	
 //	Blockstatement.Blockstatement0 =   "begin" Handledsequenceofstatements "end" Identifier? ";"
 //	Blockstatement.Blockstatement1 = Statementidentifier ":"  "begin" Handledsequenceofstatements "end" Identifier? ";"
 	Blockstatement.Blockstatement2 =  "declare" Declarativepart "begin" Handledsequenceofstatements "end" Identifier? ";"

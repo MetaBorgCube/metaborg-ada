@@ -17,41 +17,40 @@ imports
 
 context-free syntax
 
-	Name.Name36 = Directname {prefer}
+	Name.NameDirect = Directname
 //	Name.Name37 = Indexedcomponent
-	Name.Name38 = Selectedcomponent
+	Name.NameSelectComp = Name "." Directname
 //	Name.Name39 = Typeconversion
-//	Name.Name40 = Characterliteral
 //	Name.Name41 = Generalizedreference
-//	Name.Name42 = Explicitdereference
-//	Name.Name43 = Slice
-	Name.Name44 = Attributereference {prefer}
-	Name.Name45 = Functioncall
+	Name.NameExplDeref = Name ". all"
+	Name.NameSlice = Name "(" Discreterange ")" {prefer}
+	Name.NameAttr =  Name "'" Attributedesignator
+	Name.NameFCall = Name Actualparameterpart
 //	Name.Name46 = Qualifiedexpression
 //	Name.Name47 = Generalizedindexing
-	
-	Directname.Directname6 = Identifier
+
+	Subtypename.SubtypeNameSelectComp =  Subtypename "." Directname {left}
+	Subtypename.SubtypeAttr = Subtypename "'" Attributedesignator {left}
+	Subtypename.SubtypeNameDirect = Directname {prefer}
+
+context-free priorities
+	Name.NameDirect > Name.NameExplDeref > Name.NameSelectComp> Name.NameAttr > Name.NameSlice > Name.NameFCall 
+context-free syntax
+
+	Directname.DirectNameId = Identifier
+	Directname.DirectNameStr = Stringliteral
+	Directname.DirectNameChar = Characterliteral
 //	Directname.Directname7 = Operatorsymbol
 //	
 	Prefix.Prefix6 = Name
 //	Prefix.Prefix7 = Implicitdereference
-//	
-//	Explicitdereference.Explicitdereference3 = Name ". all"
-//	
-//	Implicitdereference.Implicitdereference3 = Name
-//	
+
 //	Indexedcomponent.Indexedcomponent3 = Prefix "(" {Expression ","}+ ")"
-//	
-//	Slice.Slice3 = Prefix "(" Discreterange ")"
-	
-	Selectedcomponent.Selectedcomponent3 = Prefix "." Selectorname
 	
 	Selectorname.Selectorname9 = Identifier
 //	Selectorname.Selectorname10 = Characterliteral
 //	Selectorname.Selectorname11 = Operatorsymbol
-//	
-	Attributereference.Attributereference3 = Prefix "'" Attributedesignator
-//	
+
 	Attributedesignator.Attributedesignator18 = Identifier 
 	Attributedesignator.Attributedesignator19 = Identifier "(" Expression ")"
 //	Attributedesignator.Attributedesignator20 = "Access"
@@ -69,8 +68,8 @@ context-free syntax
 //	Generalizedindexing.Generalizedindexing3 = Prefix Actualparameterpart
 	
 	Aggregate.Aggregate9 = Recordaggregate
-//	Aggregate.Aggregate10 = Extensionaggregate
-//	Aggregate.Aggregate11 = Arrayaggregate
+	Aggregate.Aggregate10 = Extensionaggregate
+	Aggregate.Aggregate11 = Arrayaggregate {prefer}
 	
 	Recordaggregate.Recordaggregate3 = "(" Recordcomponentassociationlist ")"
 	
@@ -84,23 +83,23 @@ context-free syntax
 	Componentchoicelist.Componentchoicelist6 = {Selectorname "|"}+
 	Componentchoicelist.Componentchoicelist7 = "others"
 	
-//	Extensionaggregate.Extensionaggregate3 = "(" Ancestorpart "with" Recordcomponentassociationlist ")"
-//	
-//	Ancestorpart.Ancestorpart6 = Expression
-//	Ancestorpart.Ancestorpart7 = Subtypemark
-//	
-//	Arrayaggregate.Arrayaggregate6 = Positionalarrayaggregate
-//	Arrayaggregate.Arrayaggregate7 = Namedarrayaggregate
-//	
-//	Positionalarrayaggregate.Positionalarrayaggregate9 = "(" Expression "," {Expression ","}+ ")"
-//	Positionalarrayaggregate.Positionalarrayaggregate10 = "(" {Expression ","}+ ", others =>" Expression ")"
-//	Positionalarrayaggregate.Positionalarrayaggregate11 = "(" {Expression ","}+ ", others => <> )"
-//	
-//	Namedarrayaggregate.Namedarrayaggregate3 = "(" {Arraycomponentassociation ","}+ ")"
-//	
-//	Arraycomponentassociation.Arraycomponentassociation6 = Discretechoicelist "=>" Expression
-//	Arraycomponentassociation.Arraycomponentassociation7 = Discretechoicelist "=> <>"
-//	
+	Extensionaggregate.Extensionaggregate3 = "(" Ancestorpart "with" Recordcomponentassociationlist ")"
+	
+	Ancestorpart.Ancestorpart6 = Expression
+	Ancestorpart.Ancestorpart7 = Subtypemark
+	
+	Arrayaggregate.Arrayaggregate6 = Positionalarrayaggregate
+	Arrayaggregate.Arrayaggregate7 = Namedarrayaggregate
+	
+	Positionalarrayaggregate.Positionalarrayaggregate9 = "(" Expression "," {Expression ","}+ ")"
+	Positionalarrayaggregate.Positionalarrayaggregate10 = "(" {Expression ","}+ ", others =>" Expression ")"
+	Positionalarrayaggregate.Positionalarrayaggregate11 = "(" {Expression ","}+ ", others => <> )"
+	
+	Namedarrayaggregate.Namedarrayaggregate3 = "(" {Arraycomponentassociation ","}+ ")"
+	
+	Arraycomponentassociation.Arraycomponentassociation6 = Discretechoicelist "=>" Expression
+	Arraycomponentassociation.Arraycomponentassociation7 = Discretechoicelist "=> <>"
+	
 	Expression.ExpressionRelation = Relation {prefer}
 	Expression.Expression15 = {Relation "and"}+
 	Expression.Expression16 = {Relation "or"}+
@@ -142,8 +141,7 @@ context-free syntax
 	
 	Primary.Primary27 = Numericliteral {prefer}
 	Primary.Primary28 = "null" {prefer}
-	Primary.Primary29 = Stringliteral {prefer}
-	Primary.Primary30 = Aggregate
+	Primary.Primary30 = Aggregate {prefer}
 	Primary.Primary31 = Name {prefer}
 //	Primary.Primary32 = Allocator
 	Primary.Primary33 = "(" Expression ")"

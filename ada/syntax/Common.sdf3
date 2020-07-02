@@ -12,8 +12,9 @@ lexical syntax
 lexical syntax
 
 	Identifier      = [a-zA-Z] [a-zA-Z0-9\_]*
-	Characterliteral			= ~[\"\n\t\r]
-	Stringliteral        	= "\"" StringChar* "\"" 
+	CharacterChar			= ~[\"\n\t\r]
+	Characterliteral= "'" CharacterChar "'"
+	Stringliteral   = "\"" StringChar* "\"" 
   StringChar     	= ~[\"\n] 
   StringChar     	= "\\\"" 
   StringChar     	= BackSlashChar 

@@ -61,10 +61,7 @@ context-free syntax
 	Subprogrambody.SubprogramBody = Overridingindicator? Subprogramspecification Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end" Designator? ";"
 //	
 	Procedurecallstatement.Procedurecallstatement0 = Name ";"
-	Procedurecallstatement.Procedurecallstatement1 = Prefix Actualparameterpart ";" {prefer}
-//	
-//	Functioncall.Functioncall0 = Name
-	Functioncall.Functioncall1 = Prefix Actualparameterpart
+	Procedurecallstatement.Procedurecallstatement1 = Name Actualparameterpart ";" {prefer}
 	
 	Actualparameterpart.Actualparameterpart0 = "(" {Parameterassociation ","}+ ")"
 	

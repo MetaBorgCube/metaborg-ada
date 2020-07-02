@@ -54,18 +54,18 @@ context-free syntax
 	
 	Subtypeindication.Subtypeindication1 = Nullexclusion? Subtypemark Constraint?
 	
-	Subtypemark.Subtypemark1 = Name
-//	
+	Subtypemark.Subtypemark1 = Subtypename
+
 	Constraint.Constraint2 = Scalarconstraint
-//	Constraint.Constraint3 = Compositeconstraint
-//	
+	Constraint.Constraint3 = Compositeconstraint
+	
 	Scalarconstraint.Scalarconstraint3 = Rangeconstraint
-//	Scalarconstraint.Scalarconstraint4 = Digitsconstraint
-//	Scalarconstraint.Scalarconstraint5 = Deltaconstraint
-//	
-//	Compositeconstraint.Compositeconstraint2 = Indexconstraint
-//	Compositeconstraint.Compositeconstraint3 = Discriminantconstraint
-//	
+	Scalarconstraint.Scalarconstraint4 = Digitsconstraint
+	Scalarconstraint.Scalarconstraint5 = Deltaconstraint
+	
+	Compositeconstraint.Compositeconstraint2 = Indexconstraint {prefer}
+	Compositeconstraint.Compositeconstraint3 = Discriminantconstraint
+	
 	Objectdeclaration.Objectdeclaration26 = Definingidentifierlist ":"   Subtypeindication  Aspectspecification? ";"
 	Objectdeclaration.Objectdeclaration27 = Definingidentifierlist ":" "aliased"  Subtypeindication  Aspectspecification? ";"
 	Objectdeclaration.Objectdeclaration28 = Definingidentifierlist ":"  "constant" Subtypeindication  Aspectspecification? ";"

@@ -19,7 +19,7 @@ debug:
 language:
   sdf:
     pretty-print: ada
-    sdf2table: dynamic
+    sdf2table: java
     placeholder:
       prefix: "$"
     jsglr-version: incremental
