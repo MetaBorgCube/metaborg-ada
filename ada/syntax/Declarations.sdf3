@@ -26,7 +26,7 @@ context-free syntax
 	Basicdeclaration.Basicdeclaration20 = Subtypedeclaration
 	Basicdeclaration.Basicdeclaration21 = Numberdeclaration
 //	Basicdeclaration.Basicdeclaration22 = Abstractsubprogramdeclaration
-//	Basicdeclaration.Basicdeclaration23 = Expressionfunctiondeclaration
+	Basicdeclaration.Basicdeclaration23 = Expressionfunctiondeclaration
 	Basicdeclaration.Basicdeclaration24 = Renamingdeclaration
 //	Basicdeclaration.Basicdeclaration25 = Genericdeclaration
 //	
@@ -47,8 +47,8 @@ context-free syntax
 	Typedefinition.Typedefinition11 = Derivedtypedefinition
 	Typedefinition.Typedefinition12 = Integertypedefinition
 	Typedefinition.Typedefinition13 = Arraytypedefinition
-//	Typedefinition.Typedefinition14 = Accesstypedefinition
-//	Typedefinition.Typedefinition15 = Interfacetypedefinition
+	Typedefinition.Typedefinition14 = Accesstypedefinition
+	Typedefinition.Typedefinition15 = Interfacetypedefinition
 	
 	Subtypedeclaration.Subtypedeclaration1 = "subtype" Definingidentifier "is" Subtypeindication Aspectspecification? ";"
 	
@@ -193,12 +193,12 @@ context-free syntax
 	Recordtypedefinition.Recordtypedefinition10 =  "tagged" "limited" Recorddefinition
 	Recordtypedefinition.Recordtypedefinition11 = "abstract" "tagged" "limited" Recorddefinition
 	
-	Recorddefinition.Recorddefinition2 = "record" Componentlist "end record"
-	Recorddefinition.Recorddefinition3 = "null record"
+	Recorddefinition.Recorddefinition2 = "record" Componentlist "end""record"
+	Recorddefinition.Recorddefinition3 = "null""record"
 	
 	Componentlist.Componentlist3 = Componentitem+
 	Componentlist.Componentlist4 = Componentitem* Variantpart
-	Componentlist.Componentlist5 = "null ;"
+	Componentlist.Componentlist5 = "null"";"
 	
 	Componentitem.Componentitem2 = Componentdeclaration
 	Componentitem.Componentitem3 = Aspectclause
@@ -206,7 +206,7 @@ context-free syntax
 	Componentdeclaration.Componentdeclaration2 = Definingidentifierlist ":" Componentdefinition  Aspectspecification? ";"
 	Componentdeclaration.Componentdeclaration3 = Definingidentifierlist ":" Componentdefinition ":=" Defaultexpression Aspectspecification? ";"
 	
-	Variantpart.Variantpart1 = "case" Directname "is" Variant+ "end case ;"
+	Variantpart.Variantpart1 = "case" Directname "is" Variant+ "end""case"";"
 	
 	Variant.Variant1 = "when" Discretechoicelist "=>" Componentlist
 	
@@ -221,40 +221,40 @@ context-free syntax
 //	
 //	Abstractsubprogramdeclaration.Abstractsubprogramdeclaration1 = Overridingindicator? Subprogramspecification "is abstract" Aspectspecification? ";"
 //	
-//	Interfacetypedefinition.Interfacetypedefinition10 =  "interface" 
-//	Interfacetypedefinition.Interfacetypedefinition11 = "limited" "interface" 
-//	Interfacetypedefinition.Interfacetypedefinition12 = "task" "interface" 
-//	Interfacetypedefinition.Interfacetypedefinition13 = "protected" "interface" 
-//	Interfacetypedefinition.Interfacetypedefinition14 = "synchronized" "interface" 
-//	Interfacetypedefinition.Interfacetypedefinition15 =  "interface" "and" Interfacelist
-//	Interfacetypedefinition.Interfacetypedefinition16 = "limited" "interface" "and" Interfacelist
-//	Interfacetypedefinition.Interfacetypedefinition17 = "task" "interface" "and" Interfacelist
-//	Interfacetypedefinition.Interfacetypedefinition18 = "protected" "interface" "and" Interfacelist
-//	Interfacetypedefinition.Interfacetypedefinition19 = "synchronized" "interface" "and" Interfacelist
+	Interfacetypedefinition.Interfacetypedefinition10 =  "interface" 
+	Interfacetypedefinition.Interfacetypedefinition11 = "limited" "interface" 
+	Interfacetypedefinition.Interfacetypedefinition12 = "task" "interface" 
+	Interfacetypedefinition.Interfacetypedefinition13 = "protected" "interface" 
+	Interfacetypedefinition.Interfacetypedefinition14 = "synchronized" "interface" 
+	Interfacetypedefinition.Interfacetypedefinition15 =  "interface" "and" Interfacelist
+	Interfacetypedefinition.Interfacetypedefinition16 = "limited" "interface" "and" Interfacelist
+	Interfacetypedefinition.Interfacetypedefinition17 = "task" "interface" "and" Interfacelist
+	Interfacetypedefinition.Interfacetypedefinition18 = "protected" "interface" "and" Interfacelist
+	Interfacetypedefinition.Interfacetypedefinition19 = "synchronized" "interface" "and" Interfacelist
 	
 	Interfacelist.Interfacelist1 = {Subtypemark "and"}+
 	
-//	Accesstypedefinition.Accesstypedefinition2 = Nullexclusion? Accesstoobjectdefinition
-//	Accesstypedefinition.Accesstypedefinition3 = Nullexclusion? Accesstosubprogramdefinition
-//	
-//	Accesstoobjectdefinition.Accesstoobjectdefinition1 = "access" Generalaccessmodifier? Subtypeindication
+	Accesstypedefinition.Accesstypedefinition2 = Nullexclusion? Accesstoobjectdefinition
+	Accesstypedefinition.Accesstypedefinition3 = Nullexclusion? Accesstosubprogramdefinition
 	
-//	Generalaccessmodifier.Generalaccessmodifier2 = "all"
-//	Generalaccessmodifier.Generalaccessmodifier3 = "constant"
-//	
-//	Accesstosubprogramdefinition.Accesstosubprogramdefinition4 = "access"  "procedure" Parameterprofile
-//	Accesstosubprogramdefinition.Accesstosubprogramdefinition5 = "access" "protected" "procedure" Parameterprofile
-//	Accesstosubprogramdefinition.Accesstosubprogramdefinition6 = "access"  "function" Parameterandresultprofile
-//	Accesstosubprogramdefinition.Accesstosubprogramdefinition7 = "access" "protected" "function" Parameterandresultprofile
-//	
+	Accesstoobjectdefinition.Accesstoobjectdefinition1 = "access" Generalaccessmodifier? Subtypeindication
+	
+	Generalaccessmodifier.Generalaccessmodifier2 = "all"
+	Generalaccessmodifier.Generalaccessmodifier3 = "constant"
+	
+	Accesstosubprogramdefinition.Accesstosubprogramdefinition4 = "access"  "procedure" Parameterprofile
+	Accesstosubprogramdefinition.Accesstosubprogramdefinition5 = "access" "protected" "procedure" Parameterprofile
+	Accesstosubprogramdefinition.Accesstosubprogramdefinition6 = "access"  "function" Parameterandresultprofile
+	Accesstosubprogramdefinition.Accesstosubprogramdefinition7 = "access" "protected" "function" Parameterandresultprofile
+	
 	Nullexclusion.Nullexclusion1 = "not null"
-//	
+	
 	Accessdefinition.Accessdefinition6 = Nullexclusion? "access"  Subtypemark
-//	Accessdefinition.Accessdefinition7 = Nullexclusion? "access" "constant" Subtypemark
-//	Accessdefinition.Accessdefinition8 = Nullexclusion? "access"  "procedure" Parameterprofile
-//	Accessdefinition.Accessdefinition9 = Nullexclusion? "access" "protected" "procedure" Parameterprofile
-//	Accessdefinition.Accessdefinition10 = Nullexclusion? "access"  "function" Parameterandresultprofile
-//	Accessdefinition.Accessdefinition11 = Nullexclusion? "access" "protected" "function" Parameterandresultprofile
+	Accessdefinition.Accessdefinition7 = Nullexclusion? "access" "constant" Subtypemark
+	Accessdefinition.Accessdefinition8 = Nullexclusion? "access"  "procedure" Parameterprofile
+	Accessdefinition.Accessdefinition9 = Nullexclusion? "access" "protected" "procedure" Parameterprofile
+	Accessdefinition.Accessdefinition10 = Nullexclusion? "access"  "function" Parameterandresultprofile
+	Accessdefinition.Accessdefinition11 = Nullexclusion? "access" "protected" "function" Parameterandresultprofile
 	
 	Incompletetypedeclaration.Incompletetypedeclaration2 = "type" Definingidentifier Discriminantpart?  ";"
 	Incompletetypedeclaration.Incompletetypedeclaration3 = "type" Definingidentifier Discriminantpart? "is tagged" ";"

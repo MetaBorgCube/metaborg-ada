@@ -1,0 +1,128 @@
+module learn-adacore-examples/more-about-types/more-about-records
+
+language ada
+
+test var sized record [[
+with Runtime_Length; use Runtime_Length;
+
+package Var_Size_Record is
+    Max_Len : constant Natural := Compute_Max_Len;
+    --                            ^ Not known at compile time
+
+    type Items_Array is array (Positive range <>) of Integer;
+
+    type Growable_Stack is record
+       Items : Items_Array (1 .. Max_Len);
+       Len   : Natural;
+    end record;
+    --  Growable_Stack is a definite type, but size is not known at compile
+    --  time.
+
+    G : Growable_Stack;
+end Var_Size_Record;
+]] parse succeeds
+
+test var sized records discriminant [[
+package Var_Size_Record_2 is
+    type Items_Array is array (Positive range <>) of Integer;
+
+    type Growable_Stack (Max_Len : Natural) is record
+    --                   ^ Discriminant. Cannot be modified once initialized.
+       Items : Items_Array (1 .. Max_Len);
+       Len   : Natural := 0;
+    end record;
+    --  Growable_Stack is an indefinite type (like an array)
+end Var_Size_Record_2;
+]] parse succeeds
+
+test invalid discriminant [[
+package Test_Discriminants is
+   type Point (X, Y : Natural) is record
+      null;
+   end record;
+
+   P : Point;
+   --  ERROR: Point is indefinite, so you need to specify the discriminants
+   --  or give a default value
+
+   P2 : Point (1, 2);
+   P3 : Point := (1, 2);
+   --  Those two declarations are equivalent.
+
+end Test_Discriminants;
+]] parse succeeds
+
+test variable sized records access [[
+with Var_Size_Record_2; use Var_Size_Record_2;
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Main is
+   procedure Print_Stack (G : Growable_Stack) is
+   begin
+      Put ("<Stack, items: [");
+      for I in G.Items'Range loop
+         exit when I > G.Len;
+         Put (" " & Integer'Image (G.Items (I)));
+      end loop;
+      Put_Line ("]>");
+   end Print_Stack;
+
+   S : Growable_Stack :=
+     (Max_Len => 128, Items => (1, 2, 3, 4, others => <>), Len => 4);
+begin
+   Print_Stack (S);
+end Main;
+]] parse succeeds
+
+test variant record [[
+package Variant_Record is
+   type Expr;                       --  Forward declaration of Expr
+   type Expr_Access is access Expr; --  Access to a Expr
+
+   type Expr_Kind_Type is (Bin_Op_Plus, Bin_Op_Minus, Num);
+   --  A regular enumeration type
+
+   type Expr (Kind : Expr_Kind_Type) is record
+      --      ^ The discriminant is an enumeration value
+      case Kind is
+         when Bin_Op_Plus | Bin_Op_Minus =>
+            Left, Right : Expr_Access;
+         when Num =>
+            Val : Integer;
+      end case;
+      --  Variant part. Only one, at the end of the record
+      --  definition, but can be nested
+   end record;
+end Variant_Record;
+]] parse succeeds 
+
+test variant record usage fail [[
+with Variant_Record; use Variant_Record;
+
+procedure Main is
+   E : Expr := (Num, 12);
+begin
+   E.Left := new Expr'(Num, 15);
+   --  Will compile but fail at runtime
+end Main;
+]] parse succeeds
+
+test variant record usage [[
+with Variant_Record; use Variant_Record;
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Main is
+   function Eval_Expr (E : Expr) return Integer is
+     (case E.Kind is
+      when Bin_Op_Plus => Eval_Expr (E.Left.all) + Eval_Expr (E.Right.all),
+      when Bin_Op_Minus => Eval_Expr (E.Left.all) - Eval_Expr (E.Right.all),
+      when Num => E.Val);
+
+   E : Expr := (Bin_Op_Plus,
+                new Expr'(Bin_Op_Minus,
+                          new Expr'(Num, 12), new Expr'(Num, 15)),
+                new Expr'(Num, 3));
+begin
+   Put_Line (Integer'Image (Eval_Expr (E)));
+end Main;
+]] parse succeeds

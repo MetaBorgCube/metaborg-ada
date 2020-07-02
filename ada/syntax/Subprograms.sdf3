@@ -68,12 +68,11 @@ context-free syntax
 	Parameterassociation.Parameterassociation0 =  Explicitactualparameter
 	Parameterassociation.Parameterassociation1 = Selectorname "=>" Explicitactualparameter
 	
-	Explicitactualparameter.Explicitactualparameter0 = Expression
-	Explicitactualparameter.Explicitactualparameter1 = Conditionalexpression {prefer}
-//	Explicitactualparameter.Explicitactualparameter2 = Qualifiedexpression {prefer}
-	
-	Explicitactualparameter.Explicitactualparameter3 = Name {prefer}
-//	
+	Explicitactualparameter.ExplicitActualParamExp = Expression
+	Explicitactualparameter.ExplicitActualParamCondExp = Conditionalexpression {prefer}
+  Explicitactualparameter.ExplicitActualParamQualExp = Qualifiedexpression {prefer}
+
+context-free syntax
 	Simplereturnstatement.Simplereturnstatement12 = "return" Expression? ";"
 //	
 //	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration0 = Definingidentifier ":"   Returnsubtypeindication 
@@ -93,5 +92,7 @@ context-free syntax
 //	
 //	Nullproceduredeclaration.Nullproceduredeclaration0 = Overridingindicator? Procedurespecification "is null" Aspectspecification? ";"
 //	
-//	Expressionfunctiondeclaration.Expressionfunctiondeclaration0 = Overridingindicator? Functionspecification "is (" Expression ")" Aspectspecification? ";"
+	Expressionfunctiondeclaration.Expressionfunctiondeclaration0 = Overridingindicator? Functionspecification "is" "(" Expression ")" Aspectspecification? ";"
+	Expressionfunctiondeclaration.Expressionfunctiondeclaration1 = Overridingindicator? Functionspecification "is" "(" Conditionalexpression ")" Aspectspecification? ";" {prefer}
+	Expressionfunctiondeclaration.Expressionfunctiondeclaration2 = Overridingindicator? Functionspecification "is" "(" Qualifiedexpression ")" Aspectspecification? ";" {prefer}
 	

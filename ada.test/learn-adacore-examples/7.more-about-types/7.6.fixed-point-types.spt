@@ -1,0 +1,94 @@
+module learn-adacore-examples/more-about-types/fixed-point-types
+
+language ada
+
+test decimal fixed point [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Decimal_Fixed_Point_Types is
+   type T3_D3 is delta 10.0 ** (-3) digits 3;
+   type T6_D3 is delta 10.0 ** (-3) digits 6;
+begin
+   Put_Line ("The delta    value of T3_D3 is " & T3_D3'Image (T3_D3'Delta));
+   Put_Line ("The minimum  value of T3_D3 is " & T3_D3'Image (T3_D3'First));
+   Put_Line ("The maximum  value of T3_D3 is " & T3_D3'Image (T3_D3'Last));
+   New_Line;
+   Put_Line ("The delta    value of T6_D3 is " & T6_D3'Image (T6_D3'Delta));
+   Put_Line ("The minimum  value of T6_D3 is " & T6_D3'Image (T6_D3'First));
+   Put_Line ("The maximum  value of T6_D3 is " & T6_D3'Image (T6_D3'Last));
+end Decimal_Fixed_Point_Types;
+]] parse succeeds
+
+test decimal fixed point smaller [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Decimal_Fixed_Point_Smaller is
+   type T3_D3 is delta 10.0 ** (-3) digits 3;
+   type T6_D6 is delta 10.0 ** (-6) digits 6;
+   A : T3_D3 := T3_D3'Delta;
+   B : T3_D3 := 0.5;
+   C : T6_D6;
+begin
+   Put_Line ("The value of A     is " & T3_D3'Image (A));
+   A := A * B;
+   Put_Line ("The value of A * B is " & T3_D3'Image (A));
+   A := T3_D3'Delta;
+   C := A * B;
+   Put_Line ("The value of A * B is " & T6_D6'Image (C));
+end Decimal_Fixed_Point_Smaller;
+]] parse succeeds
+
+test custom fixed point range [[
+with Ada.Text_IO;  use Ada.Text_IO;
+with Ada.Numerics; use Ada.Numerics;
+
+procedure Custom_Fixed_Point_Range is
+   type T_Inv_Trig is delta 2.0 ** (-15) * Pi range -Pi / 2.0 .. Pi / 2.0;
+begin
+   Put_Line ("T_Inv_Trig requires " & Integer'Image (T_Inv_Trig'Size)
+             & " bits");
+   Put_Line ("The delta    value of T_Inv_Trig is "
+             & T_Inv_Trig'Image (T_Inv_Trig'Delta));
+   Put_Line ("The minimum  value of T_Inv_Trig is "
+             & T_Inv_Trig'Image (T_Inv_Trig'First));
+   Put_Line ("The maximum  value of T_Inv_Trig is "
+             & T_Inv_Trig'Image (T_Inv_Trig'Last));
+end Custom_Fixed_Point_Range;
+]] parse succeeds
+
+test fixed point operation [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Fixed_Point_Op is
+   type TQ31 is delta 2.0 ** (-31) range -1.0 .. 1.0 - 2.0 ** (-31);
+
+   A, B, R : TQ31;
+begin
+   A := 0.25;
+   B := 0.50;
+   R := A + B;
+   Put_Line ("R is " & TQ31'Image (R));
+end Fixed_Point_Op;
+]] parse succeeds
+
+test normalized adapted fixed point type [[
+procedure Normalized_Adapted_Fixed_Point_Type is
+   type TQ31 is delta 2.0 ** (-31) range -1.0 .. 1.0 - 2.0 ** (-31);
+begin
+   null;
+end Normalized_Adapted_Fixed_Point_Type;
+]] parse succeeds
+
+test normalized fixed point type [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Normalized_Fixed_Point_Type is
+   D : constant := 2.0 ** (-31);
+   type TQ31 is delta D range -1.0 .. 1.0 - D;
+begin
+   Put_Line ("TQ31 requires " & Integer'Image (TQ31'Size) & " bits");
+   Put_Line ("The delta    value of TQ31 is " & TQ31'Image (TQ31'Delta));
+   Put_Line ("The minimum  value of TQ31 is " & TQ31'Image (TQ31'First));
+   Put_Line ("The maximum  value of TQ31 is " & TQ31'Image (TQ31'Last));
+end Normalized_Fixed_Point_Type;
+]] parse succeeds

@@ -22,11 +22,11 @@ context-free syntax
 	Name.NameSelectComp = Name "." Directname
 //	Name.Name39 = Typeconversion
 //	Name.Name41 = Generalizedreference
-	Name.NameExplDeref = Name ". all"
-	Name.NameSlice = Name "(" Discreterange ")" {prefer}
+	Name.NameExplDeref = Name ".""all"
+	Name.NameSlice = Name "(" Discreterange ")"
 	Name.NameAttr =  Name "'" Attributedesignator
-	Name.NameFCall = Name Actualparameterpart
-//	Name.Name46 = Qualifiedexpression
+	Name.NameFCall = Name Actualparameterpart {prefer}
+	Name.Name46 = Qualifiedexpression
 //	Name.Name47 = Generalizedindexing
 
 	Subtypename.SubtypeNameSelectComp =  Subtypename "." Directname {left}
@@ -34,7 +34,7 @@ context-free syntax
 	Subtypename.SubtypeNameDirect = Directname {prefer}
 
 context-free priorities
-	Name.NameDirect > Name.NameExplDeref > Name.NameSelectComp> Name.NameAttr > Name.NameSlice > Name.NameFCall 
+	Name.NameDirect > Name.NameExplDeref > Name.NameSelectComp > Name.NameSlice > Name.NameAttr  > Name.NameFCall
 context-free syntax
 
 	Directname.DirectNameId = Identifier
@@ -143,10 +143,10 @@ context-free syntax
 	Primary.Primary28 = "null" {prefer}
 	Primary.Primary30 = Aggregate {prefer}
 	Primary.Primary31 = Name {prefer}
-//	Primary.Primary32 = Allocator
+	Primary.Primary32 = Allocator
 	Primary.Primary33 = "(" Expression ")"
 	Primary.Primary34 = "(" Conditionalexpression ")"
-//	Primary.Primary35 = "(" Quantifiedexpression ")"
+	Primary.Primary35 = "(" Quantifiedexpression ")"
 	
 	Logicaloperator.LogOpAnd = "and"
 	Logicaloperator.LogOpOr = "or"
@@ -188,22 +188,22 @@ context-free syntax
 	
 	Caseexpressionalternative.Caseexpressionalternative3 = "when" Discretechoicelist "=>" Expression
 	
-//	Quantifiedexpression.Quantifiedexpression6 = "for" Quantifier Loopparameterspecification "=>" Predicate
-//	Quantifiedexpression.Quantifiedexpression7 = "for" Quantifier Iteratorspecification "=>" Predicate
-//	
-//	Quantifier.Quantifier6 = "all"
-//	Quantifier.Quantifier7 = "some"
-//	
-//	Predicate.Predicate3 = Expression
-//	
-//	Typeconversion.Typeconversion6 = Subtypemark "(" Expression ")"
-//	Typeconversion.Typeconversion7 = Subtypemark "(" Name ")"
-//	
-//	Qualifiedexpression.Qualifiedexpression6 = Subtypemark "' (" Expression ")"
-//	Qualifiedexpression.Qualifiedexpression7 = Subtypemark "'" Aggregate
-//	
-//	Allocator.Allocator8 = "new" Subpoolspecification? Subtypeindication
-//	Allocator.Allocator9 = "new" Subpoolspecification? Qualifiedexpression
-//	
-//	Subpoolspecification.Subpoolspecification3 = "(" Name ")"
+	Quantifiedexpression.Quantifiedexpression6 = "for" Quantifier Loopparameterspecification "=>" Predicate
+	Quantifiedexpression.Quantifiedexpression7 = "for" Quantifier Iteratorspecification "=>" Predicate
+	
+	Quantifier.Quantifier6 = "all"
+	Quantifier.Quantifier7 = "some"
+	
+	Predicate.Predicate3 = Expression
+	
+	Typeconversion.Typeconversion6 = Subtypemark "(" Expression ")"
+	Typeconversion.Typeconversion7 = Subtypemark "(" Name ")"
+	
+	Qualifiedexpression.Qualifiedexpression6 = Subtypemark "' (" Expression ")"
+	Qualifiedexpression.Qualifiedexpression7 = Subtypemark "'" Aggregate
+	
+	Allocator.Allocator8 = "new" Subpoolspecification? Subtypeindication
+	Allocator.Allocator9 = "new" Subpoolspecification? Qualifiedexpression
+	
+	Subpoolspecification.Subpoolspecification3 = "(" Name ")"
 	
