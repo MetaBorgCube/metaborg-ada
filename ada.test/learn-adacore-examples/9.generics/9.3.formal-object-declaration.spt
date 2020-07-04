@@ -1,0 +1,19 @@
+module learn-adacore-examples/generics/formal-object-declaration
+
+language ada
+
+test formal object declaration [[
+generic
+   type T is private;
+   X : in out T;
+   --  X can be used in the Set procedure
+procedure Set (E : T);
+]] parse succeeds
+
+test formal object definition [[
+procedure Set (E : T) is
+   pragma Unreferenced (E, X);
+begin
+   null;
+end Set;
+]] parse succeeds

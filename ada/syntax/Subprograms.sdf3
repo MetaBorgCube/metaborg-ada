@@ -74,22 +74,22 @@ context-free syntax
 
 context-free syntax
 	Simplereturnstatement.Simplereturnstatement12 = "return" Expression? ";"
-//	
-//	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration0 = Definingidentifier ":"   Returnsubtypeindication 
-//	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration1 = Definingidentifier ":" "aliased"  Returnsubtypeindication 
-//	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration2 = Definingidentifier ":"  "constant" Returnsubtypeindication 
-//	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration3 = Definingidentifier ":" "aliased" "constant" Returnsubtypeindication 
-//	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration4 = Definingidentifier ":"   Returnsubtypeindication ":=" Expression
-//	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration5 = Definingidentifier ":" "aliased"  Returnsubtypeindication ":=" Expression
-//	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration6 = Definingidentifier ":"  "constant" Returnsubtypeindication ":=" Expression
-//	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration7 = Definingidentifier ":" "aliased" "constant" Returnsubtypeindication ":=" Expression
-//	
-//	Extendedreturnstatement.Extendedreturnstatement0 = "return" Extendedreturnobjectdeclaration  ";"
-//	Extendedreturnstatement.Extendedreturnstatement1 = "return" Extendedreturnobjectdeclaration "do" Handledsequenceofstatements "end return" ";"
-//	
-//	Returnsubtypeindication.Returnsubtypeindication0 = Subtypeindication
-//	Returnsubtypeindication.Returnsubtypeindication1 = Accessdefinition
-//	
+	
+	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration0 = Definingidentifier ":"   Returnsubtypeindication 
+	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration1 = Definingidentifier ":" "aliased"  Returnsubtypeindication 
+	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration2 = Definingidentifier ":"  "constant" Returnsubtypeindication 
+	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration3 = Definingidentifier ":" "aliased" "constant" Returnsubtypeindication 
+	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration4 = Definingidentifier ":"   Returnsubtypeindication ":=" Expression
+	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration5 = Definingidentifier ":" "aliased"  Returnsubtypeindication ":=" Expression
+	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration6 = Definingidentifier ":"  "constant" Returnsubtypeindication ":=" Expression
+	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration7 = Definingidentifier ":" "aliased" "constant" Returnsubtypeindication ":=" Expression
+	
+	Extendedreturnstatement.Extendedreturnstatement0 = "return" Extendedreturnobjectdeclaration  ";"
+	Extendedreturnstatement.Extendedreturnstatement1 = "return" Extendedreturnobjectdeclaration "do" Handledsequenceofstatements "end" "return" ";"
+	
+	Returnsubtypeindication.Returnsubtypeindication0 = Subtypeindication
+	Returnsubtypeindication.Returnsubtypeindication1 = Accessdefinition
+	
 //	Nullproceduredeclaration.Nullproceduredeclaration0 = Overridingindicator? Procedurespecification "is null" Aspectspecification? ";"
 //	
 	Expressionfunctiondeclaration.Expressionfunctiondeclaration0 = Overridingindicator? Functionspecification "is" "(" Expression ")" Aspectspecification? ";"

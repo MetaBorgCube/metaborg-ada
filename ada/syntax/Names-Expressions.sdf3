@@ -32,6 +32,9 @@ context-free syntax
 	Subtypename.SubtypeNameSelectComp =  Subtypename "." Directname {left}
 	Subtypename.SubtypeAttr = Subtypename "'" Attributedesignator {left}
 	Subtypename.SubtypeNameDirect = Directname {prefer}
+	
+	Staticname.StaticNameDirect = Directname
+	Staticname.StaticNameSelectComp = Name "." Directname
 
 context-free priorities
 	Name.NameDirect > Name.NameExplDeref > Name.NameSelectComp > Name.NameSlice > Name.NameAttr  > Name.NameFCall

@@ -33,9 +33,9 @@ context-free syntax
 //	Libraryitem.Libraryitem4 = "private" Libraryunitrenamingdeclaration
 	
 	Libraryunitdeclaration.Libraryunitdeclaration0 = Subprogramdeclaration
-//	Libraryunitdeclaration.Libraryunitdeclaration1 = Genericdeclaration
+	Libraryunitdeclaration.Libraryunitdeclaration1 = Genericdeclaration
 	Libraryunitdeclaration.Libraryunitdeclaration2 = Packagedeclaration
-//	Libraryunitdeclaration.Libraryunitdeclaration3 = Genericinstantiation
+	Libraryunitdeclaration.Libraryunitdeclaration3 = Genericinstantiation
 //	
 //	Libraryunitrenamingdeclaration.Libraryunitrenamingdeclaration0 = Packagerenamingdeclaration
 //	Libraryunitrenamingdeclaration.Libraryunitrenamingdeclaration1 = Genericrenamingdeclaration

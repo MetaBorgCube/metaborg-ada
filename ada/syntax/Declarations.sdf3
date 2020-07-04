@@ -20,16 +20,17 @@ context-free syntax
 	Basicdeclaration.Basicdeclaration14 = Objectdeclaration
 	Basicdeclaration.Basicdeclaration15 = Subprogramdeclaration
 //	Basicdeclaration.Basicdeclaration16 = Nullproceduredeclaration
-//	Basicdeclaration.Basicdeclaration17 = Packagedeclaration
-//	Basicdeclaration.Basicdeclaration18 = Exceptiondeclaration
-//	Basicdeclaration.Basicdeclaration19 = Genericinstantiation
+	Basicdeclaration.Basicdeclaration17 = Packagedeclaration
+	Basicdeclaration.Basicdeclaration18 = Exceptiondeclaration
+	Basicdeclaration.Basicdeclaration19 = Genericinstantiation
 	Basicdeclaration.Basicdeclaration20 = Subtypedeclaration
 	Basicdeclaration.Basicdeclaration21 = Numberdeclaration
 //	Basicdeclaration.Basicdeclaration22 = Abstractsubprogramdeclaration
 	Basicdeclaration.Basicdeclaration23 = Expressionfunctiondeclaration
 	Basicdeclaration.Basicdeclaration24 = Renamingdeclaration
-//	Basicdeclaration.Basicdeclaration25 = Genericdeclaration
-//	
+	Basicdeclaration.Basicdeclaration25 = Genericdeclaration
+	Basicdeclaration.BasicDeclPragma = Pragma
+	
 	Definingidentifier.Definingidentifier1 = Identifier
 	
 	Typedeclaration.Typedeclaration4 = Fulltypedeclaration
