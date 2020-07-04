@@ -126,8 +126,8 @@ context-free syntax
 //	Relation.Relation15 = Simpleexpression "not" "in" Membershipchoicelist
 //	
 	Membershipchoicelist.Membershipchoicelist3 = {Membershipchoice "|"}+
-//	
-//	Membershipchoice.Membershipchoice9 = Choiceexpression
+	
+	Membershipchoice.Membershipchoice9 = Choiceexpression
 	Membershipchoice.Membershipchoice10 = Range
 //	Membershipchoice.Membershipchoice11 = Subtypemark
 //	

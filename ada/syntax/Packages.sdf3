@@ -26,12 +26,12 @@ context-free syntax
 	Packagespecification.Packagespecification4 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem*  "end" Parentunitname "." Identifier
 	Packagespecification.Packagespecification5 = "package" Definingprogramunitname Aspectspecification? "is" Basicdeclarativeitem* "private" Basicdeclarativeitem* "end" Parentunitname "." Identifier
 	
-	Packagebody.Packagebody0 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart  "end"  ";"
-	Packagebody.Packagebody1 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end"  ";"
-	Packagebody.Packagebody2 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart  "end"  Identifier ";"
-	Packagebody.Packagebody3 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end"  Identifier ";"
-	Packagebody.Packagebody4 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart  "end" Parentunitname "." Identifier ";"
-	Packagebody.Packagebody5 = "package body" Definingprogramunitname Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end" Parentunitname "." Identifier ";"
+	Packagebody.Packagebody0 = "package" "body" Definingprogramunitname Aspectspecification? "is" Declarativepart  "end"  ";"
+	Packagebody.Packagebody1 = "package" "body" Definingprogramunitname Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end"  ";"
+	Packagebody.Packagebody2 = "package" "body" Definingprogramunitname Aspectspecification? "is" Declarativepart  "end"  Identifier ";"
+	Packagebody.Packagebody3 = "package" "body" Definingprogramunitname Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end"  Identifier ";"
+	Packagebody.Packagebody4 = "package" "body" Definingprogramunitname Aspectspecification? "is" Declarativepart  "end" Parentunitname "." Identifier ";"
+	Packagebody.Packagebody5 = "package" "body" Definingprogramunitname Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end" Parentunitname "." Identifier ";"
 	
 	Privatetypedeclaration.Privatetypedeclaration0 = "type" Definingidentifier Discriminantpart? "is"   "private" Aspectspecification? ";"
 	Privatetypedeclaration.Privatetypedeclaration1 = "type" Definingidentifier Discriminantpart? "is"  "tagged"  "private" Aspectspecification? ";"

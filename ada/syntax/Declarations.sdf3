@@ -220,7 +220,7 @@ context-free syntax
 //	
 //	Recordextensionpart.Recordextensionpart1 = "with" Recorddefinition
 //	
-//	Abstractsubprogramdeclaration.Abstractsubprogramdeclaration1 = Overridingindicator? Subprogramspecification "is abstract" Aspectspecification? ";"
+//	Abstractsubprogramdeclaration.Abstractsubprogramdeclaration1 = Overridingindicator? Subprogramspecification "is" "abstract" Aspectspecification? ";"
 //	
 	Interfacetypedefinition.Interfacetypedefinition10 =  "interface" 
 	Interfacetypedefinition.Interfacetypedefinition11 = "limited" "interface" 
@@ -248,7 +248,7 @@ context-free syntax
 	Accesstosubprogramdefinition.Accesstosubprogramdefinition6 = "access"  "function" Parameterandresultprofile
 	Accesstosubprogramdefinition.Accesstosubprogramdefinition7 = "access" "protected" "function" Parameterandresultprofile
 	
-	Nullexclusion.Nullexclusion1 = "not null"
+	Nullexclusion.Nullexclusion1 = "not" "null"
 	
 	Accessdefinition.Accessdefinition6 = Nullexclusion? "access"  Subtypemark
 	Accessdefinition.Accessdefinition7 = Nullexclusion? "access" "constant" Subtypemark
@@ -266,14 +266,14 @@ context-free syntax
 	Declarativeitem.Declarativeitem3 = Body
 	
 	Basicdeclarativeitem.Basicdeclarativeitem3 = Basicdeclaration
-//	Basicdeclarativeitem.Basicdeclarativeitem4 = Aspectclause
+	Basicdeclarativeitem.Basicdeclarativeitem4 = Aspectclause
 	Basicdeclarativeitem.Basicdeclarativeitem5 = Useclause
 	
 	Body.Body2 = Properbody
 //	Body.Body3 = Bodystub
 //	
 	Properbody.Properbody4 = Subprogrambody
-//	Properbody.Properbody5 = Packagebody
+	Properbody.Properbody5 = Packagebody
 	Properbody.Properbody6 = Taskbody
 	Properbody.Properbody7 = Protectedbody
 	

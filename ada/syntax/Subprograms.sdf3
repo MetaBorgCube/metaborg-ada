@@ -89,7 +89,7 @@ context-free syntax
 	Returnsubtypeindication.Returnsubtypeindication0 = Subtypeindication
 	Returnsubtypeindication.Returnsubtypeindication1 = Accessdefinition
 	
-//	Nullproceduredeclaration.Nullproceduredeclaration0 = Overridingindicator? Procedurespecification "is null" Aspectspecification? ";"
+//	Nullproceduredeclaration.Nullproceduredeclaration0 = Overridingindicator? Procedurespecification "is" "null" Aspectspecification? ";"
 //	
 	Expressionfunctiondeclaration.Expressionfunctiondeclaration0 = Overridingindicator? Functionspecification "is" "(" Expression ")" Aspectspecification? ";"
 	Expressionfunctiondeclaration.Expressionfunctiondeclaration1 = Overridingindicator? Functionspecification "is" "(" Conditionalexpression ")" Aspectspecification? ";" {prefer}
