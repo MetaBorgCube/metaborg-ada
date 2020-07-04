@@ -39,8 +39,8 @@ context-free syntax
 	Typedeclaration.Typedeclaration7 = Privateextensiondeclaration
 	
 	Fulltypedeclaration.Fulltypedeclaration3 = "type" Definingidentifier Knowndiscriminantpart? "is" Typedefinition Aspectspecification? ";"
-//	Fulltypedeclaration.Fulltypedeclaration4 = Tasktypedeclaration
-//	Fulltypedeclaration.Fulltypedeclaration5 = Protectedtypedeclaration
+	Fulltypedeclaration.Fulltypedeclaration4 = Tasktypedeclaration
+	Fulltypedeclaration.Fulltypedeclaration5 = Protectedtypedeclaration
 	
 	Typedefinition.Typedefinition8 = Enumerationtypedefinition
 	Typedefinition.Typedefinition9 = Realtypedefinition
@@ -91,9 +91,9 @@ context-free syntax
 	Objectdeclaration.Objectdeclaration47 = Definingidentifierlist ":" "aliased"  Arraytypedefinition ":=" Expression Aspectspecification? ";"
 	Objectdeclaration.Objectdeclaration48 = Definingidentifierlist ":"  "constant" Arraytypedefinition ":=" Expression Aspectspecification? ";"
 	Objectdeclaration.Objectdeclaration49 = Definingidentifierlist ":" "aliased" "constant" Arraytypedefinition ":=" Expression Aspectspecification? ";"
-//	Objectdeclaration.Objectdeclaration50 = Singletaskdeclaration
-//	Objectdeclaration.Objectdeclaration51 = Singleprotecteddeclaration
-//	
+	Objectdeclaration.Objectdeclaration50 = Singletaskdeclaration
+	Objectdeclaration.Objectdeclaration51 = Singleprotecteddeclaration
+	
 	Definingidentifierlist.Definingidentifierlist1 = {Definingidentifier ","}+
 	
 	Numberdeclaration.Numberdeclaration1 = Definingidentifierlist ": constant :=" Expression ";"
@@ -274,6 +274,6 @@ context-free syntax
 //	
 	Properbody.Properbody4 = Subprogrambody
 //	Properbody.Properbody5 = Packagebody
-//	Properbody.Properbody6 = Taskbody
-//	Properbody.Properbody7 = Protectedbody
+	Properbody.Properbody6 = Taskbody
+	Properbody.Properbody7 = Protectedbody
 	

@@ -32,17 +32,17 @@ context-free syntax
 	Simplestatement.Simplestatement7 = Exitstatement
 	Simplestatement.Simplestatement8 = Procedurecallstatement
 //	Simplestatement.Simplestatement9 = Entrycallstatement
-//	Simplestatement.Simplestatement10 = Delaystatement
+	Simplestatement.Simplestatement10 = Delaystatement
 	Simplestatement.Simplestatement11 = Raisestatement
 	Simplestatement.SimpleStmntPragma = Pragma
 	
 	Compoundstatement.Compoundstatement0 = Ifstatement
 	Compoundstatement.Compoundstatement1 = Loopstatement
 	Compoundstatement.Compoundstatement2 = Extendedreturnstatement
-//	Compoundstatement.Compoundstatement3 = Acceptstatement
+	Compoundstatement.Compoundstatement3 = Acceptstatement
 	Compoundstatement.Compoundstatement4 = Casestatement
 	Compoundstatement.Compoundstatement5 = Blockstatement
-//	Compoundstatement.Compoundstatement6 = Selectstatement
+	Compoundstatement.Compoundstatement6 = Selectstatement
 	
 	Nullstatement.Nullstatement0 = "null"";"
 	

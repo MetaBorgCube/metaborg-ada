@@ -72,7 +72,6 @@ context-free syntax
 	Explicitactualparameter.ExplicitActualParamCondExp = Conditionalexpression {prefer}
   Explicitactualparameter.ExplicitActualParamQualExp = Qualifiedexpression {prefer}
 
-context-free syntax
 	Simplereturnstatement.Simplereturnstatement12 = "return" Expression? ";"
 	
 	Extendedreturnobjectdeclaration.Extendedreturnobjectdeclaration0 = Definingidentifier ":"   Returnsubtypeindication 
