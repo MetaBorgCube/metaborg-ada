@@ -1,0 +1,84 @@
+module learn-adacore-examples/exceptions
+
+language ada
+
+test exception [[
+package Exceptions is
+    My_Except : exception;
+    --  Like an object. *NOT* a type !
+end Exceptions;
+]] parse succeeds
+
+test handle exception [[
+with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Exceptions;  use Ada.Exceptions;
+
+procedure Open_File is
+   File : File_Type;
+begin
+   --  Block (sequence of statements)
+   begin
+      Open (File, In_File, "input.txt");
+   exception
+      when E : Name_Error =>
+      --       ^ Exception to be handled
+         Put ("Cannot open input file : ");
+         Put_Line (Exception_Message (E));
+         raise;
+         --  Reraise current occurence
+   end;
+end Open_File;
+]] parse succeeds
+
+test raise exception [[
+with Exceptions; use Exceptions;
+
+procedure Main is
+begin
+   raise My_Except;
+   --  Execution of current control flow abandoned; an exception of kind
+   --  "My_Except" will bubble up until it is caught.
+
+   raise My_Except with "My exception message";
+   --  Execution of current control flow abandoned; an exception of
+   --  kind "My_Except" with associated string will bubble up until
+   --  it is caught.
+end Main;
+]] parse succeeds
+
+test exception block [[
+with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Exceptions;  use Ada.Exceptions;
+
+procedure Open_File is
+   File : File_Type;
+begin
+   Open (File, In_File, "input.txt");
+--  Exception block can be added to any block
+exception
+   when Name_Error =>
+      Put ("Cannot open input file");
+end Open_File;
+]] parse succeeds
+
+test exception in declarative part [[
+with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Exceptions;  use Ada.Exceptions;
+
+procedure Be_Careful is
+   function Dangerous return Integer is
+   begin
+      raise Constraint_Error;
+      return 42;
+   end Dangerous;
+
+begin
+   declare
+      A : Integer := Dangerous;
+   begin
+      Put_Line (Integer'Image (A));
+   exception
+      when Constraint_Error => Put_Line ("error!");
+   end;
+end Be_Careful;
+]] parse succeeds

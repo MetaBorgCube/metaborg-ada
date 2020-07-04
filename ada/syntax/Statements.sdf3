@@ -77,10 +77,10 @@ context-free syntax
 	Iteratorspecification.Iteratorspecification4 = Definingidentifier  "of" "reverse" Name
 	Iteratorspecification.Iteratorspecification5 = Definingidentifier ":" Subtypeindication "of" "reverse" Name
 	
-//	Blockstatement.Blockstatement0 =   "begin" Handledsequenceofstatements "end" Identifier? ";"
-//	Blockstatement.Blockstatement1 = Statementidentifier ":"  "begin" Handledsequenceofstatements "end" Identifier? ";"
+	Blockstatement.Blockstatement0 = "begin" Handledsequenceofstatements "end" Identifier? ";"
+	Blockstatement.Blockstatement1 = Statementidentifier ":"  "begin" Handledsequenceofstatements "end" Identifier? ";"
 	Blockstatement.Blockstatement2 =  "declare" Declarativepart "begin" Handledsequenceofstatements "end" Identifier? ";"
-//	Blockstatement.Blockstatement3 = Statementidentifier ":" "declare" Declarativepart "begin" Handledsequenceofstatements "end" Identifier? ";"
+	Blockstatement.Blockstatement3 = Statementidentifier ":" "declare" Declarativepart "begin" Handledsequenceofstatements "end" Identifier? ";"
 	
 	Exitstatement.Exitstatement0 = "exit" Name?  ";"
 	Exitstatement.Exitstatement1 = "exit" Name? "when" Condition ";"
