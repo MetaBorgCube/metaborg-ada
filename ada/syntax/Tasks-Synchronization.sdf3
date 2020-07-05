@@ -32,8 +32,8 @@ context-free syntax
 	
 	Taskbody.Taskbody0 = "task" "body" Definingidentifier Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end" Identifier? ";"
 	
-	Protectedtypedeclaration.Protectedtypedeclaration0 = "protected type" Definingidentifier Knowndiscriminantpart? Aspectspecification? "is"  Protecteddefinition ";"
-	Protectedtypedeclaration.Protectedtypedeclaration1 = "protected type" Definingidentifier Knowndiscriminantpart? Aspectspecification? "is" "new" Interfacelist "with" Protecteddefinition ";"
+	Protectedtypedeclaration.Protectedtypedeclaration0 = "protected" "type" Definingidentifier Knowndiscriminantpart? Aspectspecification? "is"  Protecteddefinition ";"
+	Protectedtypedeclaration.Protectedtypedeclaration1 = "protected" "type" Definingidentifier Knowndiscriminantpart? Aspectspecification? "is" "new" Interfacelist "with" Protecteddefinition ";"
 	
 	Singleprotecteddeclaration.Singleprotecteddeclaration0 = "protected" Definingidentifier Aspectspecification? "is"  Protecteddefinition ";"
 	Singleprotecteddeclaration.Singleprotecteddeclaration1 = "protected" Definingidentifier Aspectspecification? "is" "new" Interfacelist "with" Protecteddefinition ";"
@@ -79,10 +79,10 @@ context-free syntax
 	Entryindexspecification.Entryindexspecification0 = "for" Definingidentifier "in" Discretesubtypedefinition
 	
 	Entrycallstatement.Entrycallstatement0 = Name Actualparameterpart? ";"
-//	
-//	Requeuestatement.Requeuestatement0 = "requeue" Name  ";"
-//	Requeuestatement.Requeuestatement1 = "requeue" Name "with" "abort" ";"
-//	
+	
+	Requeuestatement.Requeuestatement0 = "requeue" Name  ";"
+	Requeuestatement.Requeuestatement1 = "requeue" Name "with" "abort" ";"
+	
 	Delaystatement.Delaystatement0 = Delayuntilstatement
 	Delaystatement.Delaystatement1 = Delayrelativestatement
 	
@@ -116,7 +116,7 @@ context-free syntax
 	Entrycallalternative.Entrycallalternative0 = Procedureorentrycall Sequenceofstatements?
 	
 	Procedureorentrycall.Procedureorentrycall0 = Procedurecallstatement
-	Procedureorentrycall.Procedureorentrycall1 = Entrycallstatement
+//	Procedureorentrycall.Procedureorentrycall1 = Entrycallstatement
 	
 	Conditionalentrycall.Conditionalentrycall0 = "select" Entrycallalternative "else" Sequenceofstatements "end" "select" ";"
 	

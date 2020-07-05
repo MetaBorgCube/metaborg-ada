@@ -18,11 +18,11 @@ imports
 context-free syntax
 
 	Aspectclause.Aspectclause20 = Attributedefinitionclause
-//	Aspectclause.Aspectclause21 = Enumerationrepresentationclause
+	Aspectclause.Aspectclause21 = Enumerationrepresentationclause
 	Aspectclause.Aspectclause22 = Recordrepresentationclause
 	Aspectclause.Aspectclause23 = Atclause
 	
-	Localname.Localname0 = Directname
+	Localname.Localname0 = Directname {prefer}
 	Localname.Localname1 = Directname "'" Attributedesignator
 	Localname.Localname2 = Name
 	
@@ -40,11 +40,11 @@ context-free syntax
 	Attributedefinitionclause.Attributedefinitionclause0 = "for" Localname "'" Attributedesignator "use" Expression ";"
 	Attributedefinitionclause.Attributedefinitionclause1 = "for" Localname "'" Attributedesignator "use" Name ";"
 	
-//	Enumerationrepresentationclause.Enumerationrepresentationclause0 = "for" Localname "use" Enumerationaggregate ";"
-//	
-//	Enumerationaggregate.Enumerationaggregate0 = Arrayaggregate
+	Enumerationrepresentationclause.Enumerationrepresentationclause0 = "for" Localname "use" Enumerationaggregate ";"
 	
-	Recordrepresentationclause.Recordrepresentationclause0 = "for" Localname "use record" Modclause? Componentclause* "end record ;"
+	Enumerationaggregate.Enumerationaggregate0 = Arrayaggregate
+	
+	Recordrepresentationclause.Recordrepresentationclause0 = "for" Localname "use" "record" Modclause? Componentclause* "end" "record" ";"
 	
 	Componentclause.Componentclause0 = Localname "at" Position "range" Firstbit ".." Lastbit ";"
 	

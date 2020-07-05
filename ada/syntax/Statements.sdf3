@@ -18,16 +18,16 @@ imports
 context-free syntax
 
 	Sequenceofstatements.Sequenceofstatements0 = Statement+ Label*
-//	
+	
 	Statement.Statement0 = Label* Simplestatement
 	Statement.Statement1 = Label* Compoundstatement
 	
 	Simplestatement.Simplestatement0 = Nullstatement
 	Simplestatement.Simplestatement1 = Assignmentstatement
-//	Simplestatement.Simplestatement2 = Gotostatement
+	Simplestatement.Simplestatement2 = Gotostatement
 	Simplestatement.Simplestatement3 = Simplereturnstatement
-//	Simplestatement.Simplestatement4 = Requeuestatement
-//	Simplestatement.Simplestatement5 = Abortstatement
+	Simplestatement.Simplestatement4 = Requeuestatement
+	Simplestatement.Simplestatement5 = Abortstatement
 //	Simplestatement.Simplestatement6 = Codestatement
 	Simplestatement.Simplestatement7 = Exitstatement
 	Simplestatement.Simplestatement8 = Procedurecallstatement
@@ -46,7 +46,7 @@ context-free syntax
 	
 	Nullstatement.Nullstatement0 = "null"";"
 	
-	Label.Label0 = "<<" Statementidentifier ">>"
+	Label.Label0 = "<""<" Statementidentifier ">"">"
 	
 	Statementidentifier.Statementidentifier0 = Directname
 	
@@ -84,6 +84,6 @@ context-free syntax
 	
 	Exitstatement.Exitstatement0 = "exit" Name?  ";"
 	Exitstatement.Exitstatement1 = "exit" Name? "when" Condition ";"
-//	
-//	Gotostatement.Gotostatement0 = "goto" Name ";"
+	
+	Gotostatement.Gotostatement0 = "goto" Name ";"
 	

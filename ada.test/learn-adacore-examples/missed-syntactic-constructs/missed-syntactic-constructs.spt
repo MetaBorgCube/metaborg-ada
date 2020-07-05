@@ -1,0 +1,223 @@
+module learn-adacore-examples/missed-syntactic-constructs
+
+language ada
+
+test abort statement [[
+procedure Show_Abort is
+begin
+	abort Some_Task, Other_task;
+end Show_Abort;
+]] parse succeeds
+
+test abstract subprogram [[
+package Sets is
+subtype Element_Type is Natural;
+type Set is abstract tagged null record;
+function Empty return Set is abstract;
+function Union(Left, Right : Set) return Set is abstract;
+function Intersection(Left, Right : Set) return Set is abstract;
+function Unit_Set(Element : Element_Type) return Set is abstract;
+procedure Take(Element : out Element_Type;
+	From : in out Set) is abstract;
+end Sets;
+]] parse succeeds
+
+test access definition return [[
+package Office is
+end Office;
+
+with Ada.Strings.Unbounded;
+package Office.Locations is
+	type Location is new Ada.Strings.Unbounded.Unbounded_String;
+end Office.Locations;
+
+limited with Office.Departments; -- types are incomplete
+private with Office.Locations; -- only visible in private part
+package Office.Employees is
+	type Employee is private;
+	
+	function Dept_Of(Emp : Employee) return access Departments.Department;
+	procedure Assign_Dept(Emp : in out Employee;
+	Dept : access Departments.Department);
+	
+	private
+		type Employee is
+			record
+				Dept : access Departments.Department;
+				Loc : Locations.Location;
+			end record;
+end Office.Employees;
+
+limited with Office.Employees;
+package Office.Departments is
+	type Department is private;
+	
+	function Manager_Of(Dept : Department) return access Employees.Employee;
+	procedure Assign_Manager(Dept : in out Department;
+	Mgr : access Employees.Employee);
+end Office.Departments;
+]] parse succeeds
+
+test access definition [[
+package Show_Access_Definition is
+	type Timing_Event_Handler
+			is access protected procedure (Event : in out Timing_Event);
+end Show_Access_Definition;
+]] parse succeeds
+
+test aliased parameter [[
+package Show_Aliased is
+function Find (B : aliased in out Barrel; Key : String) return Ref_Element;
+-- Return a reference to an element of a barrel.
+B: aliased Barrel;
+end Show_Aliased;
+]] parse succeeds
+
+test label and goto statement [[
+procedure Show_Goto_Statement is
+begin
+	<<Sort>>
+	for I in 1 .. N-1 loop
+		if A(I) > A(I+1) then
+			Exchange(A(I), A(I+1));
+			goto Sort;
+		end if;
+	end loop;
+end Show_Goto_Statement;
+]] parse succeeds
+
+test labeled statement [[
+procedure Labeled_Statement is
+begin
+	<<Here>> <<Ici>> <<Aqui>> <<Hier>> null;
+end Labeled_Statement;
+]] parse succeeds
+
+test null procedure [[
+package Null_Procedure is
+procedure Simplify(Expr : in out Expression) is null; -- see 3.9
+-- By default, Simplify does nothing, but it may be overridden in extensions of Expression
+end Null_Procedure;
+]] parse succeeds
+
+test record extension [[
+package Record_Extension is
+type Painted_Point is new Point with
+	record
+		Paint : Color := White;
+	end record;
+-- Components X and Y are inherited
+
+Origin : constant Painted_Point := (X | Y => 0.0, Paint => Black);
+
+type Literal is new Expression with
+	record -- a leaf in an Expression tree
+		Value : Real;
+	end record;
+	
+type Expr_Ptr is access all Expression'Class;
+-- see 3.10
+
+type Binary_Operation is new Expression with
+	record -- an internal node in an Expression tree
+		Left, Right : Expr_Ptr;
+	end record;
+	
+type Addition is new Binary_Operation with null record;
+
+type Subtraction is new Binary_Operation with null record;
+
+-- No additional components needed for these extensions
+Tree : Expr_Ptr := -- A tree representation of “5.0 + (13.0–7.0)”
+new Addition'(
+	Left => new Literal'(Value => 5.0),
+	Right => new Subtraction'(
+		Left => new Literal'(Value => 13.0),
+		Right => new Literal'(Value => 7.0)
+		)
+	);
+end Record_Extension;
+]] parse succeeds
+
+test renaming exception [[
+package Rename_Exception is
+	Status_Error : exception renames Ada.IO_Exceptions.Status_Error;
+	Name_Error : exception renames Ada.IO_Exceptions.Name_Error;
+	Use_Error : exception renames Ada.IO_Exceptions.Use_Error;
+	Device_Error : exception renames Ada.IO_Exceptions.Device_Error;
+private
+-- not specified by the language
+end Rename_Exception;
+]] parse succeeds
+
+
+test rename library unit [[
+with Ada.Unchecked_Conversion;
+generic function Unchecked_Conversion renames Ada.Unchecked_Conversion;
+
+with Ada.Unchecked_Deallocation;
+generic procedure Unchecked_Deallocation renames Ada.Unchecked_Deallocation;
+
+with Ada.Sequential_IO;
+generic package Sequential_IO renames Ada.Sequential_IO;
+
+with Ada.Direct_IO;
+generic package Direct_IO renames Ada.Direct_IO;
+
+with Ada.Text_IO;
+package Text_IO renames Ada.Text_IO;
+
+with Ada.IO_Exceptions;
+package IO_Exceptions renames Ada.IO_Exceptions;
+
+with Ada.Calendar;
+package Calendar renames Ada.Calendar;
+
+with System.Machine_Code;
+package Machine_Code renames System.Machine_Code; -- If supported
+]] parse succeeds
+
+test renaming object [[
+procedure Rename_Object is
+begin
+	declare
+		L : Person renames Leftmost_Person; -- see 3.10.1
+	begin
+		L.Age := L.Age + 1;
+	end;
+end Rename_Object;
+]] parse succeeds
+
+test rename subprogram [[
+procedure My_Write(C : in Character) renames Pool(K).Write; -- see 4.1.3
+function Real_Plus(Left, Right : Real ) return Real renames "+";
+function Int_Plus (Left, Right : Integer) return Integer renames "+";
+function Rouge return Color renames Red; -- see 3.5.1
+function Rot return Color renames Red;
+function Rosso return Color renames Rouge;
+function Next(X : Color) return Color renames Color'Succ; -- see 3.5.1
+function Minimum(L : Link := Head) return Cell renames Min_Cell; -- see 6.1
+]] parse succeeds
+
+test requeue statement [[
+procedure Requeue_Statement is
+begin
+	requeue Request(Medium) with abort;
+	requeue Request(Medium);
+end Requeue_Statement;
+]] parse succeeds
+
+test separate compilation [[
+package body Parent is
+	Variable : String := "Hello, there.";
+	procedure Inner is separate;
+end Parent;
+
+with Ada.Text_IO;
+
+separate(Parent)
+procedure Inner is
+begin
+	Ada.Text_IO.Put_Line(Variable);
+end Inner;
+]] parse succeeds

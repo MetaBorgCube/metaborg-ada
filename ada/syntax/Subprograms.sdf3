@@ -18,7 +18,7 @@ imports
 context-free syntax
 
 	Subprogramdeclaration.Subprogramdeclaration0 = Overridingindicator? Subprogramspecification Aspectspecification? ";"
-//	
+	
 	Subprogramspecification.Subprogramspecification0 = Procedurespecification
 	Subprogramspecification.Subprogramspecification1 = Functionspecification
 	
@@ -43,23 +43,23 @@ context-free syntax
 	Parameterprofile.Parameterprofile0 = Formalpart?
 	
 	Parameterandresultprofile.Parameterandresultprofile0 = Formalpart? "return" Nullexclusion? Subtypemark
-//	Parameterandresultprofile.Parameterandresultprofile1 = Formalpart? "return" Accessdefinition
-//	
+	Parameterandresultprofile.Parameterandresultprofile1 = Formalpart? "return" Accessdefinition
+	
 	Formalpart.Formalpart0 = "(" {Parameterspecification ";"}+ ")"
-//	
+	
 	Parameterspecification.Parameterspecification0 = Definingidentifierlist ":"  Mode? Nullexclusion? Subtypemark 
-//	Parameterspecification.Parameterspecification1 = Definingidentifierlist ":" "aliased" Mode Nullexclusion? Subtypemark 
+	Parameterspecification.Parameterspecification1 = Definingidentifierlist ":" "aliased" Mode Nullexclusion? Subtypemark 
 	Parameterspecification.Parameterspecification2 = Definingidentifierlist ":"  Mode? Nullexclusion? Subtypemark ":=" Defaultexpression
-//	Parameterspecification.Parameterspecification3 = Definingidentifierlist ":" "aliased" Mode? Nullexclusion? Subtypemark ":=" Defaultexpression
+	Parameterspecification.Parameterspecification3 = Definingidentifierlist ":" "aliased" Mode? Nullexclusion? Subtypemark ":=" Defaultexpression
 	Parameterspecification.Parameterspecification4 = Definingidentifierlist ":" Accessdefinition 
-//	Parameterspecification.Parameterspecification5 = Definingidentifierlist ":" Accessdefinition ":=" Defaultexpression
+	Parameterspecification.Parameterspecification5 = Definingidentifierlist ":" Accessdefinition ":=" Defaultexpression
 	
 	Mode.Mode1 = "in"
-	Mode.Mode2 = "in out"
+	Mode.Mode2 = "in" "out"
 	Mode.Mode3 = "out"
 
 	Subprogrambody.SubprogramBody = Overridingindicator? Subprogramspecification Aspectspecification? "is" Declarativepart "begin" Handledsequenceofstatements "end" Designator? ";"
-//	
+	
 	Procedurecallstatement.Procedurecallstatement0 = Name ";"
 	Procedurecallstatement.Procedurecallstatement1 = Name Actualparameterpart ";" {prefer}
 	
@@ -89,8 +89,8 @@ context-free syntax
 	Returnsubtypeindication.Returnsubtypeindication0 = Subtypeindication
 	Returnsubtypeindication.Returnsubtypeindication1 = Accessdefinition
 	
-//	Nullproceduredeclaration.Nullproceduredeclaration0 = Overridingindicator? Procedurespecification "is" "null" Aspectspecification? ";"
-//	
+	Nullproceduredeclaration.Nullproceduredeclaration0 = Overridingindicator? Procedurespecification "is" "null" Aspectspecification? ";"
+	
 	Expressionfunctiondeclaration.Expressionfunctiondeclaration0 = Overridingindicator? Functionspecification "is" "(" Expression ")" Aspectspecification? ";"
 	Expressionfunctiondeclaration.Expressionfunctiondeclaration1 = Overridingindicator? Functionspecification "is" "(" Conditionalexpression ")" Aspectspecification? ";" {prefer}
 	Expressionfunctiondeclaration.Expressionfunctiondeclaration2 = Overridingindicator? Functionspecification "is" "(" Qualifiedexpression ")" Aspectspecification? ";" {prefer}
