@@ -1,0 +1,43 @@
+module learn-adacore-examples/arrays/string-array-type
+
+language ada
+
+test string literal [[
+package String_Literals is
+    --  Those two declarations are equivalent
+    A : String (1 .. 11) := "Hello World";
+    B : String (1 .. 11) := ('H', 'e', 'l', 'l', 'o', ' ',
+                             'W', 'o', 'r', 'l', 'd');
+end String_Literals;
+]] parse succeeds
+
+test use string literal [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Greet is
+   Message : String (1 .. 11) := "dlroW olleH";
+   --        ^ Pre-defined array type.
+   --          Component type is Character
+begin
+   for I in reverse Message'Range loop
+      --    ^ Iterate in reverse order
+      Put (Message (I));
+   end loop;
+   New_Line;
+end Greet;
+]] parse succeeds
+
+test string literal bounds [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Greet is
+   Message : constant String := "dlroW olleH";
+   --                 ^ Bounds are automatically computed
+   --                   from initialization value
+begin
+   for I in reverse Message'Range loop
+      Put (Message (I));
+   end loop;
+   New_Line;
+end Greet;
+]] parse succeeds

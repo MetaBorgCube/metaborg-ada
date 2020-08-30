@@ -1,0 +1,48 @@
+module learn-adacore-examples/subprograms
+
+language ada
+
+test parameter in [[
+procedure Swap (A, B : in Integer) is
+   Tmp : Integer;
+begin
+   Tmp := A;
+
+   --  Error: assignment to "in" mode parameter not allowed
+   A := B;
+   --  Error: assignment to "in" mode parameter not allowed
+   B := Tmp;
+end Swap;
+]] parse succeeds
+
+test parameter in out [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure In_Out_Params is
+   procedure Swap (A, B : in out Integer) is
+      Tmp : Integer;
+   begin
+      Tmp := A;
+      A := B;
+      B := Tmp;
+   end Swap;
+
+   A : Integer := 12;
+   B : Integer := 44;
+begin
+    Swap (A, B);
+    Put_Line (Integer'Image (A)); --  Prints 44
+end In_Out_Params;
+]] parse succeeds
+
+test parameter out [[
+procedure Outp is
+   procedure Foo (A : out Integer) is
+      B : Integer := A; -- Warning on reference to uninitialized A
+   begin
+      A := B;
+   end Foo;
+begin
+   null;
+end Outp;
+]] parse succeeds

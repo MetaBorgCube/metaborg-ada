@@ -1,0 +1,43 @@
+module learn-adacore-examples/subprograms
+
+language ada
+
+test rename procedure [[
+with A_Procedure_With_Very_Long_Name_That_Cannot_Be_Changed;
+
+procedure Show_Renaming is
+
+   procedure Show (S : String) renames
+     A_Procedure_With_Very_Long_Name_That_Cannot_Be_Changed;
+
+begin
+   Show ("Hello World!");
+end Show_Renaming;
+]] parse succeeds
+
+test rename procedure standard lib [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Show_Image_Renaming is
+
+   function Img (I : Integer) return String renames Integer'Image;
+
+begin
+   Put_Line (Img (2));
+   Put_Line (Img (3));
+end Show_Image_Renaming;
+]] parse succeeds
+
+
+test rename procedure default exp [[
+with A_Procedure_With_Very_Long_Name_That_Cannot_Be_Changed;
+
+procedure Show_Renaming_Defaults is
+
+   procedure Show (S : String := "Hello World!") renames
+     A_Procedure_With_Very_Long_Name_That_Cannot_Be_Changed;
+
+begin
+   Show;
+end Show_Renaming_Defaults;
+]] parse succeeds

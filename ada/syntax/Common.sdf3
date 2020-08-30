@@ -2,43 +2,129 @@ module Common
 
 lexical syntax
 
-  ID             = [a-zA-Z] [a-zA-Z0-9]* 
-  INT            = "-"? [0-9]+ 
-  STRING         = "\"" StringChar* "\"" 
-  StringChar     = ~[\"\n] 
-  StringChar     = "\\\"" 
-  StringChar     = BackSlashChar 
-  BackSlashChar  = "\\" 
-  LAYOUT         = [\ \t\n\r] 
-  CommentChar    = [\*] 
-  LAYOUT         = "/*" InsideComment* "*/" 
-  InsideComment  = ~[\*] 
-  InsideComment  = CommentChar 
-  LAYOUT         = "//" ~[\n\r]* NewLineEOF 
-  NewLineEOF     = [\n\r] 
-  NewLineEOF     = EOF 
-  EOF            =  
+  LAYOUT        	= [\ \t\n\r] 
+  SingleLineComment= "--" ~[\n\r]* NewLineEOF 
+  LAYOUT         	= SingleLineComment
+  NewLineEOF     	= [\n\r] 
+  NewLineEOF     	= EOF 
+  EOF            	=  
+  
+lexical syntax
 
+	Identifier      = [a-zA-Z] [a-zA-Z0-9\_]*
+	CharacterChar			= ~[\"\n\t\r]
+	Characterliteral= "'" CharacterChar "'"
+	Stringliteral   = "\"" StringChar* "\"" 
+  StringChar     	= ~[\"\n] 
+  StringChar     	= "\\\"" 
+  StringChar     	= BackSlashChar 
+  BackSlashChar  	= "\\" 
+	
+lexical syntax
+
+	Numericliteral 	= Decimalliteral | Basedliteral
+	
+	Decimalliteral 	= Numeral ("." Numeral)? Exponent?
+	Numeral				 	= [0-9] [\_0-9]*
+	Underlinechar		= "_"
+	Exponent				= ("E" | "e") "+"? Numeral
+	Exponent				= ("E" | "e") "-" Numeral
+	
+	Basedliteral		= Numeral "#" Basednumeral ("." Basednumeral)? "#" Exponent?
+	Basednumeral		= Extendeddigit (Underlinechar? Extendeddigit)*
+	Extendeddigit		= [0-9] | [A-F]
+	
+lexical syntax
+
+	Identifier = "abort" {reject}
+	Identifier = "abs" {reject}
+	Identifier = "abstract" {reject}
+	Identifier = "accept" {reject}
+	Identifier = "access" {reject}
+	Identifier = "aliased" {reject}
+	Identifier = "all" {reject}
+	Identifier = "and" {reject}
+	Identifier = "array" {reject}
+	Identifier = "at" {reject}
+	Identifier = "begin" {reject}
+	Identifier = "body" {reject}
+	Identifier = "case" {reject}
+	Identifier = "constant" {reject}
+	Identifier = "declare" {reject}
+	Identifier = "delay" {reject}
+	Identifier = "delta" {reject}
+	Identifier = "digits" {reject}
+	Identifier = "do" {reject}
+	Identifier = "else" {reject}
+	Identifier = "elsif" {reject}
+	Identifier = "end" {reject}
+	Identifier = "entry" {reject}
+	Identifier = "exception" {reject}
+	Identifier = "exit" {reject}
+	Identifier = "for" {reject}
+	Identifier = "function" {reject}
+	Identifier = "generic" {reject}
+	Identifier = "goto" {reject}
+	Identifier = "if" {reject}
+	Identifier = "in" {reject}
+	Identifier = "interface" {reject}
+	Identifier = "is" {reject}
+	Identifier = "limited" {reject}
+	Identifier = "loop" {reject}
+	Identifier = "mod" {reject}
+	Identifier = "new" {reject}
+	Identifier = "not" {reject}
+	Identifier = "null" {reject}
+	Identifier = "of" {reject}
+	Identifier = "or" {reject}
+	Identifier = "others" {reject}
+	Identifier = "out" {reject}
+	Identifier = "overriding" {reject}
+	Identifier = "package" {reject}
+	Identifier = "pragma" {reject}
+	Identifier = "private" {reject}
+	Identifier = "procedure" {reject}
+	Identifier = "protected" {reject}
+	Identifier = "raise" {reject}
+	Identifier = "range" {reject}
+	Identifier = "record" {reject}
+	Identifier = "rem" {reject}
+	Identifier = "renames" {reject}
+	Identifier = "requeue" {reject}
+	Identifier = "return" {reject}
+	Identifier = "reverse" {reject}
+	Identifier = "select" {reject}
+	Identifier = "separate" {reject}
+	Identifier = "some" {reject}
+	Identifier = "subtype" {reject}
+	Identifier = "synchronized" {reject}
+	Identifier = "tagged" {reject}
+	Identifier = "task" {reject}
+	Identifier = "terminate" {reject}
+	Identifier = "then" {reject}
+	Identifier = "type" {reject}
+	Identifier = "until" {reject}
+	Identifier = "use" {reject}
+	Identifier = "when" {reject}
+	Identifier = "while" {reject}
+	Identifier = "with" {reject}
+	Identifier = "xor" {reject}
+	
 lexical restrictions
 
   // Ensure greedy matching for lexicals
   
-  CommentChar   -/- [\/]
-  INT           -/- [0-9]
-  ID            -/- [a-zA-Z0-9\_]
+  Identifier    -/- [a-zA-Z0-9\_]
   
   // EOF may not be followed by any char
   
   EOF           -/- ~[]
   
-  // Backslash chars in strings may not be followed by " 
-  
-  BackSlashChar -/- [\"]
 
 context-free restrictions
 
   // Ensure greedy matching for comments
   
   LAYOUT? -/- [\ \t\n\r]
-  LAYOUT? -/- [\/].[\/]
-  LAYOUT? -/- [\/].[\*]
+  LAYOUT? -/- [\-].[\-]
+  

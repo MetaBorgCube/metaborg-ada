@@ -1,20 +1,21 @@
 module ada
 
 imports
-  
-  Common
 
-context-free start-symbols
-  
-  Start
+	Common
+	Declarations
+	Exceptions
+	Generic-Declarations
+	Lexical-Elements
+	Names-Expressions
+	Packages
+	Program-Structure
+	Representation
+	Statements
+	Subprograms
+	Tasks-Synchronization
+	
 
 context-free syntax
-  
-  Start.Program = <<Procedure> <EOF>>
 
-  Procedure.Procedure = 
-  <procedure <ID> is
-	begin
-   		Ada.Text_IO.Put_Line (<STRING>);
-	end <ID>;
-  >
+	

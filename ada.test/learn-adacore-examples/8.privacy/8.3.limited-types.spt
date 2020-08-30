@@ -1,0 +1,32 @@
+module learn-adacore-examples/privacy/limited-types
+
+language ada
+
+test limited type [[
+package Stacks is
+   type Stack is limited private;
+   --  Limited type. Cannot assign nor compare.
+
+   procedure Push (S : in out Stack; Val : Integer);
+   procedure Pop (S : in out Stack; Val : out Integer);
+private
+   subtype Stack_Index is Natural range 1 .. 10;
+   type Content_Type is array (Stack_Index) of Natural;
+
+   type Stack is limited record
+      Top     : Stack_Index;
+      Content : Content_Type;
+   end record;
+end Stacks;
+]] parse succeeds
+
+test limited type usage [[
+with Stacks; use Stacks;
+
+procedure Main is
+   S, S2 : Stack;
+begin
+   S := S2;
+   --  Illegal: S is limited.
+end Main;
+]] parse succeeds

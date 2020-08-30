@@ -6,7 +6,7 @@ imports
 
 language
 
-  extensions : ada
+  extensions : adb, ads
 
   table : target/metaborg/sdf.tbl
-  provider : target/metaborg/stratego.jar
+  provider : target/metaborg/stratego.ctree

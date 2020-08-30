@@ -1,0 +1,116 @@
+module learn-adacore-examples/modular-programming
+
+language ada
+
+test package [[
+package Week is
+
+   Mon : constant String := "Monday";
+   Tue : constant String := "Tuesday";
+   Wed : constant String := "Wednesday";
+   Thu : constant String := "Thursday";
+   Fri : constant String := "Friday";
+   Sat : constant String := "Saturday";
+   Sun : constant String := "Sunday";
+
+end Week;
+]] parse succeeds
+
+test package usage [[
+
+with Ada.Text_IO; use Ada.Text_IO;
+with Week;
+--  References the Week package, and adds a dependency from Main
+--  to Week
+
+procedure Main is
+begin
+   Put_Line ("First day of the week is " & Week.Mon);
+end Main;
+]]
+test package usage indirect[[
+with Ada.Text_IO; use Ada.Text_IO;
+--                    ^ Make every entity of the Ada.Text_IO package
+--                      directly visible.
+with Week;
+
+procedure Main is
+   use Week;
+   --  Make every entity of the Week package directly visible.
+begin
+   Put_Line ("First day of the week is " & Mon);
+end Main;
+]] parse succeeds
+
+test package body [[
+package Operations is
+
+   --  Declaration
+   function Increment_By
+     (I    : Integer;
+      Incr : Integer := 0) return Integer;
+
+   function Get_Increment_Value return Integer;
+
+end Operations;
+]] parse succeeds
+
+test package body usage [[
+package body Operations is
+
+   Last_Increment : Integer := 1;
+
+   function Increment_By
+     (I    : Integer;
+      Incr : Integer := 0) return Integer is
+   begin
+      if Incr /= 0 then
+         Last_Increment := Incr;
+      end if;
+
+      return I + Last_Increment;
+   end Increment_By;
+
+   function Get_Increment_Value return Integer is
+   begin
+      return Last_Increment;
+   end Get_Increment_Value;
+
+end Operations;
+]] parse succeeds
+
+test package body indirect usage [[
+with Ada.Text_IO; use Ada.Text_IO;
+with Operations;
+
+procedure Main is
+   use Operations;
+
+   I : Integer := 0;
+   R : Integer;
+
+   procedure Display_Update_Values is
+      Incr : constant Integer := Get_Increment_Value;
+   begin
+      Put_Line (Integer'Image (I)
+                & " incremented by " & Integer'Image (Incr)
+                & " is "             & Integer'Image (R));
+      I := R;
+   end Display_Update_Values;
+begin
+   R := Increment_By (I);
+   Display_Update_Values;
+   R := Increment_By (I);
+   Display_Update_Values;
+
+   R := Increment_By (I, 5);
+   Display_Update_Values;
+   R := Increment_By (I);
+   Display_Update_Values;
+
+   R := Increment_By (I, 10);
+   Display_Update_Values;
+   R := Increment_By (I);
+   Display_Update_Values;
+end Main;
+]] parse succeeds

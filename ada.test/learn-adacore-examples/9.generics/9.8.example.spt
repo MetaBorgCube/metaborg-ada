@@ -1,0 +1,461 @@
+module learn-adacore-examples/generics/examples
+
+language ada
+
+test generics example [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Show_Decimal_IO_Inst is
+
+   type Price is delta 10.0 ** (-2) digits 12;
+
+   package Price_IO is new Ada.Text_IO.Decimal_IO (Price);
+
+   P : Price;
+begin
+   Price_IO.Default_Exp  := 0;
+
+   P := 2.5;
+   Price_IO.Put (P);
+   New_Line;
+
+   P := 5.75;
+   Price_IO.Put (P);
+   New_Line;
+end Show_Decimal_IO_Inst;
+]] parse succeeds
+
+test generics example [[
+with Ada.Float_Text_IO;
+
+procedure Show_Float_Text_IO is
+   X : constant Float := 2.5;
+
+   use Ada.Float_Text_IO;
+begin
+   Put (X);
+end Show_Float_Text_IO;with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Show_Float_IO_Inst is
+
+   type Price is digits 3;
+
+   package Price_IO is new Ada.Text_IO.Float_IO (Price);
+
+   P : Price;
+begin
+   --  Set to zero => don't display exponent
+   Price_IO.Default_Exp  := 0;
+
+   P := 2.5;
+   Price_IO.Put (P);
+   New_Line;
+
+   P := 5.75;
+   Price_IO.Put (P);
+   New_Line;
+end Show_Float_IO_Inst;
+]] parse succeeds
+
+test generics example [[
+with Ada.Float_Text_IO;
+
+procedure Show_Float_Text_IO is
+   X : constant Float := 2.5;
+
+   use Ada.Float_Text_IO;
+begin
+   Put (X);
+end Show_Float_Text_IO;
+]] parse succeeds
+
+test generics example [[
+with Ada.Float_Text_IO;
+
+procedure Show_Float_Text_IO is
+   X : constant Float := 2.5;
+
+   use Ada.Float_Text_IO;
+begin
+   Put (X);
+end Show_Float_Text_IO;
+]] parse succeeds
+
+test generics example [[
+package body Stacks is
+
+   function Is_Empty (S : Stack) return Boolean is
+     (S.Top < S.Container'First);
+
+   function Is_Full (S : Stack) return Boolean is
+     (S.Top >= S.Container'Last);
+
+   function Pop (S : in out Stack) return T is
+   begin
+      if Is_Empty (S) then
+         raise Stack_Underflow;
+      else
+         return X : T do
+            X     := S.Container (S.Top);
+            S.Top := S.Top - 1;
+         end return;
+      end if;
+   end Pop;
+
+   procedure Push (S : in out Stack; V : T) is
+   begin
+      if Is_Full (S) then
+         raise Stack_Overflow;
+      else
+         S.Top               := S.Top + 1;
+         S.Container (S.Top) := V;
+      end if;
+   end Push;
+
+end Stacks;
+]] parse succeeds
+
+test generics example [[
+generic
+   Max : Positive;
+   type T is private;
+package Stacks is
+
+   type Stack is limited private;
+
+   Stack_Underflow, Stack_Overflow : exception;
+
+   function Is_Empty (S : Stack) return Boolean;
+
+   function Pop (S : in out Stack) return T;
+
+   procedure Push (S : in out Stack; V : T);
+
+private
+
+   type Stack_Array is array (Natural range <>) of T;
+
+   Min : constant := 1;
+
+   type Stack is record
+      Container : Stack_Array (Min .. Max);
+      Top       : Natural := Min - 1;
+   end record;
+
+end Stacks;
+]] parse succeeds
+
+test generics example [[
+package body Colors is
+
+   procedure Swap_Colors (X, Y : in out Color) is
+      Tmp : constant Color := X;
+   begin
+      X := Y;
+      Y := Tmp;
+   end Swap_Colors;
+
+end Colors;
+]] parse succeeds
+
+test generics example [[
+with Ada.Text_IO; use Ada.Text_IO;
+with Colors;      use Colors;
+
+procedure Test_Non_Generic_Swap_Colors is
+   A, B, C : Color;
+begin
+   A := Blue;
+   B := White;
+   C := Red;
+
+   Put_Line ("Value of A is " & Color'Image (A));
+   Put_Line ("Value of B is " & Color'Image (B));
+   Put_Line ("Value of C is " & Color'Image (C));
+
+   New_Line;
+   Put_Line ("Swapping A and C...");
+   New_Line;
+   Swap_Colors (A, C);
+
+   Put_Line ("Value of A is " & Color'Image (A));
+   Put_Line ("Value of B is " & Color'Image (B));
+   Put_Line ("Value of C is " & Color'Image (C));
+end Test_Non_Generic_Swap_Colors;
+]] parse succeeds
+
+test generics example [[
+package Colors is
+   type Color is (Black, Red, Green, Blue, White);
+
+   procedure Swap_Colors (X, Y : in out Color);
+end Colors;
+]] parse succeeds
+
+test generics example [[
+with Generic_Swap;
+
+package Colors is
+
+   type Color is (Black, Red, Green, Blue, White);
+
+   procedure Swap_Colors is new Generic_Swap (T => Color);
+
+end Colors;
+]] parse succeeds
+
+test generics example [[
+procedure Generic_Swap (X, Y : in out T) is
+   Tmp : constant T := X;
+begin
+   X := Y;
+   Y := Tmp;
+end Generic_Swap;
+]] parse succeeds
+
+test generics example [[
+generic
+   type T is private;
+procedure Generic_Swap (X, Y : in out T);
+]] parse succeeds
+
+test generics example [[
+with Ada.Text_IO;  use Ada.Text_IO;
+with Colors;       use Colors;
+
+procedure Test_Swap_Colors is
+   A, B, C : Color;
+begin
+   A := Blue;
+   B := White;
+   C := Red;
+
+   Put_Line ("Value of A is " & Color'Image (A));
+   Put_Line ("Value of B is " & Color'Image (B));
+   Put_Line ("Value of C is " & Color'Image (C));
+
+   New_Line;
+   Put_Line ("Swapping A and C...");
+   New_Line;
+   Swap_Colors (A, C);
+
+   Put_Line ("Value of A is " & Color'Image (A));
+   Put_Line ("Value of B is " & Color'Image (B));
+   Put_Line ("Value of C is " & Color'Image (C));
+end Test_Swap_Colors;
+]] parse succeeds
+
+test generics example [[
+package body Colors is
+
+   procedure Reverse_Color_Array (X : in out Color_Array) is
+   begin
+      for I in X'First .. (X'Last + X'First) / 2 loop
+         declare
+            Tmp     : Color;
+            X_Left  : Color renames X (I);
+            X_Right : Color renames X (X'Last + X'First - I);
+         begin
+            Tmp     := X_Left;
+            X_Left  := X_Right;
+            X_Right := Tmp;
+         end;
+      end loop;
+   end Reverse_Color_Array;
+
+end Colors;
+]] parse succeeds
+
+test generics example [[
+package Colors is
+
+   type Color is (Black, Red, Green, Blue, White);
+
+   type Color_Array is array (Integer range <>) of Color;
+
+   procedure Reverse_Color_Array (X : in out Color_Array);
+
+end Colors;
+]] parse succeeds
+
+test generics example [[
+with Ada.Text_IO; use Ada.Text_IO;
+with Colors;      use Colors;
+
+procedure Test_Non_Generic_Reverse_Colors is
+
+   My_Colors : Color_Array (1 .. 5) := (Black, Red, Green, Blue, White);
+
+begin
+   for C of My_Colors loop
+      Put_Line ("My_Color: " & Color'Image (C));
+   end loop;
+
+   New_Line;
+   Put_Line ("Reversing My_Color...");
+   New_Line;
+   Reverse_Color_Array (My_Colors);
+
+   for C of My_Colors loop
+      Put_Line ("My_Color: " & Color'Image (C));
+   end loop;
+
+end Test_Non_Generic_Reverse_Colors;
+]] parse succeeds
+
+test generics example [[
+with Generic_Reverse_Array;
+
+package Colors is
+
+   type Color is (Black, Red, Green, Blue, White);
+
+   type Color_Array is array (Integer range <>) of Color;
+
+   procedure Reverse_Color_Array is new Generic_Reverse_Array
+     (T => Color, Index => Integer, Array_T => Color_Array);
+
+end Colors;
+]] parse succeeds
+
+test generics example [[
+procedure Generic_Reverse_Array (X : in out Array_T) is
+begin
+   for I in X'First .. (X'Last + X'First) / 2 loop
+      declare
+         Tmp     : T;
+         X_Left  : T renames X (I);
+         X_Right : T renames X (X'Last + X'First - I);
+      begin
+         Tmp     := X_Left;
+         X_Left  := X_Right;
+         X_Right := Tmp;
+      end;
+   end loop;
+end Generic_Reverse_Array;
+]] parse succeeds
+
+test generics example [[
+generic
+   type T is private;
+   type Index is range <>;
+   type Array_T is array (Index range <>) of T;
+procedure Generic_Reverse_Array (X : in out Array_T);
+]] parse succeeds
+
+test generics example [[
+with Ada.Text_IO; use Ada.Text_IO;
+with Colors;      use Colors;
+
+procedure Test_Reverse_Colors is
+
+   My_Colors : Color_Array (1 .. 5) := (Black, Red, Green, Blue, White);
+
+begin
+   for C of My_Colors loop
+      Put_Line ("My_Color: " & Color'Image (C));
+   end loop;
+
+   New_Line;
+   Put_Line ("Reversing My_Color...");
+   New_Line;
+   Reverse_Color_Array (My_Colors);
+
+   for C of My_Colors loop
+      Put_Line ("My_Color: " & Color'Image (C));
+   end loop;
+
+end Test_Reverse_Colors;
+]] parse succeeds
+
+test generics example [[
+with Generic_Reverse_Array;
+
+package Colors is
+
+   type Color is (Black, Red, Green, Blue, White);
+
+   type Color_Array is array (Integer range <>) of Color;
+
+   procedure Reverse_Color_Array is new Generic_Reverse_Array
+     (T => Color, Index => Integer, Array_T => Color_Array);
+
+end Colors;
+]] parse succeeds
+
+test generics example [[
+procedure Generic_Reverse_Array (X : in out Array_T) is
+begin
+   for I in X'First .. (X'Last + X'First) / 2 loop
+      declare
+         Tmp     : T;
+         X_Left  : T renames X (I);
+         X_Right : T renames X (X'Last + X'First - I);
+      begin
+         Tmp     := X_Left;
+         X_Left  := X_Right;
+         X_Right := Tmp;
+      end;
+   end loop;
+end Generic_Reverse_Array;
+]] parse succeeds
+
+test generics example [[
+generic
+   type T is private;
+   type Index is range <>;
+   type Array_T is array (Index range <>) of T;
+procedure Generic_Reverse_Array (X : in out Array_T);
+]] parse succeeds
+
+test generics example [[
+with Ada.Text_IO;  use Ada.Text_IO;
+
+procedure Perform_Test (X : in out Array_T) is
+begin
+   for C of X loop
+      Put_Line (S & ": " & Image (C));
+   end loop;
+
+   New_Line;
+   Put_Line ("Testing " & S & "...");
+   New_Line;
+   Test (X);
+
+   for C of X loop
+      Put_Line (S & ": " & Image (C));
+   end loop;
+end Perform_Test;
+]] parse succeeds
+
+test generics example [[
+generic
+   type T is private;
+   type Index is range <>;
+   type Array_T is array (Index range <>) of T;
+   S : String;
+   with function Image (E : T) return String is <>;
+   with procedure Test (X : in out Array_T);
+procedure Perform_Test (X : in out Array_T);
+]] parse succeeds
+
+test generics example [[
+with Colors;       use Colors;
+with Perform_Test;
+
+procedure Test_Reverse_Colors is
+
+   procedure Perform_Test_Reverse_Color_Array is new
+     Perform_Test (T       => Color,
+                   Index   => Integer,
+                   Array_T => Color_Array,
+                   S       => "My_Color",
+                   Image   => Color'Image,
+                   Test    => Reverse_Color_Array);
+
+   My_Colors : Color_Array (1 .. 5) := (Black, Red, Green, Blue, White);
+
+begin
+   Perform_Test_Reverse_Color_Array (My_Colors);
+end Test_Reverse_Colors;
+]] parse succeeds

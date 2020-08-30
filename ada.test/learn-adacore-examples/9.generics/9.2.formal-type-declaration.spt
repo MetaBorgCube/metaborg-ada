@@ -1,0 +1,32 @@
+module learn-adacore-examples/generics/formal-type-declaration
+
+language ada
+
+test formal type declaration [[
+generic
+   type T is private;
+   --  T is a formal type that indicates that any type can be used,
+   --  possibly a numeric type or possibly even a record type.
+procedure Set (Dummy : T);
+]] parse succeeds
+
+test formal type definition [[
+procedure Set (Dummy : T) is
+begin
+   null;
+end Set;
+]] parse succeeds
+
+test formal type definition discrete [[
+generic
+	type T is (<>);
+   -- any discrete type
+procedure Set (Dummy : T);
+]] parse succeeds
+
+test formal type definition floating point [[
+generic
+	type T is digits <>;
+   -- any discrete type
+procedure Set (Dummy : T);
+]] parse succeeds

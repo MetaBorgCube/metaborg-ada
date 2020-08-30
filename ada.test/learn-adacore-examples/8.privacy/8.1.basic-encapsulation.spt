@@ -1,0 +1,23 @@
+module learn-adacore-examples/privacy/basic-encapsulation
+
+language ada
+
+test basic encapsulation [[
+package Encapsulate is
+   procedure Hello;
+
+private
+
+   procedure Hello2;
+   --  Not visible from external units
+end Encapsulate;
+
+with Encapsulate;
+
+procedure Main is
+begin
+   Encapsulate.Hello;
+   Encapsulate.Hello2;
+   --  Invalid: Hello2 is not visible
+end Main;
+]] parse succeeds

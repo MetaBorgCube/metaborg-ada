@@ -1,0 +1,212 @@
+module Names-Expressions
+
+imports
+
+	Common
+	Declarations
+	Exceptions
+	Generic-Declarations
+	Lexical-Elements
+	Packages
+	Program-Structure
+	Representation
+	Statements
+	Subprograms
+	Tasks-Synchronization
+	
+
+context-free syntax
+
+	Name.NameDirect = Directname
+//	Name.Name37 = Indexedcomponent
+	Name.NameSelectComp = Name "." Directname
+//	Name.Name39 = Typeconversion
+//	Name.Name41 = Generalizedreference
+	Name.NameExplDeref = Name ".""all"
+	Name.NameSlice = Name "(" Discreterange ")"
+	Name.NameAttr =  Name "'" Attributedesignator
+	Name.NameFCall = Name Actualparameterpart {prefer}
+	Name.Name46 = Qualifiedexpression
+//	Name.Name47 = Generalizedindexing
+
+	Subtypename.SubtypeNameSelectComp =  Subtypename "." Directname {left}
+	Subtypename.SubtypeAttr = Subtypename "'" Attributedesignator {left}
+	Subtypename.SubtypeNameDirect = Directname {prefer}
+	
+	Staticname.StaticNameDirect = Directname
+	Staticname.StaticNameSelectComp = Name "." Directname
+
+context-free priorities
+	Name.NameDirect > Name.NameExplDeref > Name.NameSelectComp > Name.NameSlice > Name.NameAttr  > Name.NameFCall
+context-free syntax
+
+	Directname.DirectNameId = Identifier
+	Directname.DirectNameStr = Stringliteral
+	Directname.DirectNameChar = Characterliteral
+//	Directname.Directname7 = Operatorsymbol
+//	
+	Prefix.Prefix6 = Name
+//	Prefix.Prefix7 = Implicitdereference
+
+//	Indexedcomponent.Indexedcomponent3 = Prefix "(" {Expression ","}+ ")"
+	
+	Selectorname.Selectorname9 = Identifier
+//	Selectorname.Selectorname10 = Characterliteral
+//	Selectorname.Selectorname11 = Operatorsymbol
+
+	Attributedesignator.Attributedesignator18 = Identifier 
+	Attributedesignator.Attributedesignator19 = Identifier "(" Expression ")"
+//	Attributedesignator.Attributedesignator20 = "Access"
+//	Attributedesignator.Attributedesignator21 = "Delta"
+//	Attributedesignator.Attributedesignator22 = "Digits"
+//	Attributedesignator.Attributedesignator23 = "Mod"
+//	
+//	Rangeattributereference.Rangeattributereference3 = Prefix "'" Rangeattributedesignator
+//	
+//	Rangeattributedesignator.Rangeattributedesignator6 = "Range" 
+//	Rangeattributedesignator.Rangeattributedesignator7 = "Range" "(" Expression ")"
+//	
+//	Generalizedreference.Generalizedreference3 = Name
+//	
+//	Generalizedindexing.Generalizedindexing3 = Prefix Actualparameterpart
+	
+	Aggregate.Aggregate9 = Recordaggregate
+	Aggregate.Aggregate10 = Extensionaggregate
+	Aggregate.Aggregate11 = Arrayaggregate {prefer}
+	
+	Recordaggregate.Recordaggregate3 = "(" Recordcomponentassociationlist ")"
+	
+	Recordcomponentassociationlist.Recordcomponentassociationlist6 = {Recordcomponentassociation ","}+
+	Recordcomponentassociationlist.Recordcomponentassociationlist7 = "null record"
+	
+	Recordcomponentassociation.Recordcomponentassociation9 =  Expression
+	Recordcomponentassociation.Recordcomponentassociation10 = Componentchoicelist "=>" Expression
+	Recordcomponentassociation.Recordcomponentassociation11 = Componentchoicelist "=> <>"
+	
+	Componentchoicelist.Componentchoicelist6 = {Selectorname "|"}+
+	Componentchoicelist.Componentchoicelist7 = "others"
+	
+	Extensionaggregate.Extensionaggregate3 = "(" Ancestorpart "with" Recordcomponentassociationlist ")"
+	
+	Ancestorpart.Ancestorpart6 = Expression
+	Ancestorpart.Ancestorpart7 = Subtypemark
+	
+	Arrayaggregate.Arrayaggregate6 = Positionalarrayaggregate
+	Arrayaggregate.Arrayaggregate7 = Namedarrayaggregate
+	
+	Positionalarrayaggregate.Positionalarrayaggregate9 = "(" Expression "," {Expression ","}+ ")"
+	Positionalarrayaggregate.Positionalarrayaggregate10 = "(" {Expression ","}+ ", others =>" Expression ")"
+	Positionalarrayaggregate.Positionalarrayaggregate11 = "(" {Expression ","}+ ", others => <> )"
+	
+	Namedarrayaggregate.Namedarrayaggregate3 = "(" {Arraycomponentassociation ","}+ ")"
+	
+	Arraycomponentassociation.Arraycomponentassociation6 = Discretechoicelist "=>" Expression
+	Arraycomponentassociation.Arraycomponentassociation7 = Discretechoicelist "=> <>"
+	
+	Expression.ExpressionRelation = Relation {prefer}
+	Expression.Expression15 = {Relation "and"}+
+	Expression.Expression16 = {Relation "or"}+
+	Expression.Expression17 = {Relation "xor"}+
+	Expression.Expression18 = {Relation "and then"}+
+	Expression.Expression19 = {Relation "or else"}+
+	
+	Choiceexpression.ChoiceExpressionRelation = Choicerelation {prefer}
+	Choiceexpression.Choiceexpression15 = {Choicerelation "and"}+
+	Choiceexpression.Choiceexpression16 = {Choicerelation "or"}+
+	Choiceexpression.Choiceexpression17 = {Choicerelation "xor"}+
+	Choiceexpression.Choiceexpression18 = {Choicerelation "and then"}+
+	Choiceexpression.Choiceexpression19 = {Choicerelation "or else"}+
+	
+	Choicerelation.Choicerelation6 = Simpleexpression 
+	Choicerelation.Choicerelation7 = Simpleexpression Relationaloperator Simpleexpression
+	
+	Relation.Relation12 = Simpleexpression 
+	Relation.Relation13 = Simpleexpression Relationaloperator Simpleexpression
+	Relation.Relation14 = Simpleexpression  "in" Membershipchoicelist
+//	Relation.Relation15 = Simpleexpression "not" "in" Membershipchoicelist
+//	
+	Membershipchoicelist.Membershipchoicelist3 = {Membershipchoice "|"}+
+	
+	Membershipchoice.Membershipchoice9 = Choiceexpression
+	Membershipchoice.Membershipchoice10 = Range
+//	Membershipchoice.Membershipchoice11 = Subtypemark
+//	
+	Simpleexpression.Simpleexpression4 = Unaryaddingoperator? Term Repitition76*
+	Repitition76.SimpleexpressionRepitition760 = Binaryaddingoperator Term
+//	
+	Term.Term3 = Factor Repitition77*
+	Repitition77.TermRepitition770 = Multiplyingoperator Factor
+	
+	Factor.Factor12 = Primary 
+	Factor.Factor13 = Primary "**" Primary
+	Factor.Factor14 = "abs" Primary
+	Factor.Factor15 = "not" Primary
+	
+	Primary.Primary27 = Numericliteral {prefer}
+	Primary.Primary28 = "null" {prefer}
+	Primary.Primary30 = Aggregate {prefer}
+	Primary.Primary31 = Name {prefer}
+	Primary.Primary32 = Allocator
+	Primary.Primary33 = "(" Expression ")"
+	Primary.Primary34 = "(" Conditionalexpression ")"
+	Primary.Primary35 = "(" Quantifiedexpression ")"
+	
+	Logicaloperator.LogOpAnd = "and"
+	Logicaloperator.LogOpOr = "or"
+	Logicaloperator.LogOpXor = "xor"	
+	
+	Relationaloperator.Relationaloperator18 = "="
+	Relationaloperator.Relationaloperator19 = "/="
+	Relationaloperator.Relationaloperator20 = "<"
+	Relationaloperator.Relationaloperator21 = "<="
+	Relationaloperator.Relationaloperator22 = ">"
+	Relationaloperator.Relationaloperator23 = ">="
+	
+	Binaryaddingoperator.Binaryaddingoperator9 = "+"
+	Binaryaddingoperator.Binaryaddingoperator10 = "-"
+	Binaryaddingoperator.Binaryaddingoperator11 = "&"
+	
+	Unaryaddingoperator.Unaryaddingoperator6 = "+"
+	Unaryaddingoperator.Unaryaddingoperator7 = "-"
+	
+	Multiplyingoperator.Multiplyingoperator12 = "*"
+	Multiplyingoperator.Multiplyingoperator13 = "/"
+	Multiplyingoperator.Multiplyingoperator14 = "mod"
+	Multiplyingoperator.Multiplyingoperator15 = "rem"
+	
+	Highestprecedenceoperator.Highestprecedenceoperator9 = "**"
+	Highestprecedenceoperator.Highestprecedenceoperator10 = "abs"
+	Highestprecedenceoperator.Highestprecedenceoperator11 = "not"
+	
+	Conditionalexpression.Conditionalexpression6 = Ifexpression
+	Conditionalexpression.Conditionalexpression7 = Caseexpression
+	
+	Ifexpression.Ifexpression10 = "if" {Repitition78 "elsif"}+ 
+	Ifexpression.Ifexpression11 = "if" {Repitition78 "elsif"}+ "else" Expression
+	Repitition78.IfexpressionRepitition780 = Condition "then" Expression
+	
+	Condition.Condition3 = Expression
+	
+	Caseexpression.Caseexpression3 = "case" Expression "is" {Caseexpressionalternative ","}+
+	
+	Caseexpressionalternative.Caseexpressionalternative3 = "when" Discretechoicelist "=>" Expression
+	
+	Quantifiedexpression.Quantifiedexpression6 = "for" Quantifier Loopparameterspecification "=>" Predicate
+	Quantifiedexpression.Quantifiedexpression7 = "for" Quantifier Iteratorspecification "=>" Predicate
+	
+	Quantifier.Quantifier6 = "all"
+	Quantifier.Quantifier7 = "some"
+	
+	Predicate.Predicate3 = Expression
+	
+	Typeconversion.Typeconversion6 = Subtypemark "(" Expression ")"
+	Typeconversion.Typeconversion7 = Subtypemark "(" Name ")"
+	
+	Qualifiedexpression.Qualifiedexpression6 = Subtypemark "' (" Expression ")"
+	Qualifiedexpression.Qualifiedexpression7 = Subtypemark "'" Aggregate
+	
+	Allocator.Allocator8 = "new" Subpoolspecification? Subtypeindication
+	Allocator.Allocator9 = "new" Subpoolspecification? Qualifiedexpression
+	
+	Subpoolspecification.Subpoolspecification3 = "(" Name ")"
+	

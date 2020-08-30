@@ -1,0 +1,82 @@
+module learn-adacore-examples/design-by-contract/pre-post-conditions
+
+language ada
+
+test simple pre condition [[
+procedure Show_Simple_Precondition is
+
+   procedure DB_Entry (Name : String; Age  : Natural)
+     with Pre => Name'Length > 0
+   is
+   begin
+      --  Missing implementation
+      null;
+   end DB_Entry;
+begin
+   DB_Entry ("John", 30);
+   DB_Entry ("",     21);  --  Precondition will fail!
+end Show_Simple_Precondition;
+]] parse succeeds
+
+test simple post condition [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Show_Simple_Postcondition is
+
+   type Int_8 is range -2 ** 7 .. 2 ** 7 - 1;
+
+   type Int_8_Array is array (Integer range <>) of Int_8;
+
+   function Square (A : Int_8) return Int_8 is
+     (A * A)
+     with Post => (if abs A in 0 | 1 then Square'Result = abs A
+                   else Square'Result > A);
+
+   procedure Square (A : in out Int_8_Array)
+     with Post => (for all I in A'Range =>
+                     A (I) = A'Old (I) * A'Old (I))
+   is
+   begin
+      for V of A loop
+         V := Square (V);
+      end loop;
+   end Square;
+
+   V : Int_8_Array := (-2, -1, 0, 1, 10, 11);
+begin
+   for E of V loop
+      Put_Line ("Original: " & Int_8'Image (E));
+   end loop;
+   New_Line;
+
+   Square (V);
+   for E of V loop
+      Put_Line ("Square:   " & Int_8'Image (E));
+   end loop;
+end Show_Simple_Postcondition;
+]] parse succeeds
+
+test simple contract [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Show_Simple_Contract is
+
+   type Int_8 is range -2 ** 7 .. 2 ** 7 - 1;
+
+   function Square (A : Int_8) return Int_8 is
+     (A * A)
+     with
+          Pre  => (Integer'Size >= Int_8'Size * 2 and
+                   Integer (A) * Integer (A) < Integer (Int_8'Last)),
+          Post => (if abs A in 0 | 1 then Square'Result = abs A
+                   else Square'Result > A);
+
+   V : Int_8;
+begin
+   V := Square (11);
+   Put_Line ("Square of 11 is " & Int_8'Image (V));
+
+   V := Square (12);   --  Precondition will fail...
+   Put_Line ("Square of 12 is " & Int_8'Image (V));
+end Show_Simple_Contract;
+]] parse succeeds

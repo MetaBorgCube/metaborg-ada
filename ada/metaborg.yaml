@@ -22,6 +22,7 @@ language:
     sdf2table: java
     placeholder:
       prefix: "$"
+    jsglr-version: incremental
   stratego:
     format: ctree
     args:

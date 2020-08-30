@@ -1,0 +1,278 @@
+module learn-adacore-examples/tasking/tasks
+
+language ada
+
+test simple task [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Show_Simple_Task is
+   task T;
+
+   task body T is
+   begin
+      Put_Line ("In task T");
+   end T;
+begin
+   Put_Line ("In main");
+end Show_Simple_Task;
+]] parse succeeds
+
+
+test simple task body [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Show_Simple_Tasks is
+   task T;
+   task T2;
+
+   task body T is
+   begin
+      Put_Line ("In task T");
+   end T;
+
+   task body T2 is
+   begin
+      Put_Line ("In task T2");
+   end T2;
+
+begin
+   Put_Line ("In main");
+end Show_Simple_Tasks;
+]] parse succeeds
+
+test simple synchronisation [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+package body Simple_Sync_Pkg is
+   task body T is
+   begin
+      for I in 1 .. 10 loop
+         Put_Line ("hello");
+      end loop;
+   end T;
+end Simple_Sync_Pkg;
+]] parse succeeds
+
+test simple synchronisation pkg declaration [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+package body Simple_Sync_Pkg is
+   task body T is
+   begin
+      for I in 1 .. 10 loop
+         Put_Line ("hello");
+      end loop;
+   end T;
+end Simple_Sync_Pkg;
+]] parse succeeds
+
+test simple synchronisation pkg definition [[
+with Simple_Sync_Pkg;
+
+procedure Test_Simple_Sync_Pkg is
+begin
+   null;
+   --  Will wait here until all tasks have terminated
+end Test_Simple_Sync_Pkg;
+]] parse succeeds
+
+test delay [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Show_Delay is
+
+   task T;
+
+   task body T is
+   begin
+      for I in 1 .. 5 loop
+         Put_Line ("hello from task T");
+         delay 1.0;
+         --    ^ Wait 1.0 seconds
+      end loop;
+   end T;
+begin
+   delay 1.5;
+   Put_Line ("hello from main");
+end Show_Delay;
+]] parse succeeds
+
+
+test synchronisation rendez vous [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Show_Rendezvous is
+
+   task T is
+      entry Start;
+   end T;
+
+   task body T is
+   begin
+      accept Start; -- Waiting for somebody to call the entry
+      Put_Line ("In T");
+   end T;
+
+begin
+   Put_Line ("In Main");
+   T.Start; --  Calling T's entry
+end Show_Rendezvous;
+]] parse succeeds
+
+test select loop [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Show_Rendezvous_Loop is
+
+   task T is
+      entry Reset;
+      entry Increment;
+   end T;
+
+   task body T is
+      Cnt : Integer := 0;
+   begin
+      loop
+         select
+            accept Reset do
+               Cnt := 0;
+            end Reset;
+            Put_Line ("Reset");
+         or
+            accept Increment do
+               Cnt := Cnt + 1;
+            end Increment;
+            Put_Line ("In T's loop (" & Integer'Image (Cnt) & ")");
+         or
+            terminate;
+         end select;
+      end loop;
+   end T;
+
+begin
+   Put_Line ("In Main");
+
+   for I in 1 .. 4 loop
+      T.Increment; --  Calling T's entry multiple times
+   end loop;
+
+   T.Reset;
+   for I in 1 .. 4 loop
+      T.Increment; --  Calling T's entry multiple times
+   end loop;
+
+end Show_Rendezvous_Loop;
+]] parse succeeds
+
+test cycling tasks [[
+with Ada.Text_IO;   use Ada.Text_IO;
+with Ada.Real_Time; use Ada.Real_Time;
+
+with Delay_Aux_Pkg;
+
+procedure Show_Cycling_Task is
+   package Aux renames Delay_Aux_Pkg;
+
+   task T;
+
+   task body T is
+      Cycle : constant Time_Span := Milliseconds (1000);
+      Next  : Time := Aux.Get_Start_Time + Cycle;
+
+      Cnt   : Integer := 1;
+   begin
+      for I in 1 .. 5 loop
+         delay until Next;
+
+         Aux.Show_Elapsed_Time;
+         Aux.Computational_Intensive_App;
+
+         --  Calculate next execution time using a
+         --  cycle of one second
+         Next := Next + Cycle;
+
+         Put_Line ("Cycle # " & Integer'Image (Cnt));
+         Cnt  := Cnt + 1;
+      end loop;
+      Put_Line ("Finished cycling");
+   end T;
+
+begin
+   null;
+end Show_Cycling_Task;
+]] parse succeeds
+
+test time drifting tasks [[
+with Ada.Text_IO;   use Ada.Text_IO;
+with Ada.Real_Time; use Ada.Real_Time;
+
+with Delay_Aux_Pkg;
+
+procedure Show_Time_Drifting_Task is
+   package Aux renames Delay_Aux_Pkg;
+
+   task T;
+
+   task body T is
+      Cnt   : Integer := 1;
+   begin
+      for I in 1 .. 5 loop
+         delay 1.0;
+
+         Aux.Show_Elapsed_Time;
+         Aux.Computational_Intensive_App;
+
+         Put_Line ("Cycle # " & Integer'Image (Cnt));
+         Cnt  := Cnt + 1;
+      end loop;
+      Put_Line ("Finished time-drifting loop");
+   end T;
+
+begin
+   null;
+end Show_Time_Drifting_Task;
+]] parse succeeds
+
+test delay pkg definition [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+package body Delay_Aux_Pkg is
+
+   procedure Show_Elapsed_Time is
+      Now_Time     : Time;
+      Elapsed_Time : Time_Span;
+   begin
+      Now_Time     := Clock;
+      Elapsed_Time := Now_Time - Start_Time;
+      Put_Line ("Elapsed time "
+                & Duration'Image (To_Duration (Elapsed_Time))
+                & " seconds");
+   end Show_Elapsed_Time;
+
+   procedure Computational_Intensive_App is
+   begin
+      delay 0.5;
+   end Computational_Intensive_App;
+
+end Delay_Aux_Pkg;
+]] parse succeeds
+
+test delay pkg declaration [[
+with Ada.Real_Time; use Ada.Real_Time;
+
+package Delay_Aux_Pkg is
+
+   function Get_Start_Time return Time
+     with Inline;
+
+   procedure Show_Elapsed_Time
+     with Inline;
+
+   procedure Computational_Intensive_App;
+private
+   Start_Time   : Time := Clock;
+
+   function Get_Start_Time return Time is (Start_Time);
+
+end Delay_Aux_Pkg;
+]] parse succeeds

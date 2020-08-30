@@ -1,0 +1,67 @@
+module learn-adacore-examples/imperative-language
+
+language ada
+
+test bare loop [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Greet_5b is
+   I : Integer := 1; -- Variable declaration
+   --  ^ Type
+   --             ^ Initial value
+begin
+   loop
+      Put_Line ("Hello, World!" & Integer'Image (I));
+      exit when I = 5; --  Exit statement
+      --        ^ Boolean condition
+
+      --  Assignment
+      I := I + 1; -- There is no I++ short form to increment a variable
+   end loop;
+end Greet_5b;
+]] parse succeeds
+
+test for loop noop [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Greet_No_Op is
+begin
+   for I in reverse 5 .. 1 loop
+      Put_Line ("Hello, World!" & Integer'Image (I));
+   end loop;
+end Greet_No_Op;
+]] parse succeeds
+
+test for loop reversed [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Greet_5a_Reverse is
+begin
+   for I in reverse 1 .. 5 loop
+      Put_Line ("Hello, World!" & Integer'Image (I));
+   end loop;
+end Greet_5a_Reverse;
+]] parse succeeds
+
+test for loop [[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Greet_5a is
+begin
+   for I in 1 .. 5 loop
+      Put_Line ("Hello, World!" & Integer'Image (I)); --  Procedure call
+      --        ^ Procedure parameter
+   end loop;
+end Greet_5a;
+]] parse succeeds
+
+test while loop[[
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure Greet_5a_Reverse is
+begin
+   for I in reverse 1 .. 5 loop
+      Put_Line ("Hello, World!" & Integer'Image (I));
+   end loop;
+end Greet_5a_Reverse;
+]] parse succeeds

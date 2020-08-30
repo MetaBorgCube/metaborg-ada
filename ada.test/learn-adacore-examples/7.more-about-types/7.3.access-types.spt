@@ -1,0 +1,88 @@
+module learn-adacore-examples/more-about-types/access-types
+
+language ada
+
+test access types [[
+package Dates is
+   type Month_Type is (January, February, March, April, May, June, July,
+                       August, September, October, November, December);
+
+   type Date is record
+      Day   : Integer range 1 .. 31;
+      Month : Month_Type;
+      Year  : Integer;
+   end record;
+end Dates;
+
+with Dates; use Dates;
+
+package Access_Types is
+    --  Declare an access type
+    type Date_Acc is access Date;
+    --                      ^ "Designated type"
+    --                      ^ Date_Acc values point to Date objects
+
+    D : Date_Acc := null;
+    --              ^ Literal for "access to nothing"
+    --  ^ Access to date
+end Access_Types;
+]] parse succeeds
+
+test access type allocation [[
+with Dates; use Dates;
+
+package Access_Types is
+    --  Declare an access type
+    type Date_Acc   is access Date;
+    type Date_Acc_2 is access Date;
+
+    D  : Date_Acc   := null;
+    D2 : Date_Acc_2 := D;
+    --                 ^ Invalid! Different types
+
+    D3 : Date_Acc_2 := Date_Acc_2 (D);
+    --                 ^ Valid with type conversion
+end Access_Types;
+]] parse succeeds
+
+test access type allocation constraint [[
+with Dates; use Dates;
+
+package Access_Types is
+   type String_Acc is access String;
+   --                        ^ Access to unconstrained array type
+   Msg : String_Acc;
+   --    ^ Default value is null
+
+   Buffer : String_Acc := new String (1 .. 10);
+   --                                ^ Constraint required
+end Access_Types;
+]] parse succeeds
+
+test access type allocation init [[
+with Dates; use Dates;
+
+package Access_Types is
+   type Date_Acc is access Date;
+   type String_Acc is access String;
+
+   D   : Date_Acc   := new Date'(30, November, 2011);
+   Msg : String_Acc := new String'("Hello");
+end Access_Types;
+]] parse succeeds
+
+test implicit dereference [[
+with Dates; use Dates;
+
+package Access_Types is
+   type Date_Acc is access Date;
+
+   D     : Date_Acc := new Date'(30, November, 2011);
+
+   Today : Date := D.all;
+   --              ^ Access value dereference
+   J     : Integer := D.Day;
+   --                 ^ Implicit dereference for record and array components
+   --                 Equivalent to D.all.day
+end Access_Types;
+]] parse succeeds

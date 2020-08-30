@@ -1,0 +1,147 @@
+module learn-adacore-examples/modular-programming
+
+language ada
+
+test child package declaration [[
+package Week is
+
+   Mon : constant String := "Monday";
+   Tue : constant String := "Tuesday";
+   Wed : constant String := "Wednesday";
+   Thu : constant String := "Thursday";
+   Fri : constant String := "Friday";
+   Sat : constant String := "Saturday";
+   Sun : constant String := "Sunday";
+
+end Week;
+
+package Week.Child is
+
+   function Get_First_Of_Week return String;
+
+end Week.Child;
+]] parse succeeds
+
+test child package definition [[
+package body Week.Child is
+
+   function Get_First_Of_Week return String is
+   begin
+      return Mon;
+   end Get_First_Of_Week;
+
+end Week.Child;
+
+]] parse succeeds
+
+test child package usage [[
+with Ada.Text_IO; use Ada.Text_IO;
+with Week.Child;  use Week.Child;
+
+procedure Main is
+begin
+   Put_Line ("First day of the week is " & Get_First_Of_Week);
+end Main;
+]] parse succeeds
+
+test grandchild package declaration[[
+package Week.Child.Grandchild is
+
+   function Get_Second_Of_Week return String;
+
+end Week.Child.Grandchild;
+]] parse succeeds
+
+test grandchild package definition[[
+package body Week.Child.Grandchild is
+
+   function Get_Second_Of_Week return String is
+   begin
+      return Tue;
+   end Get_Second_Of_Week;
+
+end Week.Child.Grandchild;
+]] parse succeeds
+
+test grandchild package usage[[
+procedure Main is
+begin
+   Put_Line ("Second day of the week is " & Get_Second_Of_Week);
+end Main;
+]] parse succeeds
+
+test multiple child declaration [[
+package body Week.Child_2 is
+
+   function Get_Last_Of_Week return String is
+   begin
+      return Sun;
+   end Get_Last_Of_Week;
+
+end Week.Child_2;
+]] parse succeeds
+
+test multiple child usage [[
+with Ada.Text_IO;  use Ada.Text_IO;
+with Week.Child;   use Week.Child;
+with Week.Child_2; use Week.Child_2;
+
+procedure Main is
+begin
+   Put_Line ("First day of the week is " & Get_First_Of_Week);
+   Put_Line ("Last day of the week is "  & Get_Last_Of_Week);
+end Main;
+
+]] parse succeeds
+
+test package visibility [[
+package Book is
+
+   Title : constant String := "Visible for my children";
+
+   function Get_Title return String;
+
+   function Get_Author return String;
+
+end Book;
+
+package Book is
+
+   Title : constant String := "Visible for my children";
+
+   function Get_Title return String;
+
+   function Get_Author return String;
+
+end Book;
+
+package body Book is
+
+   Author : constant String := "Author not visible for my children";
+
+   function Get_Title return String is
+   begin
+      return Title;
+   end Get_Title;
+
+   function Get_Author return String is
+   begin
+      return Author;
+   end Get_Author;
+
+end Book;
+
+package body Book.Additional_Operations is
+
+   function Get_Extended_Title return String is
+   begin
+      return "Book Title: " & Get_Title;
+   end Get_Extended_Title;
+
+   function Get_Extended_Author return String is
+   begin
+      return "Book Author: " & Get_Author;
+   end Get_Extended_Author;
+
+end Book.Additional_Operations;
+]] parse succeeds

@@ -1,0 +1,28 @@
+module Lexical-Elements
+
+imports
+
+	Common
+	Declarations
+	Exceptions
+	Generic-Declarations
+	Names-Expressions
+	Packages
+	Program-Structure
+	Representation
+	Statements
+	Subprograms
+	Tasks-Synchronization
+	
+
+context-free syntax
+
+	Pragma.Pragma10 = "pragma" Identifier ";"
+	Pragma.Pragma11 = "pragma" Identifier "(" {Pragmaargumentassociation ","}+ ")" ";"
+	
+	Pragmaargumentassociation.Pragmaargumentassociation31 = Identifier "="">" Name 
+	Pragmaargumentassociation.Pragmaargumentassociation32 =  Expression {prefer}
+	Pragmaargumentassociation.Pragmaargumentassociation33 = Identifier "="">" Expression
+	Pragmaargumentassociation.Pragmaargumentassociation34 = Aspectmark "="">" Name
+	Pragmaargumentassociation.Pragmaargumentassociation35 = Aspectmark "="">" Expression
+	

@@ -1,0 +1,18 @@
+module learn-adacore-examples/generics/generic-body-definition
+
+language ada
+
+test generic body declaration [[
+generic
+   type T is private;
+   X : in out T;
+procedure Set (E : T);
+]] parse succeeds
+
+test generic body definition [[
+procedure Set (E : T) is
+--  Body definition: "generic" keyword is not used
+begin
+   X := E;
+end Set;
+]] parse succeeds
